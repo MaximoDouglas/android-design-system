@@ -2,7 +2,7 @@
 
 ## Course 1 - Codelabs for Android Developer Fundamentals (V2)
 - [Link to the course](https://developer.android.com/courses/fundamentals-training/toc-v2)
-1. Lesson 1:
+- Lesson 1:
   - [ ] 1.1: Android Studio and Hello World
   - [ ] 1.2 Part A: Your first interactive UI
   - [ ] 1.2 Part B: The layout editor
