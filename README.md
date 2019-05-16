@@ -5,7 +5,7 @@
 
 ### Unit 1: Get started
 - Lesson 1: Build your first app
-  - [x] 1.1: Android Studio and Hello World (stoped on Task 5)
+  - [x] 1.1: Android Studio and Hello World
   - [ ] 1.2 Part A: Your first interactive UI
   - [ ] 1.2 Part B: The layout editor
   - [ ] 1.3: Text and scrolling views
