@@ -6,13 +6,13 @@
 ### Unit 1: Get started
 - Lesson 1: Build your first app
   - [x] 1.1: Android Studio and Hello World
-  - [ ] 1.2 Part A: Your first interactive UI
-  - [ ] 1.2 Part B: The layout editor
-  - [ ] 1.3: Text and scrolling views
-  - [ ] 1.4: Learn to help yourself
+  - [x] 1.2 Part A: Your first interactive UI
+  - [x] 1.2 Part B: The layout editor
+  - [x] 1.3: Text and scrolling views
+  - [x] 1.4: Learn to help yourself
   
 - Lesson 2: Activities and intents
-  - [ ] 2.1: Activities and intents
+  - [x] 2.1: Activities and intents
   - [ ] 2.2: Activity lifecycle and state
   - [ ] 2.3: Implicit intents
 
