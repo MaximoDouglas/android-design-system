@@ -14,7 +14,7 @@
 - Lesson 2: Activities and intents
   - [x] 2.1: Activities and intents
   - [x] 2.2: Activity lifecycle and state
-  - [ ] 2.3: Implicit intents
+  - [x] 2.3: Implicit intents
 
 - Lesson 3: Testing, debugging, and using support libraries
   - [x] 3.1: The debugger
