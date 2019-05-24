@@ -18,8 +18,8 @@
 
 - Lesson 3: Testing, debugging, and using support libraries
   - [x] 3.1: The debugger
-  - [ ] 3.2: Unit tests
-  - [ ] 3.3: Support libraries
+  - [x] 3.2: Unit tests
+  - [x] 3.3: Support libraries
 
 ### Unit 2: User experience
 - Lesson 4: User interaction
