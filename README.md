@@ -17,7 +17,7 @@
   - [ ] 2.3: Implicit intents
 
 - Lesson 3: Testing, debugging, and using support libraries
-  - [ ] 3.1: The debugger
+  - [x] 3.1: The debugger
   - [ ] 3.2: Unit tests
   - [ ] 3.3: Support libraries
 
