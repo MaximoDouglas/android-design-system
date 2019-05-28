@@ -33,4 +33,8 @@
     <string name="phone_label_text">Phone</string>
     <string name="enter_phone_hint">Enter phone</string>
     <string name="note_label_text">Note</string>
+    <string name="choose_delivery_method">Choose a delivery method:</string>
+    <string name="same_day_messenger_service">Same day messenger service</string>
+    <string name="next_day_ground_delivery">Next day ground delivery</string>
+    <string name="pick_up">Pick up</string>
 </resources>
