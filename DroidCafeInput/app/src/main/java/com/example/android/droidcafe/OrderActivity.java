@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import android.widget.Toast;
  * This activity shows the order chosen.  The order is sent as data
  * with the intent to launch this activity.
  */
-public class OrderActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
