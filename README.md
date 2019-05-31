@@ -23,8 +23,8 @@
 
 ### Unit 2: User experience
 - Lesson 4: User interaction
-  - [ ] 4.1: Clickable images
-  - [ ] 4.2: Input controls
+  - [x] 4.1: Clickable images
+  - [x] 4.2: Input controls
   - [ ] 4.3: Menus and pickers
   - [ ] 4.4: User navigation
   - [ ] 4.5: RecyclerView
