@@ -56,3 +56,10 @@
 - Lesson 10: Storing data with Room
   - [ ] 10.1 Part A: Room, LiveData, and ViewModel
   - [ ] 10.1 Part B: Deleting data from a Room database
+
+### The day erick saved my life
+/*Integer previousSelectedItemId = Stream.of(mDataSet)
+                                    .filter(t -> t.getId() == mSelectedItem.getId())
+                                    .map(DatabaseObject::getId)
+                                    .findFirst()
+                                    .orElse(-1);*/
