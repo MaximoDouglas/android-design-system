@@ -37,6 +37,10 @@
     <string name="same_day_messenger_service">Same day messenger service</string>
     <string name="next_day_ground_delivery">Next day ground delivery</string>
     <string name="pick_up">Pick up</string>
+    <string name="action_contact">Contact</string>
+    <string name="action_order">Order</string>
+    <string name="action_favorites">Favorites</string>
+    <string name="action_status">Status</string>
     <string-array name="labels_array">
         <item>Home</item>
         <item>Work</item>
