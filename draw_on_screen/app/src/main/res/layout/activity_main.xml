@@ -3,18 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <RelativeLayout>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="700dp">
 
-        <ImageView
-            android:id="@+id/canvas_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="4dp"
-            android:foregroundTint="@color/colorPrimaryDark" />
+
 
     </LinearLayout>
 
