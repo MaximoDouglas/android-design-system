@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">OpenCV</string>
-    <string name="main_fragment_argmax_apps">ArgMAX apps</string>
+    <string name="main_fragment_argmax_apps">ArgMAX Apps</string>
+    <string name="main_fragmen_open_camera">Open Camera</string>
 </resources>

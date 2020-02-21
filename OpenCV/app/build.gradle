@@ -45,4 +45,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+
+    // OpenCV libs
+    implementation "org.bytedeco:javacv:1.4.1"
+    implementation "org.bytedeco.javacpp-presets:opencv:3.4.1-1.4.1:android-arm"
+
 }
