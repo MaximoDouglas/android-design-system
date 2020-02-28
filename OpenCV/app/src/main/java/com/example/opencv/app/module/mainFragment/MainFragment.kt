@@ -18,15 +18,13 @@ import androidx.fragment.app.Fragment
 import com.example.opencv.R
 import com.example.opencv.databinding.MainFragmentBinding
 import com.example.opencv.domain.faceDetection.FaceDetection
+import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
 class MainFragment : Fragment() {
 
     private var mBinding: MainFragmentBinding? = null
-
-    private val REQUEST_IMAGE_CAPTURE = 100
-    private val REQUEST_CAMERA_PERMISSION = 200
-    private var mUri: Uri? = null
+    private var mUri: Uri?                     = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,11 +63,26 @@ class MainFragment : Fragment() {
         }
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
+                                            grantResults: IntArray) {
+        if (requestCode == REQUEST_CAMERA_PERMISSION && grantResults.isNotEmpty()
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            startCamera()
+        } else {
+            activity?.findViewById<View>(android.R.id.content)?.let {
+                Snackbar.make(
+                    it, R.string.main_fragment_request_camera_permission_denied,
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     private fun startCamera() {
         mUri = context?.let {
             FileProvider.getUriForFile(
                 it,
-                "com.projects.facedetector.fileprovider",
+                "com.example.opencv.fileprovider",
                 File.createTempFile(
                     "picture",
                     ".jpg",
@@ -78,12 +91,17 @@ class MainFragment : Fragment() {
             )
         }
 
-        startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+        startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE_SECURE).apply {
             putExtra(
                 MediaStore.EXTRA_OUTPUT,
                 mUri
             )
         }, REQUEST_IMAGE_CAPTURE)
+    }
+
+    companion object {
+        private const val REQUEST_CAMERA_PERMISSION = 200
+        private const val REQUEST_IMAGE_CAPTURE     = 100
     }
 
 
