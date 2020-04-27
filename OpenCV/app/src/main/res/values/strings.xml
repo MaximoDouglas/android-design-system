@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">OpenCV Example</string>
-    <string name="main_fragment_argmax_apps" translatable="false">ArgMAX Apps</string>
-    <string name="main_fragment_open_camera">Open Camera</string>
-    <string name="main_fragment_request_camera_permission_denied">Enable access to the camera</string>
-</resources>
