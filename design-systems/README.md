@@ -1,6 +1,6 @@
 ## Goal
 The goal with this project is to implement different components of open design systems 
-found [here](https://designsystemsrepo.com/design-systems/), as well as the material design, 
+found [in this repository](https://designsystemsrepo.com/design-systems/), as well as the material design, 
 found [here](https://material.io/design).
 
 ## Implemented Design Systems
