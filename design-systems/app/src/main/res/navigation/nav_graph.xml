@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/selectDesignSystemFragment">
 
+    <fragment
+        android:id="@+id/selectDesignSystemFragment"
+        android:name="com.example.design.systems.SelectDesignSystemFragment"
+        android:label="select_design_system_fragment"
+        tools:layout="@layout/select_design_system_fragment" />
 </navigation>

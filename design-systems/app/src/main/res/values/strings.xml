@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">design-systems</string>
+    <string name="app_name">ArgMax - Design Systems Training</string>
+    <string name="select_design_system_asphalt_button_text">Asphalt</string>
 </resources>
