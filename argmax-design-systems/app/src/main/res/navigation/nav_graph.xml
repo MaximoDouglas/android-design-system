@@ -8,5 +8,17 @@
     <fragment
         android:id="@+id/selectDesignSystemFragment"
         android:name="br.com.argmax.design_systems.app.modules.selectDesignSystem.SelectDesignSystemFragment"
-        android:label="SelectDesignSystemFragment" />
+        android:label="SelectDesignSystemFragment">
+
+        <action
+            android:id="@+id/action_selectDesignSystemFragment_to_asphaltDesignSystemFragment"
+            app:destination="@id/asphaltDesignSystemFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/asphaltDesignSystemFragment"
+        android:name="br.com.argmax.design_systems.app.modules.asphalt.AsphaltDesignSystemFragment"
+        android:label="AsphaltDesignSystemFragment" />
+
 </navigation>

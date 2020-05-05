@@ -5,7 +5,7 @@
     <string name="asphalt_alert_badge_text">Email Verification Pending</string>
     <string name="asphalt_alert_badge_nude_button">Verify Now</string>
 
-    <string name="asphalt_design_system_fragment_toolbar">Asphalt Design System</string>
+    <string name="asphalt_design_system_fragment_toolbar">Asphalt</string>
     <string name="asphalt_design_system_fragment_alert_badge_label">Alert Badge Component:</string>
 
 </resources>
