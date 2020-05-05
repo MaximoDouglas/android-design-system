@@ -17,25 +17,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="@string/app_name"
+                android:text="@string/asphalt_design_system_toolbar"
                 android:textColor="@color/BLACK100"
                 android:textSize="16sp" />
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/select_design_system_asphalt_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/asphalt_ghost_button_background"
-            android:paddingStart="30dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="30dp"
-            android:paddingBottom="10dp"
-            android:text="@string/select_design_system_asphalt_button_text"
-            android:textColor="@color/GREEN50" />
+        <include
+            layout="@layout/asphalt_alert_badge_component_view" />
 
     </LinearLayout>
 
