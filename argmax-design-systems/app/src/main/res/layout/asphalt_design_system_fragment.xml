@@ -30,7 +30,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/asphalt_design_system_fragment_alert_badge_label" />
 
-        <br.com.argmax.design_systems.components.asphalt.AsphaltAlertBadgeComponentView
+        <br.com.argmax.design_systems.app.components.asphalt.AsphaltAlertBadgeComponentView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
