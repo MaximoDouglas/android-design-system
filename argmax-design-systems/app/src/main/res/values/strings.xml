@@ -7,5 +7,6 @@
 
     <string name="asphalt_design_system_fragment_toolbar">Asphalt</string>
     <string name="asphalt_design_system_fragment_alert_badge_label">Alert Badge Component:</string>
+    <string name="asphalt_design_system_fragment_notification_badge_label">Notification Badge</string>
 
 </resources>

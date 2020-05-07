@@ -28,14 +28,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/asphalt_design_system_fragment_alert_badge_label" />
 
         <br.com.argmax.design_systems.app.components.asphalt.AsphaltAlertBadgeComponentView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
             android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/asphalt_design_system_fragment_notification_badge_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/asphalt_notification_badge_shape"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/WHITE" />
 
     </LinearLayout>
 
