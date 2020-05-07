@@ -45,16 +45,6 @@
             android:layout_marginBottom="8dp"
             android:text="@string/asphalt_design_system_fragment_notification_badge_label" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/asphalt_notification_badge_shape"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/WHITE" />
-
     </LinearLayout>
 
 </layout>
