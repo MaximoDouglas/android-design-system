@@ -3,5 +3,5 @@
 ## __codelabs__
 Directory with simple study projects.
 
-## __design-systems__
+## __argmax-design-systems__
 Android project containing components of some open design systems.
