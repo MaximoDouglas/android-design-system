@@ -4,4 +4,4 @@
 Directory with simple study projects based on Open codelabs
 
 ## __argmax-design-systems__
-Android project containing components of open design systems.
+Android project with my implementation of open design systems components.
