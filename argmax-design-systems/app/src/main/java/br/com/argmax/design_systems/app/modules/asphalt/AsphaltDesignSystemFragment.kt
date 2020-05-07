@@ -28,5 +28,19 @@ class AsphaltDesignSystemFragment : Fragment() {
         return mBinding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupNotificationBadges()
+    }
+
+    private fun setupNotificationBadges() {
+        val oneDigitQuantity = 1
+        val twoDigitQuantity = 99
+
+        mBinding?.asphaltDesignSystemFragmentNotificationBadgeOneDigit?.setQuantity(oneDigitQuantity)
+        mBinding?.asphaltDesignSystemFragmentNotificationBadgeTwoDigit?.setQuantity(twoDigitQuantity)
+    }
+
 
 }

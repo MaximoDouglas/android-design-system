@@ -2,6 +2,7 @@ package br.com.argmax.design_systems.app.components.asphalt
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
@@ -34,13 +35,20 @@ class AsphaltNotificationBadgeComponentView @JvmOverloads constructor(
     }
 
     private fun updateView(quantity: Int) {
-        val layoutWidth  = 16
-        val layoutHeight = if (quantity in 0..9) 16 else 12
+        val params = mBinding?.asphaltDesignSystemNotificationBadgeTextView?.layoutParams
+        val width  = 16
+        val height = if (quantity in 0..9) 16 else 14
 
-        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.width  = layoutWidth
-        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.height = layoutHeight
-        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text   = quantity.toString()
+        params?.width  = convertPxToDp(width)
+        params?.height = convertPxToDp(height)
+
+        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text         = quantity.toString()
+        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.layoutParams = params
         mBinding?.executePendingBindings()
+    }
+
+    private fun convertPxToDp(pixelsSize: Int): Int {
+        return (pixelsSize * context.resources.displayMetrics.densityDpi) / DisplayMetrics.DENSITY_DEFAULT
     }
 
 

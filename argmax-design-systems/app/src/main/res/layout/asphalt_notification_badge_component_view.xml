@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -7,13 +8,18 @@
 
         <TextView
             android:id="@+id/asphalt_design_system_notification_badge_text_view"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/asphalt_notification_badge_shape"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:textColor="@color/WHITE" />
+            android:maxLength="2"
+            android:minWidth="12dp"
+            android:minHeight="12dp"
+            android:textColor="@color/WHITE"
+            android:textSize="8sp"
+            tools:text="99" />
 
     </LinearLayout>
 
