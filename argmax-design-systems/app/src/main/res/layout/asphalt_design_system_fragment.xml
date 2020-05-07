@@ -45,6 +45,31 @@
             android:layout_marginBottom="8dp"
             android:text="@string/asphalt_design_system_fragment_notification_badge_label" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <br.com.argmax.design_systems.app.components.asphalt.AsphaltNotificationBadgeComponentView
+                android:id="@+id/asphalt_design_system_fragment_notification_badge_no_digit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <br.com.argmax.design_systems.app.components.asphalt.AsphaltNotificationBadgeComponentView
+                android:id="@+id/asphalt_design_system_fragment_notification_badge_one_digit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp" />
+
+            <br.com.argmax.design_systems.app.components.asphalt.AsphaltNotificationBadgeComponentView
+                android:id="@+id/asphalt_design_system_fragment_notification_badge_two_digit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </layout>
