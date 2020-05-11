@@ -3,23 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/BLACK80"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/asphalt_social_avatar_badge_secondary_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:src="@color/GREEN50" />
+
+            <ImageView
+                android:id="@+id/asphalt_social_avatar_badge_main_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@color/BLUE50" />
+
+        </FrameLayout>
+
 
         <TextView
-            android:id="@+id/asphalt_design_system_notification_badge_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/asphalt_notification_badge_shape"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:maxLength="2"
-            android:minWidth="12dp"
-            android:minHeight="12dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_medium"
             android:textColor="@color/WHITE"
-            android:textSize="8sp"
-            tools:text="99" />
+            tools:text="Fatema, Yeti, 200+ liked" />
 
     </LinearLayout>
 
