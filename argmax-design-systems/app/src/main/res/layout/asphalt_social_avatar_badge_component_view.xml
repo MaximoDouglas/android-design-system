@@ -5,7 +5,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/BLACK80"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
@@ -20,7 +19,7 @@
                 android:id="@+id/asphalt_social_avatar_badge_secondary_image_view"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="18dp"
                 android:src="@color/GREEN50"
                 android:visibility="gone" />
 
@@ -28,6 +27,7 @@
                 android:id="@+id/asphalt_social_avatar_badge_main_image_view"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:background="@drawable/asphalt_white_oval_shape"
                 android:src="@color/BLUE50" />
 
         </FrameLayout>
