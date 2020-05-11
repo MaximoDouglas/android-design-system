@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
-                android:text="@string/asphalt_design_system_fragment_notification_badge_label" />
+                android:text="@string/asphalt_design_system_fragment_notification_badges_label" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,6 +72,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp" />
+
+            </LinearLayout>
+
+            <include layout="@layout/divisor_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="@string/asphalt_design_system_fragment_social_avatar_badges_label" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <br.com.argmax.design_systems.app.components.asphalt.AsphaltSocialAvatarBadgeComponentView
+                    android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_one_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <br.com.argmax.design_systems.app.components.asphalt.AsphaltSocialAvatarBadgeComponentView
+                    android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_two_images"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
 
             </LinearLayout>
 

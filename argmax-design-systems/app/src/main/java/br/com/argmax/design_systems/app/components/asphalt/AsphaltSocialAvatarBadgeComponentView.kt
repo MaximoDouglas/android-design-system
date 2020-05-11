@@ -3,6 +3,7 @@ package br.com.argmax.design_systems.app.components.asphalt
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
@@ -36,19 +37,23 @@ class AsphaltSocialAvatarBadgeComponentView @JvmOverloads constructor(
     private fun setupImageViewResources(imageUrls: List<String>) {
         val mainImageUrl = imageUrls[0]
 
-        mBinding?.asphaltSocialAvatarBadgeMainImage?.setCircularImageByUrl(mainImageUrl)
+        mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrl(mainImageUrl)
 
         if (imageUrls.size > 1) {
-            val secondaryImageUrl = imageUrls[1]
+            val secondaryImageVisibility = View.VISIBLE
+            val secondaryImageUrl        = imageUrls[1]
 
-            mBinding?.asphaltSocialAvatarBadgeSecondaryImage?.setCircularImageByUrl(
+            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility =
+                secondaryImageVisibility
+
+            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrl(
                 secondaryImageUrl
             )
         }
     }
 
     private fun setupLabelText(badgeLabel: String) {
-
+        mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text = badgeLabel
     }
 
 

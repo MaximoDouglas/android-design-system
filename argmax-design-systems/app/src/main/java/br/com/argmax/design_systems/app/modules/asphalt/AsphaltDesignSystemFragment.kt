@@ -32,6 +32,7 @@ class AsphaltDesignSystemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupNotificationBadges()
+        setupSocialAvatarBadges()
     }
 
     private fun setupNotificationBadges() {
@@ -40,6 +41,22 @@ class AsphaltDesignSystemFragment : Fragment() {
 
         mBinding?.asphaltDesignSystemFragmentNotificationBadgeOneDigit?.setQuantity(oneDigitQuantity)
         mBinding?.asphaltDesignSystemFragmentNotificationBadgeTwoDigit?.setQuantity(twoDigitQuantity)
+    }
+
+    private fun setupSocialAvatarBadges() {
+        val picsumImageUrl200x200 = "https://picsum.photos/200/200"
+
+        val oneImageUrlList = listOf(picsumImageUrl200x200)
+        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setImageUrls(
+            oneImageUrlList,
+            getString(R.string.asphalt_design_system_fragment_social_avatar_one_image_badge)
+        )
+
+        val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl200x200)
+        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setImageUrls(
+            twoImageUrlList,
+            getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge)
+        )
     }
 
 
