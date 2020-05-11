@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/asphalt_round_corner_black80_rectangle" />
+                    android:background="@drawable/asphalt_black80_round_corner_rectangle_shape" />
 
                 <br.com.argmax.design_systems.app.components.asphalt.AsphaltSocialAvatarBadgeComponentView
                     android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_two_images"
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/asphalt_round_corner_black80_rectangle" />
+                    android:background="@drawable/asphalt_black80_round_corner_rectangle_shape" />
 
 
             </LinearLayout>
