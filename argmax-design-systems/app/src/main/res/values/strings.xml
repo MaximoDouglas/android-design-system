@@ -11,5 +11,7 @@
     <string name="asphalt_design_system_fragment_social_avatar_badges_label">Social avatar badges</string>
     <string name="asphalt_design_system_fragment_social_avatar_one_image_badge">One image social avatar badge</string>
     <string name="asphalt_design_system_fragment_social_avatar_two_image_badge">More than one image social avatar badge</string>
+    <string name="asphalt_design_system_fragment_nude_button_label">Nude Button</string>
+    <string name="asphalt_design_system_fragment_nude_button_click_toast_text">Nude Button Clicked</string>
 
 </resources>
