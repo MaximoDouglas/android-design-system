@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import br.com.argmax.design_systems.R
@@ -33,6 +34,7 @@ class AsphaltDesignSystemFragment : Fragment() {
 
         setupNotificationBadges()
         setupSocialAvatarBadges()
+        setupNudeButton()
     }
 
     private fun setupNotificationBadges() {
@@ -44,8 +46,8 @@ class AsphaltDesignSystemFragment : Fragment() {
     }
 
     private fun setupSocialAvatarBadges() {
-        val picsumImageUrl200x200 = "https://picsum.photos/200/200"
-        val picsumImageUrl300x300 = "https://picsum.photos/300/300"
+        val picsumImageUrl200x200 = "https://picsum.photos/200"
+        val picsumImageUrl300x300 = "https://picsum.photos/300"
 
         val oneImageUrlList = listOf(picsumImageUrl200x200)
         mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setImageUrls(
@@ -58,6 +60,20 @@ class AsphaltDesignSystemFragment : Fragment() {
             twoImageUrlList,
             getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge)
         )
+    }
+
+    private fun setupNudeButton() {
+        mBinding?.asphaltDesignSystemFragmentNudeButton?.setText(
+            getString(R.string.asphalt_design_system_fragment_nude_button_label)
+        )
+
+        mBinding?.asphaltDesignSystemFragmentNudeButton?.setOnClickListener {
+            Toast.makeText(
+                context,
+                getString(R.string.asphalt_design_system_fragment_nude_button_click_toast_text),
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 
