@@ -114,10 +114,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
-                android:text="@string/asphalt_design_system_fragment_nude_button_label" />
+                android:text="@string/asphalt_design_system_fragment_nude_buttons_label" />
 
             <br.com.argmax.design_systems.app.components.asphalt.AsphaltNudeButtonComponentView
-                android:id="@+id/asphalt_design_system_fragment_nude_button"
+                android:id="@+id/asphalt_design_system_fragment_enabled_nude_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <br.com.argmax.design_systems.app.components.asphalt.AsphaltNudeButtonComponentView
+                android:id="@+id/asphalt_design_system_fragment_disabled_nude_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

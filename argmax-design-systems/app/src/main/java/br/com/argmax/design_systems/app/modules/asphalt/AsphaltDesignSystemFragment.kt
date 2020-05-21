@@ -34,7 +34,7 @@ class AsphaltDesignSystemFragment : Fragment() {
 
         setupNotificationBadges()
         setupSocialAvatarBadges()
-        setupNudeButton()
+        setupNudeButtons()
     }
 
     private fun setupNotificationBadges() {
@@ -62,18 +62,31 @@ class AsphaltDesignSystemFragment : Fragment() {
         )
     }
 
-    private fun setupNudeButton() {
-        mBinding?.asphaltDesignSystemFragmentNudeButton?.setText(
-            getString(R.string.asphalt_design_system_fragment_nude_button_label)
+    private fun setupNudeButtons() {
+        setupEnabledNudeButton()
+        setupDisabledNudeButton()
+    }
+
+    private fun setupEnabledNudeButton() {
+        mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setText(
+            getString(R.string.asphalt_design_system_fragment_enabled_nude_button_label)
         )
 
-        mBinding?.asphaltDesignSystemFragmentNudeButton?.setOnClickListener {
+        mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setOnClickListener {
             Toast.makeText(
                 context,
                 getString(R.string.asphalt_design_system_fragment_nude_button_click_toast_text),
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    private fun setupDisabledNudeButton() {
+        mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.setText(
+            getString(R.string.asphalt_design_system_fragment_disabled_nude_button_label)
+        )
+
+        mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
     }
 
 

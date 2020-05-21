@@ -5,10 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
@@ -27,6 +25,18 @@ class AsphaltNudeButtonComponentView @JvmOverloads constructor(
         onPressedListener()
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+
+        mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.setTextColor(
+            if (enabled) {
+                ContextCompat.getColor(context, R.color.RED60)
+            } else {
+                ContextCompat.getColor(context, R.color.BLACK40)
+            }
+        )
+    }
+
     fun setText(text: String) {
         mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.text = text
         mAsphaltNudeButtonComponentViewBinding?.executePendingBindings()
@@ -35,14 +45,23 @@ class AsphaltNudeButtonComponentView @JvmOverloads constructor(
     @SuppressLint("ClickableViewAccessibility")
     private fun onPressedListener() {
         mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.setOnTouchListener { textView, event ->
-            (textView as TextView).setTextColor(
+            if (this.isEnabled) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
-                    ContextCompat.getColor(context, R.color.RED40)
-                } else {
-                    ContextCompat.getColor(context, R.color.RED60)
+                    (textView as TextView).setTextColor(
+                        ContextCompat.getColor(context, R.color.RED40)
+                    )
                 }
-            )
-            textView.performClick()
+
+                if (event.action == MotionEvent.ACTION_BUTTON_RELEASE) {
+                    (textView as TextView).setTextColor(
+                        ContextCompat.getColor(context, R.color.RED60)
+                    )
+                }
+
+                textView.performClick()
+            } else {
+                true
+            }
         }
     }
 
