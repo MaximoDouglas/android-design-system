@@ -32,11 +32,15 @@ class SelectDesignSystemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupClickListeners()
+        setupAsphaltButton()
     }
 
-    private fun setupClickListeners() {
-        mBinding?.selectDesignSystemAsphaltButton?.setOnClickListener {
+    private fun setupAsphaltButton() {
+        mBinding?.selectDesignSystemFragmentGhostButton?.setText(
+            getString(R.string.select_design_system_fragment_asphalt_button_text)
+        )
+
+        mBinding?.selectDesignSystemFragmentGhostButton?.setOnClickListener {
             findNavController().navigate(
                 SelectDesignSystemFragmentDirections.actionSelectDesignSystemFragmentToAsphaltDesignSystemFragment()
             )

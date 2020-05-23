@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">ArgMax - Design Systems Training</string>
-    <string name="select_design_system_asphalt_button_text">Asphalt</string>
+    <string name="select_design_system_fragment_asphalt_button_text">Asphalt Design System</string>
 
     <string name="asphalt_alert_badge_text">Email Verification Pending</string>
     <string name="asphalt_alert_badge_nude_button">Verify Now</string>
-
     <string name="asphalt_design_system_fragment_toolbar">Asphalt</string>
     <string name="asphalt_design_system_fragment_alert_badge_label">Alert badge component:</string>
     <string name="asphalt_design_system_fragment_notification_badges_label">Notification badges</string>
@@ -15,5 +14,9 @@
     <string name="asphalt_design_system_fragment_enabled_nude_button_label">Enabled Nude Button</string>
     <string name="asphalt_design_system_fragment_disabled_nude_button_label">Disabled Nude Button</string>
     <string name="asphalt_design_system_fragment_nude_button_click_toast_text">Nude Button Clicked</string>
+    <string name="asphalt_design_system_fragment_ghost_buttons_label">Ghost Buttons</string>
+    <string name="asphalt_design_system_fragment_enabled_ghost_button_label">Enabled Ghost Button</string>
+    <string name="asphalt_design_system_fragment_disabled_ghost_button_label">Disabled Ghost Button</string>
+    <string name="asphalt_design_system_fragment_ghost_button_click_toast_text">Ghost Button Clicked</string>
 
 </resources>

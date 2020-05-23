@@ -33,7 +33,7 @@ class AsphaltGhostButtonComponentView @JvmOverloads constructor(
             if (enabled) {
                 R.drawable.asphalt_ghost_button_background_selector
             } else {
-                R.drawable.asphalt_green10_ghost_button_disabled_shape
+                R.drawable.asphalt_black40_ghost_button_disabled_shape
             }
         )
     }

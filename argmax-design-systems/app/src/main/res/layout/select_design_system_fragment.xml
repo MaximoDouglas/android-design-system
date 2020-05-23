@@ -23,19 +23,15 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/select_design_system_asphalt_button"
+        <br.com.argmax.design_systems.app.components.asphalt.AsphaltGhostButtonComponentView
+            android:id="@+id/select_design_system_fragment_ghost_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/asphalt_green50_ghost_button_shape"
-            android:paddingStart="30dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="30dp"
-            android:paddingBottom="10dp"
-            android:text="@string/select_design_system_asphalt_button_text"
-            android:textColor="@color/GREEN50" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 

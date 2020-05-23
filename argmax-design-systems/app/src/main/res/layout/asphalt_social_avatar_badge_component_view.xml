@@ -21,7 +21,8 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="18dp"
                 android:src="@color/GREEN50"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:visibility="visible"/>
 
             <ImageView
                 android:id="@+id/asphalt_social_avatar_badge_main_image_view"

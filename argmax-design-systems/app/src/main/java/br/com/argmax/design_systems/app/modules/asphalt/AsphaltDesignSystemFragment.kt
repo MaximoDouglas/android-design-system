@@ -35,6 +35,7 @@ class AsphaltDesignSystemFragment : Fragment() {
         setupNotificationBadges()
         setupSocialAvatarBadges()
         setupNudeButtons()
+        setupGhostButtons()
     }
 
     private fun setupNotificationBadges() {
@@ -87,6 +88,33 @@ class AsphaltDesignSystemFragment : Fragment() {
         )
 
         mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
+    }
+
+    private fun setupGhostButtons() {
+        setupEnabledGhostButton()
+        setupDisabledGhostButton()
+    }
+
+    private fun setupEnabledGhostButton() {
+        mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setText(
+            getString(R.string.asphalt_design_system_fragment_enabled_ghost_button_label)
+        )
+
+        mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setOnClickListener {
+            Toast.makeText(
+                context,
+                getString(R.string.asphalt_design_system_fragment_ghost_button_click_toast_text),
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun setupDisabledGhostButton() {
+        mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.setText(
+            getString(R.string.asphalt_design_system_fragment_disabled_ghost_button_label)
+        )
+
+        mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.isEnabled = false
     }
 
 
