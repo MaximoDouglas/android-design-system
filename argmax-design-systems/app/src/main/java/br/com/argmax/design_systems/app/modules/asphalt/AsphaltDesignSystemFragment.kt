@@ -45,7 +45,11 @@ class AsphaltDesignSystemFragment : Fragment() {
         )
 
         mBinding?.asphaltDesignSystemFragmentAlertBadge?.setOnClickListener {
-            Toast.makeText(context, getString(R.string.asphalt_alert_badge_click_toast), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                context,
+                getString(R.string.asphalt_alert_badge_click_toast),
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
