@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import br.com.argmax.design_systems.app.setCircularImageByUrlWithBorder
+import br.com.argmax.design_systems.app.extentions.setCircularImageByUrlWithBorder
 import br.com.argmax.design_systems.databinding.AsphaltSocialAvatarBadgeComponentViewBinding
 
 class AsphaltSocialAvatarBadgeComponentView @JvmOverloads constructor(

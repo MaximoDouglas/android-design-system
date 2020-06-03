@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.app
+package br.com.argmax.design_systems.app.extentions
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
