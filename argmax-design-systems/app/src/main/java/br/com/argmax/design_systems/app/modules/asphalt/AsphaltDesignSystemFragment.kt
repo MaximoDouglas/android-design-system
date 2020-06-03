@@ -32,10 +32,21 @@ class AsphaltDesignSystemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupAlertBadge()
         setupNotificationBadges()
         setupSocialAvatarBadges()
         setupNudeButtons()
         setupGhostButtons()
+    }
+
+    private fun setupAlertBadge() {
+        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setText(
+            getString(R.string.asphalt_alert_badge_text)
+        )
+
+        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setOnClickListener {
+            Toast.makeText(context, getString(R.string.asphalt_alert_badge_click_toast), Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupNotificationBadges() {

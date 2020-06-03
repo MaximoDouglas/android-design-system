@@ -18,5 +18,6 @@
     <string name="asphalt_design_system_fragment_enabled_ghost_button_label">Enabled Ghost Button</string>
     <string name="asphalt_design_system_fragment_disabled_ghost_button_label">Disabled Ghost Button</string>
     <string name="asphalt_design_system_fragment_ghost_button_click_toast_text">Ghost Button Clicked</string>
+    <string name="asphalt_alert_badge_click_toast">Alert Badge Clicked</string>
 
 </resources>
