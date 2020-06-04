@@ -5,7 +5,7 @@ import android.view.View
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import org.junit.Assert.*
 
-class AsphaltAlertBadgeComponentViewTest : BaseComponentUnitTest() {
+class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
 
     companion object {
 
@@ -16,10 +16,10 @@ class AsphaltAlertBadgeComponentViewTest : BaseComponentUnitTest() {
 
     }
 
-    private var asphaltAlertBadgeComponentView: AsphaltAlertBadgeComponentView? = null
+    private var asphaltAlertBadgeComponentView: AsphaltAlertBadge? = null
 
     override fun setupComponent(activity: Activity) {
-        asphaltAlertBadgeComponentView = AsphaltAlertBadgeComponentView(activity)
+        asphaltAlertBadgeComponentView = AsphaltAlertBadge(activity)
     }
 
     internal fun `when alert badge has text`() {

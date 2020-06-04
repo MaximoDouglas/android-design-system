@@ -9,14 +9,14 @@ import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
 import br.com.argmax.design_systems.databinding.AsphaltNotificationBadgeComponentViewBinding
 
-class AsphaltNotificationBadgeComponentView @JvmOverloads constructor(
+class AsphaltNotificationBadge @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mBinding: AsphaltNotificationBadgeComponentViewBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.asphalt_notification_badge_component_view,
+            R.layout.asphalt_notification_badge,
             this,
             true
         )

@@ -23,7 +23,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <br.com.argmax.design_systems.components.asphalt.AsphaltGhostButtonComponentView
+        <br.com.argmax.design_systems.components.asphalt.AsphaltGhostButton
             android:id="@+id/select_design_system_fragment_ghost_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

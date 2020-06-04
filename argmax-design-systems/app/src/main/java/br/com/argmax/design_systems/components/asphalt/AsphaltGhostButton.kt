@@ -9,13 +9,13 @@ import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
 import br.com.argmax.design_systems.databinding.AsphaltGhostButtonComponentViewBinding
 
-class AsphaltGhostButtonComponentView @JvmOverloads constructor(
+class AsphaltGhostButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mAsphaltGhostButtonComponentViewBinding: AsphaltGhostButtonComponentViewBinding? =
         DataBindingUtil.inflate(
-            LayoutInflater.from(context), R.layout.asphalt_ghost_button_component_view, this, true
+            LayoutInflater.from(context), R.layout.asphalt_ghost_button, this, true
         )
 
     override fun setEnabled(enabled: Boolean) {

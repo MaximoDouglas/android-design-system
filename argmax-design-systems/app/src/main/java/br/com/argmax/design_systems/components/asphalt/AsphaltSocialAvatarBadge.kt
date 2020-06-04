@@ -7,17 +7,16 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
-import br.com.argmax.design_systems.extentions.setCircularImageByUrlWithBorder
 import br.com.argmax.design_systems.databinding.AsphaltSocialAvatarBadgeComponentViewBinding
 
-class AsphaltSocialAvatarBadgeComponentView @JvmOverloads constructor(
+class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mBinding: AsphaltSocialAvatarBadgeComponentViewBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.asphalt_social_avatar_badge_component_view,
+            R.layout.asphalt_social_avatar_badge,
             this,
             true
         )

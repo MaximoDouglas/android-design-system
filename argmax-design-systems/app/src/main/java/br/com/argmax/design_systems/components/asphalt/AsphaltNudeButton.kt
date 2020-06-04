@@ -9,13 +9,13 @@ import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
 import br.com.argmax.design_systems.databinding.AsphaltNudeButtonComponentViewBinding
 
-class AsphaltNudeButtonComponentView @JvmOverloads constructor(
+class AsphaltNudeButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mAsphaltNudeButtonComponentViewBinding: AsphaltNudeButtonComponentViewBinding? =
         DataBindingUtil.inflate(
-            LayoutInflater.from(context), R.layout.asphalt_nude_button_component_view, this, true
+            LayoutInflater.from(context), R.layout.asphalt_nude_button, this, true
         )
 
     override fun setEnabled(enabled: Boolean) {
