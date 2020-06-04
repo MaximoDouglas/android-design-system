@@ -21,6 +21,10 @@ class AsphaltAlertBadgeComponentView @JvmOverloads constructor(
         mBinding?.asphaltDesignSystemFragmentAlertBadgeText?.text = text
     }
 
+    fun getText(): String {
+        return mBinding?.asphaltDesignSystemFragmentAlertBadgeText?.text.toString()
+    }
+
     override fun setOnClickListener(onClickListener: OnClickListener?) {
         onClickListener?.let {
             mBinding?.asphaltDesignSystemFragmentAlertBadgeNudeButton?.setOnClickListener(
