@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.components.asphalt.context
+package br.com.argmax.design_systems.components.asphalt
 
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

@@ -1,8 +1,9 @@
-package br.com.argmax.design_systems.components.asphalt
+package br.com.argmax.design_systems.components.asphalt.context
 
 import android.app.Activity
 import android.view.View
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
+import br.com.argmax.design_systems.components.asphalt.AsphaltAlertBadge
 import org.junit.Assert.*
 
 class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
@@ -19,7 +20,8 @@ class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
     private var asphaltAlertBadgeComponentView: AsphaltAlertBadge? = null
 
     override fun setupComponent(activity: Activity) {
-        asphaltAlertBadgeComponentView = AsphaltAlertBadge(activity)
+        asphaltAlertBadgeComponentView =
+            AsphaltAlertBadge(activity)
     }
 
     internal fun `when alert badge has text`() {
