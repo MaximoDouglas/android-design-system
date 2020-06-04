@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/selectDesignSystemFragment"
-        android:name="br.com.argmax.design_systems.app.modules.selectDesignSystem.SelectDesignSystemFragment"
+        android:name="br.com.argmax.design_systems.modules.selectDesignSystem.SelectDesignSystemFragment"
         android:label="SelectDesignSystemFragment">
 
         <action
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/asphaltDesignSystemFragment"
-        android:name="br.com.argmax.design_systems.app.modules.asphalt.AsphaltDesignSystemFragment"
+        android:name="br.com.argmax.design_systems.modules.asphalt.AsphaltDesignSystemFragment"
         android:label="AsphaltDesignSystemFragment" />
 
 </navigation>

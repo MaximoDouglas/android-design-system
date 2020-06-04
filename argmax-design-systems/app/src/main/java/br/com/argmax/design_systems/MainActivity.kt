@@ -1,8 +1,7 @@
-package br.com.argmax.design_systems.app
+package br.com.argmax.design_systems
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.argmax.design_systems.R
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 

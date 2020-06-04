@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.app.modules.asphalt
+package br.com.argmax.design_systems.modules.asphalt
 
 import android.os.Bundle
 import android.view.LayoutInflater

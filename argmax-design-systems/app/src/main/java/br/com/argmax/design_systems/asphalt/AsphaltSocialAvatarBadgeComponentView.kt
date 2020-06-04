@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.app.components.asphalt
+package br.com.argmax.design_systems.asphalt
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import br.com.argmax.design_systems.app.extentions.setCircularImageByUrlWithBorder
+import br.com.argmax.design_systems.R
+import br.com.argmax.design_systems.extentions.setCircularImageByUrlWithBorder
 import br.com.argmax.design_systems.databinding.AsphaltSocialAvatarBadgeComponentViewBinding
 
 class AsphaltSocialAvatarBadgeComponentView @JvmOverloads constructor(
@@ -16,7 +17,7 @@ class AsphaltSocialAvatarBadgeComponentView @JvmOverloads constructor(
     private var mBinding: AsphaltSocialAvatarBadgeComponentViewBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            br.com.argmax.design_systems.R.layout.asphalt_social_avatar_badge_component_view,
+            R.layout.asphalt_social_avatar_badge_component_view,
             this,
             true
         )

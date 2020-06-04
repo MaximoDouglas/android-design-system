@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.app.modules.selectDesignSystem
+package br.com.argmax.design_systems.modules.selectDesignSystem
 
 import android.os.Bundle
 import android.view.LayoutInflater
