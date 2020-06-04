@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.asphalt
+package br.com.argmax.design_systems.components.asphalt
 
 import android.content.Context
 import android.util.AttributeSet
