@@ -7,13 +7,13 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
-import br.com.argmax.design_systems.databinding.AsphaltNudeButtonComponentViewBinding
+import br.com.argmax.design_systems.databinding.AsphaltNudeButtonBinding
 
 class AsphaltNudeButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
-    private var mAsphaltNudeButtonComponentViewBinding: AsphaltNudeButtonComponentViewBinding? =
+    private var mAsphaltNudeButtonComponentViewBinding: AsphaltNudeButtonBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context), R.layout.asphalt_nude_button, this, true
         )

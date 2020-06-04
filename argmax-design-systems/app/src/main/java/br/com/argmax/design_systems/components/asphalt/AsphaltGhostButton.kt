@@ -7,13 +7,13 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
-import br.com.argmax.design_systems.databinding.AsphaltGhostButtonComponentViewBinding
+import br.com.argmax.design_systems.databinding.AsphaltGhostButtonBinding
 
 class AsphaltGhostButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
-    private var mAsphaltGhostButtonComponentViewBinding: AsphaltGhostButtonComponentViewBinding? =
+    private var mAsphaltGhostButtonComponentViewBinding: AsphaltGhostButtonBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context), R.layout.asphalt_ghost_button, this, true
         )

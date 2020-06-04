@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
-import br.com.argmax.design_systems.databinding.AsphaltAlertBadgeComponentViewBinding
+import br.com.argmax.design_systems.databinding.AsphaltAlertBadgeBinding
 
 class AsphaltAlertBadge @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
-    private var mBinding: AsphaltAlertBadgeComponentViewBinding? =
+    private var mBinding: AsphaltAlertBadgeBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context), R.layout.asphalt_alert_badge, this, true
         )
