@@ -6,17 +6,14 @@ class AsphaltAlertBadgeWithTextTest : AsphaltAlertBadgeTest() {
 
     @Test
     fun `test if text is set correctly`() {
-
-    }
-
-    @Test
-    fun `test if text is visible`() {
-
+        `when alert badge has text`()
+        `assert alert badge text is set correctly`()
     }
 
     @Test
     fun `test if there is no click listeners`() {
-
+        `when alert badge has text`()
+        `assert alert badge has no click listeners`()
     }
 
 
