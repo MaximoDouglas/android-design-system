@@ -33,5 +33,9 @@ class AsphaltAlertBadge @JvmOverloads constructor(
         }
     }
 
+    override fun hasOnClickListeners(): Boolean {
+        return mBinding?.asphaltDesignSystemFragmentAlertBadgeNudeButton?.hasOnClickListeners() ?: false
+    }
+
 
 }
