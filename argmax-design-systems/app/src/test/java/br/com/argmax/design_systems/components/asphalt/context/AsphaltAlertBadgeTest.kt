@@ -6,7 +6,7 @@ import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltAlertBadge
 import org.junit.Assert.*
 
-class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
+abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
 
     companion object {
 
