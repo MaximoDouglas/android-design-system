@@ -37,25 +37,25 @@ abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
         asphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
     }
 
-    internal fun `test if alert badge text is set correctly`() {
+    internal fun `assert alert badge text is set correctly`() {
         val actual = asphaltAlertBadgeComponentView?.getText()
 
         assertEquals(TEXT, actual)
     }
 
-    internal fun `test if alert badge has click listeners`() {
+    internal fun `assert alert badge has click listeners`() {
         val actual = asphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
 
         assertTrue(actual)
     }
 
-    internal fun `test if alert badge text is null or empty`() {
+    internal fun `assert alert badge text is null or empty`() {
         val actual = asphaltAlertBadgeComponentView?.getText().isNullOrEmpty()
 
         assertTrue(actual)
     }
 
-    internal fun `test if alert badge has no click listeners`() {
+    internal fun `assert alert badge has no click listeners`() {
         val actual = asphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
 
         assertFalse(actual)
