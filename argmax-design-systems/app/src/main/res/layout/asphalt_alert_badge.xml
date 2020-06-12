@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="328dp"
         android:layout_height="32dp"
-        android:background="@drawable/asphalt_red60_round_corner_rectangle_shape">
+        android:background="@drawable/asphalt_round_corner_rectangle_shape_red60">
 
         <TextView
             android:id="@+id/asphalt_design_system_fragment_alert_badge_text"

@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/asphalt_red60_oval_shape"
+            android:background="@drawable/asphalt_oval_shape_red60"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:maxLength="2"
