@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.components.asphalt.context
+package br.com.argmax.design_systems.components.asphalt.alertbadge.context
 
 import org.junit.Test
 

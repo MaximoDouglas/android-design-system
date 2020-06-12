@@ -1,4 +1,4 @@
-package br.com.argmax.design_systems.components.asphalt.context
+package br.com.argmax.design_systems.components.asphalt.alertbadge.context
 
 import android.app.Activity
 import android.view.View
