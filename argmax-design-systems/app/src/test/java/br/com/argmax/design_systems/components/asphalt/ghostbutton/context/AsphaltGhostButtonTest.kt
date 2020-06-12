@@ -5,7 +5,7 @@ import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltGhostButton
 import org.junit.Assert.*
 
-class AsphaltGhostButtonTest : BaseComponentUnitTest() {
+abstract class AsphaltGhostButtonTest : BaseComponentUnitTest() {
 
     companion object {
 
