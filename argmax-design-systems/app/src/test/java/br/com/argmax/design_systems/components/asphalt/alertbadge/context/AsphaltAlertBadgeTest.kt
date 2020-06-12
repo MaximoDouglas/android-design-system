@@ -17,46 +17,46 @@ abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
 
     }
 
-    private var asphaltAlertBadgeComponentView: AsphaltAlertBadge? = null
+    private var mAsphaltAlertBadgeComponentView: AsphaltAlertBadge? = null
 
     override fun setupComponent(activity: Activity) {
-        asphaltAlertBadgeComponentView =
+        mAsphaltAlertBadgeComponentView =
             AsphaltAlertBadge(activity)
     }
 
     internal fun `when alert badge has text`() {
-        asphaltAlertBadgeComponentView?.setText(TEXT)
+        mAsphaltAlertBadgeComponentView?.setText(TEXT)
     }
 
     internal fun `when alert badge has click listener`() {
-        asphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
+        mAsphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
     }
 
     internal fun `when alert badge has text and click listener`() {
-        asphaltAlertBadgeComponentView?.setText(TEXT)
-        asphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
+        mAsphaltAlertBadgeComponentView?.setText(TEXT)
+        mAsphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
     }
 
     internal fun `assert alert badge text is set correctly`() {
-        val actual = asphaltAlertBadgeComponentView?.getText()
+        val actual = mAsphaltAlertBadgeComponentView?.getText()
 
         assertEquals(TEXT, actual)
     }
 
     internal fun `assert alert badge has click listeners`() {
-        val actual = asphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
+        val actual = mAsphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
 
         assertTrue(actual)
     }
 
     internal fun `assert alert badge text is null or empty`() {
-        val actual = asphaltAlertBadgeComponentView?.getText().isNullOrEmpty()
+        val actual = mAsphaltAlertBadgeComponentView?.getText().isNullOrEmpty()
 
         assertTrue(actual)
     }
 
     internal fun `assert alert badge has no click listeners`() {
-        val actual = asphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
+        val actual = mAsphaltAlertBadgeComponentView?.hasOnClickListeners() ?: false
 
         assertFalse(actual)
     }

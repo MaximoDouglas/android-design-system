@@ -21,8 +21,8 @@ class AsphaltAlertBadge @JvmOverloads constructor(
         mBinding?.asphaltDesignSystemFragmentAlertBadgeText?.text = text
     }
 
-    fun getText(): String {
-        return mBinding?.asphaltDesignSystemFragmentAlertBadgeText?.text.toString()
+    fun getText(): CharSequence? {
+        return mBinding?.asphaltDesignSystemFragmentAlertBadgeText?.text
     }
 
     override fun setOnClickListener(onClickListener: OnClickListener?) {
