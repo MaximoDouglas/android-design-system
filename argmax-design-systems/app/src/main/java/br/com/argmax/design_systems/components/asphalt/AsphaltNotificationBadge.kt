@@ -47,6 +47,10 @@ class AsphaltNotificationBadge @JvmOverloads constructor(
         mBinding?.executePendingBindings()
     }
 
+    fun getQuantity(): CharSequence? {
+        return mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text
+    }
+
     private fun convertPxToDp(pixelsSize: Int): Int {
         return (pixelsSize * context.resources.displayMetrics.densityDpi) / DisplayMetrics.DENSITY_DEFAULT
     }
