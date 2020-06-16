@@ -21,8 +21,10 @@ class AsphaltNotificationBadge @JvmOverloads constructor(
             true
         )
 
-    fun setQuantity(quantity: Int): Boolean {
-        return if (isValidQuantity(quantity)) {
+    private var mHasQuantity = false
+
+    fun setQuantity(quantity: Int) {
+        mHasQuantity = if (isValidQuantity(quantity)) {
             updateView(quantity)
             true
         } else {
@@ -49,6 +51,10 @@ class AsphaltNotificationBadge @JvmOverloads constructor(
 
     fun getQuantity(): CharSequence? {
         return mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text
+    }
+
+    fun hasQuantity(): Boolean {
+        return mHasQuantity
     }
 
     private fun convertPxToDp(pixelsSize: Int): Int {
