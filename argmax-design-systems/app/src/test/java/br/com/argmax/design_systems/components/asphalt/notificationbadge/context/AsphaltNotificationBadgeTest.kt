@@ -3,6 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.notificationbadge.contex
 import android.app.Activity
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltNotificationBadge
+import org.junit.Assert.*
 import kotlin.random.Random.Default.nextInt
 
 class AsphaltNotificationBadgeTest: BaseComponentUnitTest() {
@@ -34,6 +35,18 @@ class AsphaltNotificationBadgeTest: BaseComponentUnitTest() {
     }
 
     fun `when component has no quantity`() {}
+
+    fun `assert has quantity`() {
+        assertTrue(mAsphaltNotificationBadge?.hasQuantity() ?: false)
+    }
+
+    fun `assert quantity is set correctly`() {
+        assertEquals(VALID_QUANTITY, mAsphaltNotificationBadge?.getQuantity().toString().toInt())
+    }
+
+    fun `assert quantity is not set`() {
+        assertFalse(mAsphaltNotificationBadge?.hasQuantity() ?: false)
+    }
 
 
 }
