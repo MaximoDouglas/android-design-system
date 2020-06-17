@@ -48,5 +48,9 @@ abstract class AsphaltNotificationBadgeTest: BaseComponentUnitTest() {
         assertFalse(mAsphaltNotificationBadge?.hasQuantity() ?: false)
     }
 
+    fun `assert quantity is null or empty`() {
+        assertTrue(mAsphaltNotificationBadge?.getQuantity().isNullOrEmpty())
+    }
+
 
 }
