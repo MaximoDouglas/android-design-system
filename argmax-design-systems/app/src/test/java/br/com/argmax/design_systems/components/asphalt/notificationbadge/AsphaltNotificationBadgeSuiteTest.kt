@@ -1,14 +1,11 @@
 package br.com.argmax.design_systems.components.asphalt.notificationbadge
 
-import br.com.argmax.design_systems.components.asphalt.notificationbadge.context.AsphaltNotificationBadgeTest
+import br.com.argmax.design_systems.components.asphalt.notificationbadge.context.AsphaltNotificationBadgeValidQuantityTest
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.junit.runners.Suite
 
-@RunWith(JUnit4::class)
+@RunWith(Suite::class)
 @Suite.SuiteClasses(
-    AsphaltNotificationBadgeTest::class
+    AsphaltNotificationBadgeValidQuantityTest::class
 )
-class AsphaltNotificationBadgeSuiteTest {
-
-}
+class AsphaltNotificationBadgeSuiteTest
