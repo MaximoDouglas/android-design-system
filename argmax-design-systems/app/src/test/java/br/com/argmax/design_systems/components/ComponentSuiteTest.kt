@@ -4,6 +4,7 @@ import br.com.argmax.design_systems.components.asphalt.alertbadge.AsphaltAlertBa
 import br.com.argmax.design_systems.components.asphalt.ghostbutton.AsphaltGhostButtonSuiteTest
 import br.com.argmax.design_systems.components.asphalt.notificationbadge.AsphaltNotificationBadgeSuiteTest
 import br.com.argmax.design_systems.components.asphalt.nudebutton.AsphaltNudeButtonSuiteTest
+import br.com.argmax.design_systems.components.asphalt.socialavatarbadge.AsphaltSocialAvatarBadgeSuiteTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -12,6 +13,7 @@ import org.junit.runners.Suite
     AsphaltAlertBadgeSuiteTest::class,
     AsphaltGhostButtonSuiteTest::class,
     AsphaltNotificationBadgeSuiteTest::class,
-    AsphaltNudeButtonSuiteTest::class
+    AsphaltNudeButtonSuiteTest::class,
+    AsphaltSocialAvatarBadgeSuiteTest::class
 )
 class ComponentSuiteTest
