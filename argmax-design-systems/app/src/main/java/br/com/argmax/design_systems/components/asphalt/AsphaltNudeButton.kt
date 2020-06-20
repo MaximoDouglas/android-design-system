@@ -35,5 +35,9 @@ class AsphaltNudeButton @JvmOverloads constructor(
         mAsphaltNudeButtonComponentViewBinding?.executePendingBindings()
     }
 
+    fun getText(): CharSequence? {
+        return mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.text
+    }
+
 
 }
