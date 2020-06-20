@@ -15,4 +15,9 @@ class AsphaltNudeButtonWithTextTest: AsphaltNudeButtonTest() {
         `assert that text is set correctly`()
     }
 
+    @Test
+    fun `test if nude button is enabled`() {
+        `assert that nude button is enabled`()
+    }
+
 }
