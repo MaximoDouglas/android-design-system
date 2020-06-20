@@ -2,11 +2,14 @@ package br.com.argmax.design_systems.components.asphalt.socialavatarbadge.contex
 
 import android.app.Activity
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
+import br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
 
-open class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
+abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
+
+    private var mAsphaltSocialAvatarBadge: AsphaltSocialAvatarBadge? = null
 
     override fun setupComponent(activity: Activity) {
-        TODO("Not yet implemented")
+        mAsphaltSocialAvatarBadge = AsphaltSocialAvatarBadge(activity)
     }
 
 }
