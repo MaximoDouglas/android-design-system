@@ -66,13 +66,13 @@ class AsphaltDesignSystemFragment : Fragment() {
         val picsumImageUrl300x300 = "https://picsum.photos/300"
 
         val oneImageUrlList = listOf(picsumImageUrl200x200)
-        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setImageUrls(
+        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
             oneImageUrlList,
             getString(R.string.asphalt_design_system_fragment_social_avatar_one_image_badge)
         )
 
         val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl300x300)
-        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setImageUrls(
+        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
             twoImageUrlList,
             getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge)
         )
