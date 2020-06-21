@@ -3,6 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.socialavatarbadge.contex
 import android.app.Activity
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
+import org.junit.Assert.assertEquals
 
 abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
@@ -22,6 +23,14 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     fun `when social avatar badge has one valid url and label test`() {
         mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(IMAGE_URL_LIST_WITH_ONE_VALID_URL, TEXT_LABEL)
+    }
+
+    fun `assert that text is set correctly`() {
+        assertEquals(TEXT_LABEL, mAsphaltSocialAvatarBadge?.getLabelText().toString())
+    }
+
+    fun `assert that main image url is set correctly`() {
+        assertEquals(IMAGE_URL_LIST_WITH_ONE_VALID_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
     }
 
 }

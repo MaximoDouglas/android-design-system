@@ -14,6 +14,8 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
+    private var mUrlList: MutableList<String>? = null
+
     private var mBinding: AsphaltSocialAvatarBadgeBinding? =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
@@ -36,12 +38,15 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
 
     private fun setupImageViewResources(imageUrls: List<String>) {
         val mainImageUrl = imageUrls[0]
+        mUrlList         = mutableListOf(mainImageUrl)
 
         mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrlWithBorder(mainImageUrl)
 
         if (imageUrls.size > 1) {
             val secondaryImageVisibility = View.VISIBLE
             val secondaryImageUrl        = imageUrls[1]
+
+            mUrlList?.add(secondaryImageUrl)
 
             mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility =
                 secondaryImageVisibility
@@ -58,6 +63,10 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
 
     fun getLabelText(): CharSequence? {
         return mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text
+    }
+
+    fun getImageUrlList(): List<String>? {
+        return mUrlList;
     }
 
 
