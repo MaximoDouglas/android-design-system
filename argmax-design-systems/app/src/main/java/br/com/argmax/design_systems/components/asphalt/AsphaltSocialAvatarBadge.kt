@@ -22,7 +22,7 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
             true
         )
 
-    fun setImageUrls(imageUrls: List<String>, badgeLabel: String): Boolean {
+    fun setLabelAndImageUrlList(imageUrls: List<String>, badgeLabel: String): Boolean {
         return if (imageUrls.isEmpty()) {
             false
         } else {
