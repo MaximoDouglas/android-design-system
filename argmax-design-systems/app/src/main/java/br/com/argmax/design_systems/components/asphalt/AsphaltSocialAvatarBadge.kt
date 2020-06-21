@@ -56,5 +56,9 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text = badgeLabel
     }
 
+    fun getLabelText(): CharSequence? {
+        return mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text
+    }
+
 
 }
