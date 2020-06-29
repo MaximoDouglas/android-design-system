@@ -11,8 +11,11 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
         private val IMAGE_URL_LIST_WITH_ONE_VALID_URL = listOf("https://picsum.photos/200/300")
 
-        private const val TEXT_LABEL = "Lorem Ipsum é simplesmente uma simulação"
+        private val IMAGE_URL_LIST_WITH_TWO_VALID_URL: List<String> = listOf(
+            "https://picsum.photos/200/300", "https://picsum.photos/300/400"
+        )
 
+        private const val TEXT_LABEL = "Lorem Ipsum é simplesmente uma simulação"
     }
 
     private var mAsphaltSocialAvatarBadge: AsphaltSocialAvatarBadge? = null
@@ -21,7 +24,7 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
         mAsphaltSocialAvatarBadge = AsphaltSocialAvatarBadge(activity)
     }
 
-    fun `when social avatar badge has one valid url and label test`() {
+    fun `when social avatar badge has one valid url and label`() {
         mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(IMAGE_URL_LIST_WITH_ONE_VALID_URL, TEXT_LABEL)
     }
 
@@ -31,6 +34,14 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     fun `assert that main image url is set correctly`() {
         assertEquals(IMAGE_URL_LIST_WITH_ONE_VALID_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
+    }
+
+    fun `when social avatar badge has two valid urls and label`() {
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(IMAGE_URL_LIST_WITH_TWO_VALID_URL, TEXT_LABEL)
+    }
+
+    fun `assert that both image url are set correctly`() {
+        assertEquals(IMAGE_URL_LIST_WITH_TWO_VALID_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
     }
 
 }

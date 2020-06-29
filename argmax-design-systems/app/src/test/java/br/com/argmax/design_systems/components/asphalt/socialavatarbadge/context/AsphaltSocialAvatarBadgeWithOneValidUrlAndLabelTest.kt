@@ -7,7 +7,7 @@ class AsphaltSocialAvatarBadgeWithOneValidUrlAndLabelTest : AsphaltSocialAvatarB
 
     @Before
     fun `setup scenario`() {
-        `when social avatar badge has one valid url and label test`()
+        `when social avatar badge has one valid url and label`()
     }
 
     @Test
