@@ -15,6 +15,8 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
             "https://picsum.photos/200/300", "https://picsum.photos/300/400"
         )
 
+        private val INVALID_IMAGE_URL_LIST: List<String> = listOf("this is an invalid url")
+
         private const val TEXT_LABEL = "Lorem Ipsum é simplesmente uma simulação"
     }
 
@@ -42,6 +44,10 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     fun `assert that both image url are set correctly`() {
         assertEquals(IMAGE_URL_LIST_WITH_TWO_VALID_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
+    }
+
+    fun `when social avatar badge has label and invalid url`() {
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(INVALID_IMAGE_URL_LIST, TEXT_LABEL)
     }
 
 }
