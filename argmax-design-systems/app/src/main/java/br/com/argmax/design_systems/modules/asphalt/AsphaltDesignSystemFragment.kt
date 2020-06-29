@@ -67,14 +67,14 @@ class AsphaltDesignSystemFragment : Fragment() {
 
         val oneImageUrlList = listOf(picsumImageUrl200x200)
         mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
-            oneImageUrlList,
-            getString(R.string.asphalt_design_system_fragment_social_avatar_one_image_badge)
+            getString(R.string.asphalt_design_system_fragment_social_avatar_one_image_badge),
+            oneImageUrlList
         )
 
         val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl300x300)
         mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
-            twoImageUrlList,
-            getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge)
+            getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge),
+            twoImageUrlList
         )
     }
 

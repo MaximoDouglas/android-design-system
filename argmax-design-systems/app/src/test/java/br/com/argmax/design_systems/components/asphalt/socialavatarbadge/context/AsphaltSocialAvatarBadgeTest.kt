@@ -27,7 +27,7 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
     }
 
     fun `when social avatar badge has one valid url and label`() {
-        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(IMAGE_URL_LIST_WITH_ONE_VALID_URL, TEXT_LABEL)
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(TEXT_LABEL, IMAGE_URL_LIST_WITH_ONE_VALID_URL)
     }
 
     fun `assert that text is set correctly`() {
@@ -39,7 +39,7 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
     }
 
     fun `when social avatar badge has two valid urls and label`() {
-        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(IMAGE_URL_LIST_WITH_TWO_VALID_URL, TEXT_LABEL)
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(TEXT_LABEL, IMAGE_URL_LIST_WITH_TWO_VALID_URL)
     }
 
     fun `assert that both image url are set correctly`() {
@@ -47,7 +47,7 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
     }
 
     fun `when social avatar badge has label and invalid url`() {
-        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(INVALID_IMAGE_URL_LIST, TEXT_LABEL)
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(TEXT_LABEL, INVALID_IMAGE_URL_LIST)
     }
 
 }

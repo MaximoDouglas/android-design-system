@@ -9,4 +9,5 @@ class AsphaltSocialAvatarBadgeWithLabelAndInvalidUrlTest : AsphaltSocialAvatarBa
         `when social avatar badge has label and invalid url`()
     }
 
+
 }
