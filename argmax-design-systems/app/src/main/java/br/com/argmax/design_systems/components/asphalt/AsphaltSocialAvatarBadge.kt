@@ -72,4 +72,8 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         return mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility == View.VISIBLE
     }
 
+    fun isSecondaryImageVisible(): Boolean {
+        return mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility == View.VISIBLE
+    }
+
 }

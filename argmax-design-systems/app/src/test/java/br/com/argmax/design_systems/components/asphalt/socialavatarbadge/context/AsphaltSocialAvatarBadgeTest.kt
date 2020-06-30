@@ -49,4 +49,8 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
         assertTrue(mAsphaltSocialAvatarBadge?.isMainImageVisible() ?: false)
     }
 
+    fun `assert that secondary image is gone`() {
+        assertFalse(mAsphaltSocialAvatarBadge?.isSecondaryImageVisible() ?: false)
+    }
+
 }
