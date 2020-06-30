@@ -7,7 +7,7 @@ class AsphaltSocialAvatarBadgeWithTwoValidUrlAndLabelTest : AsphaltSocialAvatarB
 
     @Before
     fun `setup scenario`() {
-        `when social avatar badge has two valid urls and label`()
+        `when social avatar badge has two image urls and label`()
     }
 
     @Test
@@ -17,7 +17,7 @@ class AsphaltSocialAvatarBadgeWithTwoValidUrlAndLabelTest : AsphaltSocialAvatarB
 
     @Test
     fun `test if the image urls are set correctly`() {
-        `assert that both image url are set correctly`()
+        `assert that both main and secondary image url are set correctly`()
     }
 
 }

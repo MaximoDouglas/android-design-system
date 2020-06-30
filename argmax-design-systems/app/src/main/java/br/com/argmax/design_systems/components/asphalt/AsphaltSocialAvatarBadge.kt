@@ -51,9 +51,7 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
             mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility =
                 secondaryImageVisibility
 
-            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(
-                secondaryImageUrl
-            )
+            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(secondaryImageUrl)
         }
     }
 
@@ -68,6 +66,5 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     fun getImageUrlList(): List<String>? {
         return mUrlList;
     }
-
 
 }
