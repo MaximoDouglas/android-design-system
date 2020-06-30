@@ -1,6 +1,7 @@
 package br.com.argmax.design_systems.components.asphalt.socialavatarbadge.context
 
 import android.app.Activity
+import android.view.View
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
 import org.junit.Assert.*
@@ -42,6 +43,10 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     fun `assert that both main and secondary image url are set correctly`() {
         assertEquals(IMAGE_URL_LIST_WITH_TWO_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
+    }
+
+    fun `assert that main image is visible`() {
+        assertTrue(mAsphaltSocialAvatarBadge?.isMainImageVisible() ?: false)
     }
 
 }

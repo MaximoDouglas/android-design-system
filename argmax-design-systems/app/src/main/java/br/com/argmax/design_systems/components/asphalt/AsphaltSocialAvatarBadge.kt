@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
 import br.com.argmax.design_systems.databinding.AsphaltSocialAvatarBadgeBinding
@@ -65,6 +66,10 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
 
     fun getImageUrlList(): List<String>? {
         return mUrlList;
+    }
+
+    fun isMainImageVisible(): Boolean {
+        return mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility == View.VISIBLE
     }
 
 }

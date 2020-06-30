@@ -20,4 +20,9 @@ class AsphaltSocialAvatarBadgeWithOneValidUrlAndLabelTest : AsphaltSocialAvatarB
         `assert that main image url is set correctly`()
     }
 
+    @Test
+    fun `test if social badge main image is visible`() {
+        `assert that main image is visible`()
+    }
+
 }
