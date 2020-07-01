@@ -26,11 +26,12 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         )
 
     fun setLabelAndImageUrlList(badgeLabel: String, imageUrls: List<String>): Boolean {
+        setupLabelText(badgeLabel)
+
         return if (imageUrls.isEmpty()) {
             false
         } else {
             setupImageViewResources(imageUrls)
-            setupLabelText(badgeLabel)
 
             mBinding?.executePendingBindings()
             return true
