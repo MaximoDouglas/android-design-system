@@ -41,7 +41,7 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
         mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(TEXT_LABEL, IMAGE_URL_LIST_WITH_TWO_URL)
     }
 
-    fun `assert that both main and secondary image url are set correctly`() {
+    fun `assert that image url list is set correctly`() {
         assertEquals(IMAGE_URL_LIST_WITH_TWO_URL, mAsphaltSocialAvatarBadge?.getImageUrlList())
     }
 
@@ -51,6 +51,10 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     fun `assert that secondary image is gone`() {
         assertFalse(mAsphaltSocialAvatarBadge?.isSecondaryImageVisible() ?: false)
+    }
+
+    fun `assert that secondary image is visible`() {
+        assertTrue(mAsphaltSocialAvatarBadge?.isSecondaryImageVisible() ?: true)
     }
 
 }

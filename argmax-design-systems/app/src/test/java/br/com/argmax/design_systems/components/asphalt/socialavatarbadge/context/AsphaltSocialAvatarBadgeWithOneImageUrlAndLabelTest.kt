@@ -3,7 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.socialavatarbadge.contex
 import org.junit.Before
 import org.junit.Test
 
-class AsphaltSocialAvatarBadgeWithOneValidUrlAndLabelTest : AsphaltSocialAvatarBadgeTest() {
+class AsphaltSocialAvatarBadgeWithOneImageUrlAndLabelTest : AsphaltSocialAvatarBadgeTest() {
 
     @Before
     fun `setup scenario`() {

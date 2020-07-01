@@ -6,7 +6,7 @@ import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
-    AsphaltSocialAvatarBadgeWithOneValidUrlAndLabelTest::class,
-    AsphaltSocialAvatarBadgeWithTwoValidUrlAndLabelTest::class
+    AsphaltSocialAvatarBadgeWithOneImageUrlAndLabelTest::class,
+    AsphaltSocialAvatarBadgeWithTwoImageUrlAndLabelTest::class
 )
 class AsphaltSocialAvatarBadgeSuiteTest
