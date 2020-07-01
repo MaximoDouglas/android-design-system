@@ -9,6 +9,7 @@ import org.junit.Assert.*
 abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
 
     companion object {
+        private val EMPTY_IMAGE_URL_LIST = listOf<String>()
 
         private val IMAGE_URL_LIST_WITH_ONE_URL = listOf("https://picsum.photos/200/300")
 
@@ -49,12 +50,20 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
         assertTrue(mAsphaltSocialAvatarBadge?.isMainImageVisible() ?: false)
     }
 
-    fun `assert that secondary image is gone`() {
+    fun `assert that secondary image is not visible`() {
         assertFalse(mAsphaltSocialAvatarBadge?.isSecondaryImageVisible() ?: false)
     }
 
     fun `assert that secondary image is visible`() {
         assertTrue(mAsphaltSocialAvatarBadge?.isSecondaryImageVisible() ?: true)
+    }
+
+    fun `when social avatar badge has empty image url list and label`() {
+        mAsphaltSocialAvatarBadge?.setLabelAndImageUrlList(TEXT_LABEL, EMPTY_IMAGE_URL_LIST)
+    }
+
+    fun `assert that main image is not visible`() {
+        assertFalse(mAsphaltSocialAvatarBadge?.isMainImageVisible() ?: false)
     }
 
 }

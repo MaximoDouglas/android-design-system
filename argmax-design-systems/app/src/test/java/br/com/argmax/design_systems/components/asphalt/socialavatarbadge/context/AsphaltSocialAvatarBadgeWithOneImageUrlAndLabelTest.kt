@@ -26,8 +26,8 @@ class AsphaltSocialAvatarBadgeWithOneImageUrlAndLabelTest : AsphaltSocialAvatarB
     }
 
     @Test
-    fun `test if social badge secondary image is gone`() {
-        `assert that secondary image is gone`()
+    fun `test if social badge secondary image is not visible`() {
+        `assert that secondary image is not visible`()
     }
 
 }
