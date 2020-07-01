@@ -1,5 +1,6 @@
 package br.com.argmax.design_systems.extentions
 
+import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import br.com.argmax.design_systems.R
@@ -14,4 +15,6 @@ fun ImageView.setCircularImageByUrlWithBorder(imageUrl: String, borderWidth: Int
         .load(imageUrl)
         .transform(CircleCrop())
         .into(this)
+
+    visibility = if (imageUrl.isEmpty()) View.GONE else View.VISIBLE
 }

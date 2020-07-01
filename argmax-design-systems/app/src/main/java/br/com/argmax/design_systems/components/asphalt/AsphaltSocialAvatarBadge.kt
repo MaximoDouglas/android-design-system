@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import br.com.argmax.design_systems.R
 import br.com.argmax.design_systems.databinding.AsphaltSocialAvatarBadgeBinding
@@ -29,6 +28,7 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         setupLabelText(badgeLabel)
 
         return if (imageUrls.isEmpty()) {
+            hideImages()
             false
         } else {
             setupImageViewResources(imageUrls)
@@ -38,6 +38,11 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         }
     }
 
+    private fun hideImages() {
+        mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility      = View.GONE
+        mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility = View.GONE
+    }
+
     private fun setupImageViewResources(imageUrls: List<String>) {
         val mainImageUrl = imageUrls[0]
         mUrlList         = mutableListOf(mainImageUrl)
@@ -45,14 +50,9 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
         mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrlWithBorder(mainImageUrl)
 
         if (imageUrls.size > 1) {
-            val secondaryImageVisibility = View.VISIBLE
-            val secondaryImageUrl        = imageUrls[1]
+            val secondaryImageUrl = imageUrls[1]
 
             mUrlList?.add(secondaryImageUrl)
-
-            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility =
-                secondaryImageVisibility
-
             mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(secondaryImageUrl)
         }
     }
