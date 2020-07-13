@@ -11,7 +11,7 @@ class GitRepositoryCardDto(
     val userName: String,
     val userFullName: String? = "Default name"
 ) {
-    fun getRepositoryDescription(): String {
+    fun getGitRepositoryDescription(): String {
         return compactStringWithDots(gitRepositoryDescription, 60)
     }
 }
