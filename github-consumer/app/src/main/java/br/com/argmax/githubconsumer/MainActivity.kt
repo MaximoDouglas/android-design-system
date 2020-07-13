@@ -1,8 +1,7 @@
-package br.com.argmax.githubconsumer.ui.main
+package br.com.argmax.githubconsumer
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import br.com.argmax.githubconsumer.R
 
 class MainActivity : AppCompatActivity() {
 
