@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.ui.modules.gitrepositories
+package br.com.argmax.githubconsumer.ui.modules.gitpullrequests
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,20 +11,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
-import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
+import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.GitRepositoryApiResponse
 import br.com.argmax.githubconsumer.domain.entities.GitRepositoryDto
 import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
 import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
-import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectRepositoryAdapter
-import io.reactivex.schedulers.Schedulers
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class SelectRepositoryFragment : Fragment() {
+class SelectGitPullRequestFragment : Fragment() {
 
-    private var mBinding: SelectGitRepositoryFragmentBinding? = null
-    private var mAdapter: SelectRepositoryAdapter? = SelectRepositoryAdapter()
+    private var mBinding: SelectGitPullRequestFragmentBinding? = null
+    private var mAdapterGit: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter()
     private var mService = createService(GitRepositoryApiDataSource::class.java)
 
     override fun onCreateView(
@@ -34,7 +34,7 @@ class SelectRepositoryFragment : Fragment() {
     ): View? {
         mBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.select_git_repository_fragment,
+            R.layout.select_git_pull_request_fragment,
             container,
             false
         )
@@ -52,13 +52,13 @@ class SelectRepositoryFragment : Fragment() {
     private fun setupRecyclerView() {
         val linearLayoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        mBinding?.selectRepositoryFragmentRecyclerView?.layoutManager = linearLayoutManager
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.layoutManager = linearLayoutManager
 
-        mBinding?.selectRepositoryFragmentRecyclerView?.addItemDecoration(
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
-        mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapter
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapterGit
     }
 
     @SuppressLint("CheckResult")
@@ -84,7 +84,6 @@ class SelectRepositoryFragment : Fragment() {
     }
 
     private fun onSuccess(response: GitRepositoryApiResponse) {
-        println(response)
         convertResponseToCardDtoList(response)
     }
 
@@ -98,7 +97,7 @@ class SelectRepositoryFragment : Fragment() {
             cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
         }
 
-        mAdapter?.replaceData(cardDtoList)
+        mAdapterGit?.replaceData(cardDtoList)
     }
 
     private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {

@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/selectRepositoryFragment"
-        android:name="br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectRepositoryFragment"
+        android:name="br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragment"
         android:label="SelectRepositoryFragment" />
 </navigation>

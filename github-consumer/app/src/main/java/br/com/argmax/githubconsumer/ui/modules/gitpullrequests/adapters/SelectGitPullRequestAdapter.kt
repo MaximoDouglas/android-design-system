@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters
+package br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitReposito
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.git_repository_card_view_holder.*
 
-class SelectRepositoryAdapter() : Adapter<SelectRepositoryAdapter.GitRepositoryCardViewHolder>() {
+class SelectGitPullRequestAdapter() : Adapter<SelectGitPullRequestAdapter.GitRepositoryCardViewHolder>() {
 
     private var data: List<GitRepositoryCardDto> = listOf()
 
