@@ -1,5 +1,6 @@
 package br.com.argmax.githubconsumer.ui.modules.gitrepositories
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
+import br.com.argmax.githubconsumer.domain.entities.GitRepositoryApiResponse
+import br.com.argmax.githubconsumer.domain.entities.GitRepositoryDto
+import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
+import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
+import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectRepositoryAdapter
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 class SelectRepositoryFragment : Fragment() {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter: SelectRepositoryAdapter? = SelectRepositoryAdapter()
+    private var mService = createService(GitRepositoryApiDataSource::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +46,7 @@ class SelectRepositoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        foo()
     }
 
     private fun setupRecyclerView() {
@@ -49,6 +59,57 @@ class SelectRepositoryFragment : Fragment() {
         )
 
         mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapter
+    }
+
+    @SuppressLint("CheckResult")
+    private fun foo() {
+        mService.getGitRepositories(
+            page = 1
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { isLoading(true) }
+            .doAfterTerminate { isLoading(false) }
+            .subscribe(
+                { response ->
+                    onSuccess(response)
+                },
+                { throwable ->
+                    onError(throwable.localizedMessage)
+                }
+            )
+    }
+
+    private fun isLoading(boolean: Boolean) {
+        println(boolean)
+    }
+
+    private fun onSuccess(response: GitRepositoryApiResponse) {
+        println(response)
+        convertResponseToCardDtoList(response)
+    }
+
+    private fun onError(string: String) {
+        println(string)
+    }
+
+    private fun convertResponseToCardDtoList(gitRepositoryApiResponse: GitRepositoryApiResponse) {
+        val cardDtoList = mutableListOf<GitRepositoryCardDto>()
+        gitRepositoryApiResponse.items.forEach {
+            cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
+        }
+
+        mAdapter?.replaceData(cardDtoList)
+    }
+
+    private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {
+        return GitRepositoryCardDto(
+            gitRepositoryName = gitRepositoryDto.name,
+            gitRepositoryDescription = gitRepositoryDto.description,
+            forkQuantity = gitRepositoryDto.forks_count.toString(),
+            starsQuantity = gitRepositoryDto.stargazers_count.toString(),
+            userImageUrl = gitRepositoryDto.owner.avatar_url,
+            userName = gitRepositoryDto.owner.login
+        )
     }
 
 }
