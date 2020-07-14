@@ -8,8 +8,7 @@ class GitRepositoryCardDto(
     val forkQuantity: String,
     val starsQuantity: String,
     val userImageUrl: String,
-    val userName: String,
-    val userFullName: String? = "Default name"
+    val userName: String
 ) {
     fun getGitRepositoryDescription(): String {
         return compactStringWithDots(gitRepositoryDescription, 60)

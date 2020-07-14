@@ -104,15 +104,6 @@
                 android:textColor="@color/blue600"
                 tools:text="username" />
 
-            <TextView
-                android:id="@+id/git_repository_card_user_full_name_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:singleLine="true"
-                android:text="@{gitRepositoryCardDto.userFullName}"
-                tools:text="Nome Sobrenome" />
-
         </LinearLayout>
 
     </LinearLayout>

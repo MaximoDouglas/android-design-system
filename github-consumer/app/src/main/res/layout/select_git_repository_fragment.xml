@@ -24,11 +24,6 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estou vivo" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/select_repository_fragment_recycler_view"
             android:layout_width="match_parent"
