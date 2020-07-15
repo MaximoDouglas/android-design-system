@@ -7,31 +7,32 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.argmax.githubconsumer.R
-import br.com.argmax.githubconsumer.databinding.GitRepositoryCardViewHolderBinding
-import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
+import br.com.argmax.githubconsumer.databinding.GitPullRequestCardViewHolderBinding
+import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.git_repository_card_view_holder.*
+import kotlinx.android.synthetic.main.git_pull_request_card_view_holder.*
 
-class SelectGitPullRequestAdapter() : Adapter<SelectGitPullRequestAdapter.GitRepositoryCardViewHolder>() {
+class SelectGitPullRequestAdapter() :
+    Adapter<SelectGitPullRequestAdapter.GitPullRequestCardViewHolder>() {
 
-    private var data: List<GitRepositoryCardDto> = listOf()
+    private var data: List<GitPullRequestCardDto> = listOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): GitRepositoryCardViewHolder {
-        val gitRepositoryCardViewHolderBinding: GitRepositoryCardViewHolderBinding =
+    ): GitPullRequestCardViewHolder {
+        val gitPullRequestCardViewHolderBinding: GitPullRequestCardViewHolderBinding =
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.git_repository_card_view_holder,
+                R.layout.git_pull_request_card_view_holder,
                 parent,
                 false
             )
 
-        return GitRepositoryCardViewHolder(gitRepositoryCardViewHolderBinding.root)
+        return GitPullRequestCardViewHolder(gitPullRequestCardViewHolderBinding.root)
     }
 
-    override fun onBindViewHolder(holder: GitRepositoryCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GitPullRequestCardViewHolder, position: Int) {
         holder.updateData(data[position])
     }
 
@@ -39,21 +40,21 @@ class SelectGitPullRequestAdapter() : Adapter<SelectGitPullRequestAdapter.GitRep
         return data.size
     }
 
-    fun replaceData(list: List<GitRepositoryCardDto>) {
+    fun replaceData(list: List<GitPullRequestCardDto>) {
         list.let {
             data = it
             notifyDataSetChanged()
         }
     }
 
-    inner class GitRepositoryCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class GitPullRequestCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         LayoutContainer {
 
         override val containerView: View?
             get() = itemView
 
-        fun updateData(repositoryCardDto: GitRepositoryCardDto) {
-            gitRepositoryCard.setRepositoryCardDto(repositoryCardDto)
+        fun updateData(gitPullRequestCardDto: GitPullRequestCardDto) {
+            gitPullRequestCard.setPullRequestCardDto(gitPullRequestCardDto)
         }
     }
 
