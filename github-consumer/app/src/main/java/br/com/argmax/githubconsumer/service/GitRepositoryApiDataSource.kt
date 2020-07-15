@@ -1,6 +1,6 @@
 package br.com.argmax.githubconsumer.service
 
-import br.com.argmax.githubconsumer.domain.entities.GitRepositoryApiResponse
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

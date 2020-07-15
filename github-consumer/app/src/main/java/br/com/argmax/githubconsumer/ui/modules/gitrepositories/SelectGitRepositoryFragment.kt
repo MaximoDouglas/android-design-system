@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
-import br.com.argmax.githubconsumer.domain.entities.GitRepositoryApiResponse
-import br.com.argmax.githubconsumer.domain.entities.GitRepositoryDto
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
 import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
 import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto

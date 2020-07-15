@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.domain.entities
+package br.com.argmax.githubconsumer.domain.entities.repository
 
 import java.io.Serializable
 

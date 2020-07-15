@@ -1,5 +1,6 @@
-package br.com.argmax.githubconsumer.domain.entities
+package br.com.argmax.githubconsumer.domain.entities.repository
 
+import br.com.argmax.githubconsumer.domain.entities.user.GitUserDto
 import java.io.Serializable
 
 data class GitRepositoryDto(

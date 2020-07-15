@@ -11,15 +11,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
+import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
+import br.com.argmax.githubconsumer.service.GitPullRequestApiDataSource
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class SelectGitPullRequestFragment : Fragment() {
 
     private var mBinding: SelectGitPullRequestFragmentBinding? = null
     private var mAdapter: SelectGitPullRequestAdapter? = SelectGitPullRequestAdapter()
+    private var mService = createService(GitPullRequestApiDataSource::class.java)
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
@@ -59,6 +65,7 @@ class SelectGitPullRequestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        foo()
     }
 
     private fun setupRecyclerView() {
@@ -73,4 +80,38 @@ class SelectGitPullRequestFragment : Fragment() {
         mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapter
     }
 
+    private fun foo() {
+        mOwnerLogin?.let { ownerLogin ->
+            mRepositoryName?.let { repository ->
+                mService.getGitPullRequests(
+                    owner = ownerLogin,
+                    repository = repository
+                ).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe { isLoading(true) }
+                    .doAfterTerminate { isLoading(false) }
+                    .subscribe(
+                        { response ->
+                            onSuccess(response)
+                        },
+                        { throwable ->
+                            onError(throwable.localizedMessage)
+                        }
+                    )
+            }
+        }
+    }
+
+    private fun isLoading(boolean: Boolean) {
+        println(boolean)
+    }
+
+    private fun onSuccess(response: GitRepositoryApiResponse) {
+        println(response)
+        //convertResponseToCardDtoList(response)
+    }
+
+    private fun onError(string: String) {
+        println(string)
+    }
 }
