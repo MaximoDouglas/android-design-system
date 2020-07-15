@@ -12,6 +12,7 @@ interface GitPullRequestApiDataSource {
     fun getGitPullRequests(
         @Path("owner") owner: String,
         @Path("repository") repository: String,
+        @Query("page") page: Int? = 1,
         @Query("state") state: String? = "all"
     ): Observable<List<GitPullRequestDto>>
 

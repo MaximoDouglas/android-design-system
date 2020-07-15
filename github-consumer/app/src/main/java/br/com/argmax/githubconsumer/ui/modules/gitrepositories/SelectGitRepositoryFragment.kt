@@ -27,7 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
-    private var mAdapterGit: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
+    private var mAdapter: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
     private var mService = createService(GitRepositoryApiDataSource::class.java)
 
     override fun onCreateView(
@@ -61,7 +61,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
-        mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapterGit
+        mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapter
     }
 
     @SuppressLint("CheckResult")
@@ -100,7 +100,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
             cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
         }
 
-        mAdapterGit?.replaceData(cardDtoList)
+        mAdapter?.replaceData(cardDtoList)
     }
 
     private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {

@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
-import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
+import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
 import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
 import br.com.argmax.githubconsumer.service.GitPullRequestApiDataSource
+import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
@@ -85,7 +86,8 @@ class SelectGitPullRequestFragment : Fragment() {
             mRepositoryName?.let { repository ->
                 mService.getGitPullRequests(
                     owner = ownerLogin,
-                    repository = repository
+                    repository = repository,
+                    page = 1
                 ).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe { isLoading(true) }
@@ -106,12 +108,33 @@ class SelectGitPullRequestFragment : Fragment() {
         println(boolean)
     }
 
-    private fun onSuccess(response: GitRepositoryApiResponse) {
+    private fun onSuccess(response: List<GitPullRequestDto>) {
         println(response)
-        //convertResponseToCardDtoList(response)
+        convertResponseToCardDtoList(response)
     }
 
     private fun onError(string: String) {
         println(string)
     }
+
+    private fun convertResponseToCardDtoList(gitPullRequestDtoList: List<GitPullRequestDto>) {
+        val cardDtoList = mutableListOf<GitPullRequestCardDto>()
+
+        gitPullRequestDtoList.forEach {
+            cardDtoList.add(convertGitPullRequestDtoToGitPullRequestCardDto(it))
+        }
+
+        mAdapter?.replaceData(cardDtoList)
+    }
+
+    private fun convertGitPullRequestDtoToGitPullRequestCardDto(gitPullRequestDto: GitPullRequestDto): GitPullRequestCardDto {
+        return GitPullRequestCardDto(
+            gitPullRequestTitle = gitPullRequestDto.title,
+            gitPullRequestBody = gitPullRequestDto.body,
+            gitPullRequestUrl = gitPullRequestDto.html_url,
+            userImageUrl = gitPullRequestDto.user.avatar_url,
+            userName = gitPullRequestDto.user.login
+        )
+    }
+
 }
