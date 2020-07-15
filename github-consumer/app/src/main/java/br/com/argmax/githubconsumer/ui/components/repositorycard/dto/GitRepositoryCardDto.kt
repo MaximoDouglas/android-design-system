@@ -10,7 +10,9 @@ class GitRepositoryCardDto(
     val userImageUrl: String,
     val userName: String
 ) {
+
     fun getGitRepositoryDescription(): String {
         return compactStringWithDots(gitRepositoryDescription, 60)
     }
+
 }

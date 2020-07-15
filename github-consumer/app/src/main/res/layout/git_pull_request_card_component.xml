@@ -6,7 +6,7 @@
 
         <variable
             name="gitPullRequestCardDto"
-            type="br.com.argmax.githubconsumer.ui.components.pullrequestcard.GitPullRequestCardDto" />
+            type="br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto" />
 
     </data>
 
