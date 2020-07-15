@@ -115,7 +115,12 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     }
 
     override fun onClick(ownerLogin: String, repositoryName: String) {
-        findNavController().navigate(actionSelectRepositoryFragmentToSelectGitPullRequestFragment(ownerLogin))
+        findNavController().navigate(
+            actionSelectRepositoryFragmentToSelectGitPullRequestFragment(
+                ownerLogin,
+                repositoryName
+            )
+        )
     }
 
 }

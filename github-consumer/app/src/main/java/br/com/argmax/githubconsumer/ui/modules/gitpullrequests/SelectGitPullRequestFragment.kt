@@ -13,13 +13,16 @@ import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
+import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 
 class SelectGitPullRequestFragment : Fragment() {
 
     private var mBinding: SelectGitPullRequestFragmentBinding? = null
-    private var mOwnerLogin: String? = null
     private var mAdapter: SelectGitPullRequestAdapter? = SelectGitPullRequestAdapter()
+
+    private var mOwnerLogin: String? = null
+    private var mRepositoryName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +32,11 @@ class SelectGitPullRequestFragment : Fragment() {
     }
 
     private fun extractDataFromBundle(bundle: Bundle?) {
-        val bundleContainsKeysSavedInstance = bundleContainsKeys(bundle, KEY_OWNER_LOGIN)
+        val bundleContainsKeys = bundleContainsKeys(bundle, KEY_OWNER_LOGIN, KEY_REPOSITORY_NAME)
 
-        if (bundleContainsKeysSavedInstance) {
+        if (bundleContainsKeys) {
             mOwnerLogin = bundle?.getString(KEY_OWNER_LOGIN)
+            mRepositoryName = bundle?.getString(KEY_REPOSITORY_NAME)
         }
     }
 
