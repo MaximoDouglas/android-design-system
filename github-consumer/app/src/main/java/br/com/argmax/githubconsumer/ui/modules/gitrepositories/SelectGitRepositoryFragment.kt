@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +18,16 @@ import br.com.argmax.githubconsumer.domain.entities.GitRepositoryDto
 import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
 import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
 
-class SelectGitRepositoryFragment : Fragment() {
+class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
-    private var mAdapterGit: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter()
+    private var mAdapterGit: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
     private var mService = createService(GitRepositoryApiDataSource::class.java)
 
     override fun onCreateView(
@@ -109,6 +112,10 @@ class SelectGitRepositoryFragment : Fragment() {
             userImageUrl = gitRepositoryDto.owner.avatar_url,
             userName = gitRepositoryDto.owner.login
         )
+    }
+
+    override fun onClick(ownerLogin: String, repositoryName: String) {
+        findNavController().navigate(actionSelectRepositoryFragmentToSelectGitPullRequestFragment(ownerLogin))
     }
 
 }

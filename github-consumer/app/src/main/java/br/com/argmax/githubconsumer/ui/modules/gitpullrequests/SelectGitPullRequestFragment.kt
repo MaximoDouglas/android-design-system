@@ -1,6 +1,5 @@
 package br.com.argmax.githubconsumer.ui.modules.gitpullrequests
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,20 +11,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
-import br.com.argmax.githubconsumer.domain.entities.GitRepositoryApiResponse
-import br.com.argmax.githubconsumer.domain.entities.GitRepositoryDto
-import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
-import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
-import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
-import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
+import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
+import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 
 class SelectGitPullRequestFragment : Fragment() {
 
     private var mBinding: SelectGitPullRequestFragmentBinding? = null
-    private var mAdapterGit: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter()
-    private var mService = createService(GitRepositoryApiDataSource::class.java)
+    private var mOwnerLogin: String? = null
+    private var mAdapter: SelectGitPullRequestAdapter? = SelectGitPullRequestAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        extractDataFromBundle(savedInstanceState)
+        extractDataFromBundle(arguments)
+    }
+
+    private fun extractDataFromBundle(bundle: Bundle?) {
+        val bundleContainsKeysSavedInstance = bundleContainsKeys(bundle, KEY_OWNER_LOGIN)
+
+        if (bundleContainsKeysSavedInstance) {
+            mOwnerLogin = bundle?.getString(KEY_OWNER_LOGIN)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +55,6 @@ class SelectGitPullRequestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-        foo()
     }
 
     private fun setupRecyclerView() {
@@ -58,57 +66,7 @@ class SelectGitPullRequestFragment : Fragment() {
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
-        mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapterGit
-    }
-
-    @SuppressLint("CheckResult")
-    private fun foo() {
-        mService.getGitRepositories(
-            page = 1
-        ).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { isLoading(true) }
-            .doAfterTerminate { isLoading(false) }
-            .subscribe(
-                { response ->
-                    onSuccess(response)
-                },
-                { throwable ->
-                    onError(throwable.localizedMessage)
-                }
-            )
-    }
-
-    private fun isLoading(boolean: Boolean) {
-        println(boolean)
-    }
-
-    private fun onSuccess(response: GitRepositoryApiResponse) {
-        convertResponseToCardDtoList(response)
-    }
-
-    private fun onError(string: String) {
-        println(string)
-    }
-
-    private fun convertResponseToCardDtoList(gitRepositoryApiResponse: GitRepositoryApiResponse) {
-        val cardDtoList = mutableListOf<GitRepositoryCardDto>()
-        gitRepositoryApiResponse.items.forEach {
-            cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
-        }
-
-        mAdapterGit?.replaceData(cardDtoList)
-    }
-
-    private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {
-        return GitRepositoryCardDto(
-            gitRepositoryName = gitRepositoryDto.name,
-            gitRepositoryDescription = gitRepositoryDto.description,
-            forkQuantity = gitRepositoryDto.forks_count.toString(),
-            starsQuantity = gitRepositoryDto.stargazers_count.toString(),
-            userImageUrl = gitRepositoryDto.owner.avatar_url,
-            userName = gitRepositoryDto.owner.login
-        )
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapter
     }
 
 }

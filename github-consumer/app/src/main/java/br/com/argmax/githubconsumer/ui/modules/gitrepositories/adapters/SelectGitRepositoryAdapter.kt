@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.GitRepositoryCardViewHolderBinding
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.git_repository_card_view_holder.*
 
-class SelectGitRepositoryAdapter() : Adapter<SelectGitRepositoryAdapter.GitRepositoryCardViewHolder>() {
+class SelectGitRepositoryAdapter(
+    val onGitRepositoryClickListener: OnGitRepositoryClickListener
+) : Adapter<SelectGitRepositoryAdapter.GitRepositoryCardViewHolder>() {
 
-    private var data: List<GitRepositoryCardDto> = listOf()
+    private var mData: List<GitRepositoryCardDto> = listOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,28 +35,43 @@ class SelectGitRepositoryAdapter() : Adapter<SelectGitRepositoryAdapter.GitRepos
     }
 
     override fun onBindViewHolder(holder: GitRepositoryCardViewHolder, position: Int) {
-        holder.updateData(data[position])
+        holder.updateData(mData[position])
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return mData.size
     }
 
     fun replaceData(list: List<GitRepositoryCardDto>) {
         list.let {
-            data = it
+            mData = it
             notifyDataSetChanged()
         }
     }
 
-    inner class GitRepositoryCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        LayoutContainer {
+    inner class GitRepositoryCardViewHolder(
+        itemView: View
+    ) : RecyclerView.ViewHolder(itemView), LayoutContainer, View.OnClickListener {
 
         override val containerView: View?
             get() = itemView
 
+        init {
+            gitRepositoryCard.setOnClickListener(this)
+        }
+
         fun updateData(repositoryCardDto: GitRepositoryCardDto) {
             gitRepositoryCard.setRepositoryCardDto(repositoryCardDto)
+        }
+
+        override fun onClick(view: View?) {
+            val repositoryCardDtoAdapterPosition = this.adapterPosition
+            val repositoryCardDto = mData[repositoryCardDtoAdapterPosition]
+
+            onGitRepositoryClickListener.onClick(
+                repositoryCardDto.userName,
+                repositoryCardDto.gitRepositoryName
+            )
         }
     }
 
