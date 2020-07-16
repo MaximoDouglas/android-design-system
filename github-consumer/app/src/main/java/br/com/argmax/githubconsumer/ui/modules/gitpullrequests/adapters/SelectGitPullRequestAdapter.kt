@@ -17,7 +17,7 @@ class SelectGitPullRequestAdapter(
     val onPullRequestClickListener: OnPullRequestClickListener
 ) : Adapter<SelectGitPullRequestAdapter.GitPullRequestCardViewHolder>() {
 
-    private var mData: List<GitPullRequestCardDto> = listOf()
+    private var mData = mutableListOf<GitPullRequestCardDto>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,11 +42,9 @@ class SelectGitPullRequestAdapter(
         return mData.size
     }
 
-    fun replaceData(list: List<GitPullRequestCardDto>) {
-        list.let {
-            mData = it
-            notifyDataSetChanged()
-        }
+    fun addData(list: List<GitPullRequestCardDto>) {
+        mData.addAll(list)
+        notifyDataSetChanged()
     }
 
     inner class GitPullRequestCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),

@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -101,7 +100,7 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
                 mService.getGitPullRequests(
                     owner = ownerLogin,
                     repository = repository,
-                    page = 1
+                    page = mApiRequestPage
                 ).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe { isLoading(true) }
@@ -138,7 +137,7 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
             cardDtoList.add(convertGitPullRequestDtoToGitPullRequestCardDto(it))
         }
 
-        mAdapter?.replaceData(cardDtoList)
+        mAdapter?.addData(cardDtoList)
     }
 
     private fun convertGitPullRequestDtoToGitPullRequestCardDto(gitPullRequestDto: GitPullRequestDto): GitPullRequestCardDto {

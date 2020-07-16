@@ -4,7 +4,7 @@ import br.com.argmax.githubconsumer.utils.compactStringWithDots
 
 class GitRepositoryCardDto(
     val gitRepositoryName: String,
-    private val gitRepositoryDescription: String,
+    private val gitRepositoryDescription: String?,
     val forkQuantity: String,
     val starsQuantity: String,
     val userImageUrl: String,
@@ -12,7 +12,7 @@ class GitRepositoryCardDto(
 ) {
 
     fun getGitRepositoryDescription(): String {
-        return compactStringWithDots(gitRepositoryDescription, 60)
+        return compactStringWithDots(gitRepositoryDescription ?: "", 60)
     }
 
 }
