@@ -17,7 +17,7 @@ class SelectGitRepositoryAdapter(
     val onGitRepositoryClickListener: OnGitRepositoryClickListener
 ) : Adapter<SelectGitRepositoryAdapter.GitRepositoryCardViewHolder>() {
 
-    private var mData: List<GitRepositoryCardDto> = listOf()
+    private var mData = mutableListOf<GitRepositoryCardDto>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,11 +42,9 @@ class SelectGitRepositoryAdapter(
         return mData.size
     }
 
-    fun replaceData(list: List<GitRepositoryCardDto>) {
-        list.let {
-            mData = it
-            notifyDataSetChanged()
-        }
+    fun addData(list: List<GitRepositoryCardDto>) {
+        mData.addAll(list)
+        notifyDataSetChanged()
     }
 
     inner class GitRepositoryCardViewHolder(

@@ -21,6 +21,7 @@ import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitReposito
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
+import br.com.argmax.githubconsumer.ui.utils.EndlessRecyclerOnScrollListener
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
 
@@ -29,6 +30,8 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
     private var mService = createService(GitRepositoryApiDataSource::class.java)
+
+    private var mApiRequestPage: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,12 +65,19 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
         )
 
         mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapter
+        mBinding?.selectRepositoryFragmentRecyclerView?.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore() {
+                mApiRequestPage++
+                foo()
+            }
+
+        })
     }
 
     @SuppressLint("CheckResult")
     private fun foo() {
         mService.getGitRepositories(
-            page = 1
+            page = mApiRequestPage
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { isLoading(true) }
@@ -100,7 +110,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
             cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
         }
 
-        mAdapter?.replaceData(cardDtoList)
+        mAdapter?.addData(cardDtoList)
     }
 
     private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {
