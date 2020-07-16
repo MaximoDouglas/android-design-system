@@ -20,6 +20,7 @@ import br.com.argmax.githubconsumer.service.GitPullRequestApiDataSource
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.listeners.OnPullRequestClickListener
+import br.com.argmax.githubconsumer.ui.utils.EndlessRecyclerOnScrollListener
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.ui.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
@@ -35,6 +36,7 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
+    private var mApiRequestPage: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +86,13 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         )
 
         mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapter
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore() {
+                mApiRequestPage++
+                foo()
+            }
+
+        })
     }
 
     private fun foo() {
