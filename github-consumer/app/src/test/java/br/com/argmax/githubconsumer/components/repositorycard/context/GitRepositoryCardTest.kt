@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.git_repository_card_component.view.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 
-open class RepositoryCardTest : BaseComponentTest() {
+open class GitRepositoryCardTest : BaseComponentTest() {
 
     companion object {
 
@@ -32,10 +32,10 @@ open class RepositoryCardTest : BaseComponentTest() {
 
     }
 
-    private var mRepositoryCardComponent: GitRepositoryCardComponent? = null
+    private var mGitRepositoryCardComponent: GitRepositoryCardComponent? = null
 
     override fun setupComponent(activity: Activity) {
-        mRepositoryCardComponent = GitRepositoryCardComponent(activity)
+        mGitRepositoryCardComponent = GitRepositoryCardComponent(activity)
     }
 
     fun `when repository card has all data`() {
@@ -48,22 +48,35 @@ open class RepositoryCardTest : BaseComponentTest() {
             userName = USER_NAME
         )
 
-        mRepositoryCardComponent?.setRepositoryCardDto(repositoryCardDto)
+        mGitRepositoryCardComponent?.setRepositoryCardDto(repositoryCardDto)
+    }
+
+    fun `when repository card has no description`() {
+        val repositoryCardDto = GitRepositoryCardDto(
+            gitRepositoryName = REPOSITORY_NAME,
+            gitRepositoryDescription = null,
+            forkQuantity = FORKS_QUANTITY,
+            starsQuantity = STARS_QUANTITY,
+            userImageUrl = USER_IMAGE_URL,
+            userName = USER_NAME
+        )
+
+        mGitRepositoryCardComponent?.setRepositoryCardDto(repositoryCardDto)
     }
 
     fun `assert that repository name is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_repository_name_text_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_repository_name_text_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that repository name is set correctly`() {
         assertEquals(
             REPOSITORY_NAME,
-            mRepositoryCardComponent?.git_repository_card_repository_name_text_view?.text.toString()
+            mGitRepositoryCardComponent?.git_repository_card_repository_name_text_view?.text.toString()
         )
     }
 
     fun `assert that repository description is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that repository description is set correctly`() {
@@ -72,44 +85,55 @@ open class RepositoryCardTest : BaseComponentTest() {
 
         assertEquals(
             shortString,
-            mRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.text.toString()
+            mGitRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.text.toString()
+        )
+    }
+
+    fun `assert that repository description is gone`() {
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.visibility == View.GONE)
+    }
+
+    fun `assert that repository description is null or empty`() {
+        assertTrue(
+            mGitRepositoryCardComponent?.git_repository_card_git_repository_description_text_view?.text?.toString()
+                .isNullOrEmpty()
         )
     }
 
     fun `assert that repository stars quantity label is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_git_repository_stars_text_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_git_repository_stars_text_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that repository stars quantity label is set correctly`() {
         assertEquals(
             STARS_QUANTITY,
-            mRepositoryCardComponent?.git_repository_card_git_repository_stars_text_view?.text.toString()
+            mGitRepositoryCardComponent?.git_repository_card_git_repository_stars_text_view?.text.toString()
         )
     }
 
     fun `assert that repository forks quantity label is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_git_repository_forks_text_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_git_repository_forks_text_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that repository forks quantity label is set correctly`() {
         assertEquals(
             FORKS_QUANTITY,
-            mRepositoryCardComponent?.git_repository_card_git_repository_forks_text_view?.text.toString()
+            mGitRepositoryCardComponent?.git_repository_card_git_repository_forks_text_view?.text.toString()
         )
     }
 
     fun `assert that user image is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_user_image_image_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_user_image_image_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that user name is visible`() {
-        assertTrue(mRepositoryCardComponent?.git_repository_card_user_name_text_view?.visibility == View.VISIBLE)
+        assertTrue(mGitRepositoryCardComponent?.git_repository_card_user_name_text_view?.visibility == View.VISIBLE)
     }
 
     fun `assert that user name is set correctly`() {
         assertEquals(
             USER_NAME,
-            mRepositoryCardComponent?.git_repository_card_user_name_text_view?.text.toString()
+            mGitRepositoryCardComponent?.git_repository_card_user_name_text_view?.text.toString()
         )
     }
 

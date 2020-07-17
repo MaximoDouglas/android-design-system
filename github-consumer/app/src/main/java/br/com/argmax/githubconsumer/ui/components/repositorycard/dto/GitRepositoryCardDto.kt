@@ -12,7 +12,7 @@ class GitRepositoryCardDto(
 ) {
 
     fun getGitRepositoryDescription(): String? {
-        return compactStringWithDots(gitRepositoryDescription ?: "", 60)
+        return compactStringWithDots(gitRepositoryDescription, 60)
     }
 
 }

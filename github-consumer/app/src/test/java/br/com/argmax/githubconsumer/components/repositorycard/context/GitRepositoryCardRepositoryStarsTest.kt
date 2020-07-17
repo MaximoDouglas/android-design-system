@@ -3,7 +3,7 @@ package br.com.argmax.githubconsumer.components.repositorycard.context
 import org.junit.Before
 import org.junit.Test
 
-class RepositoryCardRepositoryStarsTest : RepositoryCardTest() {
+class GitRepositoryCardRepositoryStarsTest : GitRepositoryCardTest() {
 
     @Before
     fun `setup scenario`() {
