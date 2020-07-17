@@ -4,13 +4,13 @@ import br.com.argmax.githubconsumer.utils.compactStringWithDots
 
 class GitPullRequestCardDto(
     val gitPullRequestTitle: String,
-    private val gitPullRequestBody: String,
+    private val gitPullRequestBody: String?,
     val gitPullRequestUrl: String,
     val userImageUrl: String,
     val userName: String
 ) {
 
-    fun getGitPullRequestBody(): String {
+    fun getGitPullRequestBody(): String? {
         return compactStringWithDots(gitPullRequestBody, 60)
     }
 

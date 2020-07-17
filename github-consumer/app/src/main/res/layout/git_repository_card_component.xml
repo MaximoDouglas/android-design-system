@@ -36,6 +36,7 @@
 
             <TextView
                 android:id="@+id/git_repository_card_git_repository_description_text_view"
+                visibleOrGone="@{gitRepositoryCardDto.gitRepositoryDescription != null}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
