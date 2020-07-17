@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -71,8 +72,15 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar()
         setupRecyclerView()
         foo()
+    }
+
+    private fun setupToolbar() {
+        mBinding?.selectGitPullRequestFragmentToolbar?.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -85,7 +93,8 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         )
 
         mBinding?.selectGitPullRequestFragmentRecyclerView?.adapter = mAdapter
-        mBinding?.selectGitPullRequestFragmentRecyclerView?.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+        mBinding?.selectGitPullRequestFragmentRecyclerView?.addOnScrollListener(object :
+            EndlessRecyclerOnScrollListener() {
             override fun onLoadMore() {
                 mApiRequestPage++
                 foo()
@@ -96,10 +105,10 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private fun foo() {
         mOwnerLogin?.let { ownerLogin ->
-            mRepositoryName?.let { repository ->
+            mRepositoryName?.let { repositoryName ->
                 mService.getGitPullRequests(
                     owner = ownerLogin,
-                    repository = repository,
+                    repository = repositoryName,
                     page = mApiRequestPage
                 ).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
