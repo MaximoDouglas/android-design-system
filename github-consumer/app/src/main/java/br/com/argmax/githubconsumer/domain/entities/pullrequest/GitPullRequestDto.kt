@@ -7,5 +7,6 @@ data class GitPullRequestDto(
     val title: String,
     val body: String,
     val html_url: String,
+    val state: String,
     val user: GitUserDto
 ) : Serializable

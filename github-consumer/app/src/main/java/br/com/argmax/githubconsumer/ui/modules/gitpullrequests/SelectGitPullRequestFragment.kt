@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
+import br.com.argmax.githubconsumer.domain.entities.pullrequest.PullRequestState.OPEN
 import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
 import br.com.argmax.githubconsumer.service.GitPullRequestApiDataSource
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
@@ -27,15 +28,17 @@ import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-
 class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private var mBinding: SelectGitPullRequestFragmentBinding? = null
-    private var mAdapter: SelectGitPullRequestAdapter? = SelectGitPullRequestAdapter(this)
+
+    private var mAdapter = SelectGitPullRequestAdapter(this)
     private var mService = createService(GitPullRequestApiDataSource::class.java)
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
+    private var mOpenPullRequestCounter: Int = 0
+    private var mClosedPullRequestCounter: Int = 0
     private var mApiRequestPage: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -145,10 +148,16 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         val cardDtoList = mutableListOf<GitPullRequestCardDto>()
 
         gitPullRequestDtoList.forEach {
+            if (it.state == OPEN.value) {
+                mOpenPullRequestCounter++
+            } else {
+                mClosedPullRequestCounter++
+            }
             cardDtoList.add(convertGitPullRequestDtoToGitPullRequestCardDto(it))
         }
 
-        mAdapter?.addData(cardDtoList)
+        mAdapter.addData(cardDtoList)
+        updateStateCounter()
     }
 
     private fun convertGitPullRequestDtoToGitPullRequestCardDto(gitPullRequestDto: GitPullRequestDto): GitPullRequestCardDto {
@@ -159,6 +168,15 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
             userImageUrl = gitPullRequestDto.user.avatar_url,
             userName = gitPullRequestDto.user.login
         )
+    }
+
+    private fun updateStateCounter() {
+        val openLabelText = "$mOpenPullRequestCounter open"
+        val closedLabelText = " / $mClosedPullRequestCounter closed"
+
+        mBinding?.selectGitPullRequestFragmentOpenPullRequestTextView?.text = openLabelText
+        mBinding?.selectGitPullRequestFragmentClosedPullRequestTextView?.text = closedLabelText
+        mBinding?.executePendingBindings()
     }
 
     override fun onClick(pullRequestUrl: String) {
