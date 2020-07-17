@@ -81,6 +81,8 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         mBinding?.selectGitPullRequestFragmentToolbar?.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
+
+        mBinding?.selectGitPullRequestFragmentToolbarTitle?.text = mRepositoryName
     }
 
     private fun setupRecyclerView() {
