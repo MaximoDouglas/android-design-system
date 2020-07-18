@@ -29,7 +29,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
 
     private var mViewModel: SelectGitRepositoryViewModel? = null
-    private var mAdapter: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
+    private var mAdapter = SelectGitRepositoryAdapter(this)
 
     private var mApiRequestPage: Int = 1
 
@@ -106,7 +106,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
             is SelectGitRepositoryViewModelState.Success -> {
                 val data = viewModelState.data
                 val gitRepositoryDtoList = convertDtoListToCardDtoList(data)
-                mAdapter?.addData(gitRepositoryDtoList)
+                mAdapter.addData(gitRepositoryDtoList)
             }
         }
     }

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,24 +17,23 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
-import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
-import br.com.argmax.githubconsumer.service.GitPullRequestApiDataSource
+import br.com.argmax.githubconsumer.ui.injections.InjectionRemoteDataSource
+import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestViewModel.SelectGitPullRequestViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.converters.GitPullRequestConverter.convertDtoListToCardDtoList
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.listeners.OnPullRequestClickListener
+import br.com.argmax.githubconsumer.utils.CoroutineContextProvider
 import br.com.argmax.githubconsumer.utils.EndlessRecyclerOnScrollListener
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private var mBinding: SelectGitPullRequestFragmentBinding? = null
 
     private var mAdapter = SelectGitPullRequestAdapter(this)
-    private var mService = createService(GitPullRequestApiDataSource::class.java)
+    private var mViewModel: SelectGitPullRequestViewModel? = null
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
@@ -76,8 +77,9 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
         setupToolbar()
         setupRecyclerView()
-        foo()
+        setupViewModel()
     }
+
 
     private fun setupToolbar() {
         mBinding?.selectGitPullRequestFragmentToolbar?.setNavigationOnClickListener {
@@ -101,37 +103,57 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
             EndlessRecyclerOnScrollListener() {
             override fun onLoadMore() {
                 mApiRequestPage++
-                foo()
+                loadData()
             }
-
         })
     }
 
-    private fun foo() {
-        mOwnerLogin?.let { ownerLogin ->
-            mRepositoryName?.let { repositoryName ->
-                mService.getGitPullRequests(
-                    owner = ownerLogin,
-                    repository = repositoryName,
-                    page = mApiRequestPage
-                ).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { isLoading(true) }
-                    .doAfterTerminate { isLoading(false) }
-                    .subscribe(
-                        { response ->
-                            onSuccess(response)
-                        },
-                        { throwable ->
-                            onError(throwable.localizedMessage)
-                        }
-                    )
+    private fun loadData() {
+        mOwnerLogin?.let { owner ->
+            mRepositoryName?.let { repository ->
+                mViewModel?.getGitPullRequestDtoList(
+                    owner,
+                    repository,
+                    mApiRequestPage
+                )
             }
         }
     }
 
-    private fun isLoading(boolean: Boolean) {
-        println(boolean)
+    private fun setupViewModel() {
+        mViewModel = ViewModelProvider(
+            this,
+            SelectGitPullRequestViewModel.SelectGitPullRequestViewModelFactory(
+                InjectionRemoteDataSource.provideGitPullRequestRemoteDataSource(),
+                CoroutineContextProvider()
+            )
+        ).get(SelectGitPullRequestViewModel::class.java)
+
+        mViewModel?.getStateLiveData()?.observe(
+            viewLifecycleOwner,
+            Observer { viewModelState ->
+                handleViewModelState(viewModelState)
+            })
+
+        loadData()
+    }
+
+    private fun handleViewModelState(viewModelState: SelectGitPullRequestViewModelState) {
+        when (viewModelState) {
+            is SelectGitPullRequestViewModelState.Loading -> {
+                println("is loading")
+            }
+
+            is SelectGitPullRequestViewModelState.Error -> {
+                val throwable = viewModelState.throwable
+                println(throwable)
+            }
+
+            is SelectGitPullRequestViewModelState.Success -> {
+                val gitPullRequestList = viewModelState.data
+                onSuccess(gitPullRequestList)
+            }
+        }
     }
 
     private fun onSuccess(response: List<GitPullRequestDto>) {
@@ -146,10 +168,6 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
         mAdapter.addData(pullRequestCardDtoList)
         updateStateCounter()
-    }
-
-    private fun onError(string: String) {
-        println(string)
     }
 
     private fun updateStateCounter() {
