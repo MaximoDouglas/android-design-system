@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.ui.utils
+package br.com.argmax.githubconsumer.utils
 
 object NavigationArgumentKeys {
 

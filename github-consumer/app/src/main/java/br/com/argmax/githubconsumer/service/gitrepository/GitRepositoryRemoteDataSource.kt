@@ -1,13 +1,17 @@
 package br.com.argmax.githubconsumer.service.gitrepository
 
-import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
-import br.com.argmax.githubconsumer.service.RemoteDataSourceCallback
+import androidx.lifecycle.LiveData
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
 
 interface GitRepositoryRemoteDataSource {
 
-    fun getGitRepositoryApiResponse(
+    /*fun getGitRepositoryApiResponse(
         page: Int,
         callback: RemoteDataSourceCallback<GitRepositoryApiResponse>
-    )
+    )*/
+
+    suspend fun getGitRepositoryApiResponse(
+        page: Int
+    ): List<GitRepositoryDto>
 
 }

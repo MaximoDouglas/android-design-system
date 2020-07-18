@@ -1,42 +1,52 @@
 package br.com.argmax.githubconsumer.ui.modules.gitrepositories
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import br.com.argmax.githubconsumer.domain.UseCaseCallback
+import androidx.lifecycle.*
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
-import br.com.argmax.githubconsumer.domain.usecases.GetGitRepositoryDtoUseCase
+import br.com.argmax.githubconsumer.service.gitrepository.GitRepositoryRemoteDataSource
+import br.com.argmax.githubconsumer.utils.CoroutineContextProvider
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+@Suppress("UNCHECKED_CAST")
 class SelectGitRepositoryViewModel(
-    private val getGitRepositoryDtoUseCase: GetGitRepositoryDtoUseCase
+    private val gitRepositoryRemoteDataSource: GitRepositoryRemoteDataSource,
+    private val contextProvider: CoroutineContextProvider
 ) : ViewModel() {
 
-    val gitRepositoryApiResponseLiveData = MutableLiveData<List<GitRepositoryDto>>()
+    private val stateLiveData = MutableLiveData<SelectGitRepositoryViewModelState>()
+
+    fun getStateLiveData(): LiveData<SelectGitRepositoryViewModelState> = stateLiveData
+
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        stateLiveData.value = SelectGitRepositoryViewModelState.Error(exception)
+    }
 
     fun getGitRepositoryApiResponse(page: Int) {
-        getGitRepositoryDtoUseCase.getGitRepositoryDtoList(
-            page,
-            object :
-                UseCaseCallback<List<GitRepositoryDto>> {
-                override fun onSuccess(response: List<GitRepositoryDto>) {
-                    gitRepositoryApiResponseLiveData.value = response
-                }
+        stateLiveData.value = SelectGitRepositoryViewModelState.Loading
+        viewModelScope.launch(handler) {
+            val data = withContext(contextProvider.IO) {
+                gitRepositoryRemoteDataSource.getGitRepositoryApiResponse(page)
+            }
 
-                override fun onError(errorMessage: String) {
-                    println(errorMessage)
-                }
+            stateLiveData.value = SelectGitRepositoryViewModelState.Success(data)
+        }
+    }
 
-                override fun isLoading(isLoading: Boolean) {
-                    println(isLoading)
-                }
-            })
+    sealed class SelectGitRepositoryViewModelState {
+
+        object Loading : SelectGitRepositoryViewModelState()
+        data class Error(val throwable: Throwable) : SelectGitRepositoryViewModelState()
+        data class Success(val data: List<GitRepositoryDto>) : SelectGitRepositoryViewModelState()
+
     }
 
     class SelectGitRepositoryViewModelFactory(
-        private val gitRepositoryRepositoryDto: GetGitRepositoryDtoUseCase
+        private val gitRepositoryRemoteDataSource: GitRepositoryRemoteDataSource,
+        private val contextProvider: CoroutineContextProvider
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return SelectGitRepositoryViewModel(gitRepositoryRepositoryDto) as T
+            return SelectGitRepositoryViewModel(gitRepositoryRemoteDataSource, contextProvider) as T
         }
     }
 

@@ -3,7 +3,7 @@ package br.com.argmax.githubconsumer.ui.modules.gitrepositories.converters
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 
-object RepositoryConverter {
+object GitRepositoryConverter {
 
     fun convertDtoListToCardDtoList(gitRepositoryDtoList: List<GitRepositoryDto>): List<GitRepositoryCardDto> {
         val gitRepositoryCardDtoList = mutableListOf<GitRepositoryCardDto>()

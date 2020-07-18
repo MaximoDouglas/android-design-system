@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.ui.utils
+package br.com.argmax.githubconsumer.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

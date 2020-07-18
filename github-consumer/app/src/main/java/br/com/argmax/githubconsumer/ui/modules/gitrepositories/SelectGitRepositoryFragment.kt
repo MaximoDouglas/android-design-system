@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
-import br.com.argmax.githubconsumer.ui.injections.InjectionUseCase.provideGetGitRepositoryDtoUseCase
+import br.com.argmax.githubconsumer.ui.injections.InjectionRemoteDataSource.provideGitRepositoryRemoteDataSource
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelFactory
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
-import br.com.argmax.githubconsumer.ui.modules.gitrepositories.converters.RepositoryConverter.convertDtoListToCardDtoList
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.converters.GitRepositoryConverter.convertDtoListToCardDtoList
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
-import br.com.argmax.githubconsumer.ui.utils.EndlessRecyclerOnScrollListener
+import br.com.argmax.githubconsumer.utils.CoroutineContextProvider
+import br.com.argmax.githubconsumer.utils.EndlessRecyclerOnScrollListener
 
 class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
@@ -75,17 +77,38 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     private fun setupViewModel() {
         mViewModel = ViewModelProvider(
             this,
-            SelectGitRepositoryViewModelFactory(provideGetGitRepositoryDtoUseCase())
+            SelectGitRepositoryViewModelFactory(
+                provideGitRepositoryRemoteDataSource(),
+                CoroutineContextProvider()
+            )
         ).get(SelectGitRepositoryViewModel::class.java)
 
-        mViewModel?.gitRepositoryApiResponseLiveData?.observe(
+        mViewModel?.getStateLiveData()?.observe(
             viewLifecycleOwner,
-            Observer { gitRepositoryDto ->
-                val gitRepositoryDtoList = convertDtoListToCardDtoList(gitRepositoryDto)
-                mAdapter?.addData(gitRepositoryDtoList)
+            Observer { viewModelState ->
+                handleViewModelState(viewModelState)
             })
 
         loadData()
+    }
+
+    private fun handleViewModelState(viewModelState: SelectGitRepositoryViewModelState) {
+        when (viewModelState) {
+            is SelectGitRepositoryViewModelState.Loading -> {
+                println("is loading")
+            }
+
+            is SelectGitRepositoryViewModelState.Error -> {
+                val throwable = viewModelState.throwable
+                println(throwable)
+            }
+
+            is SelectGitRepositoryViewModelState.Success -> {
+                val data = viewModelState.data
+                val gitRepositoryDtoList = convertDtoListToCardDtoList(data)
+                mAdapter?.addData(gitRepositoryDtoList)
+            }
+        }
     }
 
     private fun loadData() {

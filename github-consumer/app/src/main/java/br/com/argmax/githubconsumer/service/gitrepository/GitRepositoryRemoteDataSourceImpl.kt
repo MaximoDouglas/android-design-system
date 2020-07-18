@@ -2,10 +2,6 @@ package br.com.argmax.githubconsumer.service.gitrepository
 
 import android.annotation.SuppressLint
 import androidx.annotation.NonNull
-import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
-import br.com.argmax.githubconsumer.service.RemoteDataSourceCallback
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class GitRepositoryRemoteDataSourceImpl(
     private val mGitRepositoryApiDataSource: GitRepositoryApiDataSource
@@ -22,10 +18,10 @@ class GitRepositoryRemoteDataSourceImpl(
                     INSTANCE = it
                 }
             }
-        
+
     }
 
-    @SuppressLint("CheckResult")
+    /*@SuppressLint("CheckResult")
     override fun getGitRepositoryApiResponse(
         page: Int,
         callback: RemoteDataSourceCallback<GitRepositoryApiResponse>
@@ -44,6 +40,11 @@ class GitRepositoryRemoteDataSourceImpl(
                     callback.onError(throwable.localizedMessage)
                 }
             )
-    }
+    }*/
+
+    @SuppressLint("CheckResult")
+    override suspend fun getGitRepositoryApiResponse(page: Int) =
+        mGitRepositoryApiDataSource.getGitRepositoryApiResponse(page = page).items
+
 
 }
