@@ -14,12 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
-import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
-import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
-import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
+import br.com.argmax.githubconsumer.ui.injections.InjectionUseCase.provideGetGitRepositoryDtoUseCase
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelFactory
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.converters.RepositoryConverter.convertDtoListToCardDtoList
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
 import br.com.argmax.githubconsumer.ui.utils.EndlessRecyclerOnScrollListener
 
@@ -51,19 +50,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-
-        mViewModel = ViewModelProvider(
-            this,
-            SelectGitRepositoryViewModelFactory(GitRepositoryRepository())
-        ).get(SelectGitRepositoryViewModel::class.java)
-
-        mViewModel?.gitRepositoryApiResponseLiveData?.observe(
-            viewLifecycleOwner,
-            Observer { gitRepositoryApiResponse ->
-                convertResponseToCardDtoList(gitRepositoryApiResponse)
-            })
-
-        mViewModel?.getGitRepositoryApiResponse(mApiRequestPage)
+        setupViewModel()
     }
 
     private fun setupRecyclerView() {
@@ -80,29 +67,29 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
             EndlessRecyclerOnScrollListener() {
             override fun onLoadMore() {
                 mApiRequestPage++
+                loadData()
             }
-
         })
     }
 
-    private fun convertResponseToCardDtoList(gitRepositoryApiResponse: GitRepositoryApiResponse) {
-        val cardDtoList = mutableListOf<GitRepositoryCardDto>()
-        gitRepositoryApiResponse.items.forEach {
-            cardDtoList.add(convertGitRepositoryDtoToGitRepositoryCardDto(it))
-        }
+    private fun setupViewModel() {
+        mViewModel = ViewModelProvider(
+            this,
+            SelectGitRepositoryViewModelFactory(provideGetGitRepositoryDtoUseCase())
+        ).get(SelectGitRepositoryViewModel::class.java)
 
-        mAdapter?.addData(cardDtoList)
+        mViewModel?.gitRepositoryApiResponseLiveData?.observe(
+            viewLifecycleOwner,
+            Observer { gitRepositoryDto ->
+                val gitRepositoryDtoList = convertDtoListToCardDtoList(gitRepositoryDto)
+                mAdapter?.addData(gitRepositoryDtoList)
+            })
+
+        loadData()
     }
 
-    private fun convertGitRepositoryDtoToGitRepositoryCardDto(gitRepositoryDto: GitRepositoryDto): GitRepositoryCardDto {
-        return GitRepositoryCardDto(
-            gitRepositoryName = gitRepositoryDto.name,
-            gitRepositoryDescription = gitRepositoryDto.description,
-            forkQuantity = gitRepositoryDto.forks_count.toString(),
-            starsQuantity = gitRepositoryDto.stargazers_count.toString(),
-            userImageUrl = gitRepositoryDto.owner.avatar_url,
-            userName = gitRepositoryDto.owner.login
-        )
+    private fun loadData() {
+        mViewModel?.getGitRepositoryApiResponse(mApiRequestPage)
     }
 
     override fun onClick(ownerLogin: String, repositoryName: String) {
