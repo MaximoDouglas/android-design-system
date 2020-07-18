@@ -1,12 +1,13 @@
 package br.com.argmax.githubconsumer.ui.modules.gitrepositories
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,21 +16,19 @@ import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryApiResponse
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
-import br.com.argmax.githubconsumer.service.ApiDataSource.Companion.createService
-import br.com.argmax.githubconsumer.service.GitRepositoryApiDataSource
 import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
+import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelFactory
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
 import br.com.argmax.githubconsumer.ui.utils.EndlessRecyclerOnScrollListener
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
+
+    private var mViewModel: SelectGitRepositoryViewModel? = null
     private var mAdapter: SelectGitRepositoryAdapter? = SelectGitRepositoryAdapter(this)
-    private var mService = createService(GitRepositoryApiDataSource::class.java)
 
     private var mApiRequestPage: Int = 1
 
@@ -52,7 +51,19 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-        foo()
+
+        mViewModel = ViewModelProvider(
+            this,
+            SelectGitRepositoryViewModelFactory(GitRepositoryRepository())
+        ).get(SelectGitRepositoryViewModel::class.java)
+
+        mViewModel?.gitRepositoryApiResponseLiveData?.observe(
+            viewLifecycleOwner,
+            Observer { gitRepositoryApiResponse ->
+                convertResponseToCardDtoList(gitRepositoryApiResponse)
+            })
+
+        mViewModel?.getGitRepositoryApiResponse(mApiRequestPage)
     }
 
     private fun setupRecyclerView() {
@@ -65,43 +76,13 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
         )
 
         mBinding?.selectRepositoryFragmentRecyclerView?.adapter = mAdapter
-        mBinding?.selectRepositoryFragmentRecyclerView?.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+        mBinding?.selectRepositoryFragmentRecyclerView?.addOnScrollListener(object :
+            EndlessRecyclerOnScrollListener() {
             override fun onLoadMore() {
                 mApiRequestPage++
-                foo()
             }
 
         })
-    }
-
-    @SuppressLint("CheckResult")
-    private fun foo() {
-        mService.getGitRepositories(
-            page = mApiRequestPage
-        ).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { isLoading(true) }
-            .doAfterTerminate { isLoading(false) }
-            .subscribe(
-                { response ->
-                    onSuccess(response)
-                },
-                { throwable ->
-                    onError(throwable.localizedMessage)
-                }
-            )
-    }
-
-    private fun isLoading(boolean: Boolean) {
-        println(boolean)
-    }
-
-    private fun onSuccess(response: GitRepositoryApiResponse) {
-        convertResponseToCardDtoList(response)
-    }
-
-    private fun onError(string: String) {
-        println(string)
     }
 
     private fun convertResponseToCardDtoList(gitRepositoryApiResponse: GitRepositoryApiResponse) {
