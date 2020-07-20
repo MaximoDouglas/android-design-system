@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.faker
+package br.com.argmax.githubconsumer.viewmodels.utils.faker
 
 import br.com.argmax.githubconsumer.domain.entities.user.GitUserDto
 

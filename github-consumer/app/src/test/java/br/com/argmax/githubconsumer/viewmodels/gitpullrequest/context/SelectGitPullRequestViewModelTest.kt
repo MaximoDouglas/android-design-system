@@ -3,7 +3,7 @@ package br.com.argmax.githubconsumer.viewmodels.gitpullrequest.context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
-import br.com.argmax.githubconsumer.faker.GitPullRequestDtoFaker
+import br.com.argmax.githubconsumer.viewmodels.utils.faker.GitPullRequestDtoFaker
 import br.com.argmax.githubconsumer.service.gitpullrequest.GitPullRequestRemoteDataSource
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestViewModel
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestViewModel.SelectGitPullRequestViewModelState

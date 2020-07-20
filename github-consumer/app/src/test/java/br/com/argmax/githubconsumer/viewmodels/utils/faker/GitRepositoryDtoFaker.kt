@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.faker
+package br.com.argmax.githubconsumer.viewmodels.utils.faker
 
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
 
@@ -21,7 +21,10 @@ object GitRepositoryDtoFaker {
     )
 
     fun getList(): List<GitRepositoryDto> {
-        return listOf(gitRepository1, gitRepository2)
+        return listOf(
+            gitRepository1,
+            gitRepository2
+        )
     }
 
 }

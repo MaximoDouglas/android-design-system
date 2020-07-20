@@ -1,8 +1,8 @@
-package br.com.argmax.githubconsumer.faker
+package br.com.argmax.githubconsumer.viewmodels.utils.faker
 
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
-import br.com.argmax.githubconsumer.faker.GitUserDtoFaker.getGitUserDto3
-import br.com.argmax.githubconsumer.faker.GitUserDtoFaker.getGitUserDto4
+import br.com.argmax.githubconsumer.viewmodels.utils.faker.GitUserDtoFaker.getGitUserDto3
+import br.com.argmax.githubconsumer.viewmodels.utils.faker.GitUserDtoFaker.getGitUserDto4
 
 object GitPullRequestDtoFaker {
 
@@ -33,7 +33,10 @@ object GitPullRequestDtoFaker {
     }
 
     fun getList(): List<GitPullRequestDto> {
-        return listOf(gitPullRequestDto1, gitPullRequestDto2)
+        return listOf(
+            gitPullRequestDto1,
+            gitPullRequestDto2
+        )
     }
 
 }
