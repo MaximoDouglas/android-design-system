@@ -9,10 +9,6 @@ import br.com.argmax.githubconsumer.ui.injections.InjectionApiDataSource.provide
 
 object InjectionRemoteDataSource {
 
-    fun provideGitRepositoryRemoteDataSource(): GitRepositoryRemoteDataSource {
-        return GitRepositoryRemoteDataSourceImpl.getInstance(provideGitRepositoryApiDataSource())
-    }
-
     fun provideGitPullRequestRemoteDataSource(): GitPullRequestRemoteDataSource {
         return GitPullRequestRemoteDataSourceImpl.getInstance(provideGitPullRequestApiDataSource())
     }
