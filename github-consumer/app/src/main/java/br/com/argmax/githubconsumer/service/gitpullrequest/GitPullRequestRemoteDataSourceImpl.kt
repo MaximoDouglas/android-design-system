@@ -21,7 +21,7 @@ class GitPullRequestRemoteDataSourceImpl(
     }
 
     override suspend fun getGitPullRequestDtoList(owner: String, repository: String, page: Int?) =
-        mGitPullRequestApiDataSource.getGitPullRequests(
+        mGitPullRequestApiDataSource.getGitPullRequestDtoList(
             owner = owner,
             repository = repository,
             page = page

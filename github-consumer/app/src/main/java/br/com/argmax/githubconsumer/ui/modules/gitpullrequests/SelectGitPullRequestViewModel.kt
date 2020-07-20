@@ -49,12 +49,14 @@ class SelectGitPullRequestViewModel(
         private val gitPullRequestRemoteDataSource: GitPullRequestRemoteDataSource,
         private val contextProvider: CoroutineContextProvider
     ) : ViewModelProvider.Factory {
+
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return SelectGitPullRequestViewModel(
                 gitPullRequestRemoteDataSource,
                 contextProvider
             ) as T
         }
+
     }
 
 }

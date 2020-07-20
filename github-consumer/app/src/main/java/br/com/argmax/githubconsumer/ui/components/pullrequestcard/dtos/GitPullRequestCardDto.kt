@@ -1,6 +1,6 @@
 package br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos
 
-import br.com.argmax.githubconsumer.utils.compactStringWithDots
+import br.com.argmax.githubconsumer.utils.StringUtils.compactStringWithDots
 
 class GitPullRequestCardDto(
     val gitPullRequestTitle: String,

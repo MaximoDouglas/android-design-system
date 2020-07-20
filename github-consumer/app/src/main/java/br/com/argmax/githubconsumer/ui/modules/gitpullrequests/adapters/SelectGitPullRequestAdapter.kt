@@ -47,8 +47,9 @@ class SelectGitPullRequestAdapter(
         notifyDataSetChanged()
     }
 
-    inner class GitPullRequestCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        LayoutContainer, View.OnClickListener {
+    inner class GitPullRequestCardViewHolder(
+        itemView: View
+    ) : RecyclerView.ViewHolder(itemView), LayoutContainer, View.OnClickListener {
 
         init {
             gitPullRequestCard.setOnClickListener(this)
@@ -68,6 +69,7 @@ class SelectGitPullRequestAdapter(
 
             onPullRequestClickListener.onClick(gitPullRequestUrl)
         }
+
     }
 
 }

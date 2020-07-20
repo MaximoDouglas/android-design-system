@@ -20,7 +20,7 @@ class GitRepositoryRemoteDataSourceImpl(
 
     }
 
-    override suspend fun getGitRepositoryApiResponse(page: Int) =
+    override suspend fun getGitRepositoryDtoList(page: Int) =
         mGitRepositoryApiDataSource.getGitRepositoryApiResponse(page = page).items
 
 

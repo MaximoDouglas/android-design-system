@@ -4,7 +4,7 @@ import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
 
 interface GitRepositoryRemoteDataSource {
 
-    suspend fun getGitRepositoryApiResponse(
+    suspend fun getGitRepositoryDtoList(
         page: Int
     ): List<GitRepositoryDto>
 

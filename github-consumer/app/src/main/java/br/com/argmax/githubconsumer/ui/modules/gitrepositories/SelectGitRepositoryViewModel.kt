@@ -26,7 +26,7 @@ class SelectGitRepositoryViewModel(
         stateLiveData.value = SelectGitRepositoryViewModelState.Loading
         viewModelScope.launch(handler) {
             val data = withContext(contextProvider.IO) {
-                gitRepositoryRemoteDataSource.getGitRepositoryApiResponse(page)
+                gitRepositoryRemoteDataSource.getGitRepositoryDtoList(page)
             }
 
             stateLiveData.value = SelectGitRepositoryViewModelState.Success(data)
@@ -45,9 +45,11 @@ class SelectGitRepositoryViewModel(
         private val gitRepositoryRemoteDataSource: GitRepositoryRemoteDataSource,
         private val contextProvider: CoroutineContextProvider
     ) : ViewModelProvider.Factory {
+
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return SelectGitRepositoryViewModel(gitRepositoryRemoteDataSource, contextProvider) as T
         }
+
     }
 
 }

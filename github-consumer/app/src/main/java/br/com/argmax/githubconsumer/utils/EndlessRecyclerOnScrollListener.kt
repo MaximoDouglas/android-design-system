@@ -1,9 +1,7 @@
 package br.com.argmax.githubconsumer.utils
 
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import androidx.recyclerview.widget.RecyclerView
-
 
 abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener() {
 
