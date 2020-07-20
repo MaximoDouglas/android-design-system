@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.components.repositorycard.context
+package br.com.argmax.githubconsumer.components.gitrepositorycard.context
 
 import org.junit.Before
 import org.junit.Test

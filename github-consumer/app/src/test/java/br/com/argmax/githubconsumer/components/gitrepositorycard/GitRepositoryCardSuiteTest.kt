@@ -1,6 +1,6 @@
-package br.com.argmax.githubconsumer.components.repositorycard
+package br.com.argmax.githubconsumer.components.gitrepositorycard
 
-import br.com.argmax.githubconsumer.components.repositorycard.context.*
+import br.com.argmax.githubconsumer.components.gitrepositorycard.context.*
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 

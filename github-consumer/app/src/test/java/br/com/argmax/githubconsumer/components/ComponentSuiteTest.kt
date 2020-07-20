@@ -1,7 +1,7 @@
 package br.com.argmax.githubconsumer.components
 
 import br.com.argmax.githubconsumer.components.gitpullrequestcard.GitPullRequestCardSuiteTest
-import br.com.argmax.githubconsumer.components.repositorycard.GitRepositoryCardSuiteTest
+import br.com.argmax.githubconsumer.components.gitrepositorycard.GitRepositoryCardSuiteTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 

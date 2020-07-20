@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer.components
+package br.com.argmax.githubconsumer.components.utils
 
 import android.app.Activity
 import org.junit.After

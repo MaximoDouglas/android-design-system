@@ -2,10 +2,10 @@ package br.com.argmax.githubconsumer.components.gitpullrequestcard.context
 
 import android.app.Activity
 import android.view.View
-import br.com.argmax.githubconsumer.components.BaseComponentTest
+import br.com.argmax.githubconsumer.components.utils.BaseComponentTest
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.GitPullRequestCardComponent
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
-import br.com.argmax.githubconsumer.utils.compactStringWithDots
+import br.com.argmax.githubconsumer.utils.StringUtils.compactStringWithDots
 import kotlinx.android.synthetic.main.git_pull_request_card_component.view.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
