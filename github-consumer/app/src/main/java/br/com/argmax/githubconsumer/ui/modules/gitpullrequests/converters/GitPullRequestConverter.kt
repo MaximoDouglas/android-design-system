@@ -1,7 +1,7 @@
 package br.com.argmax.githubconsumer.ui.modules.gitpullrequests.converters
 
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
-import br.com.argmax.githubconsumer.domain.entities.pullrequest.PullRequestState
+import br.com.argmax.githubconsumer.domain.entities.pullrequest.PullRequestStateEnum
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 
 object GitPullRequestConverter {
@@ -13,7 +13,7 @@ object GitPullRequestConverter {
         val gitPullRequestCardDtoList = mutableListOf<GitPullRequestCardDto>()
 
         gitPullRequestDtoList.forEach { gitPullRequestDto ->
-            if (gitPullRequestDto.state == PullRequestState.OPEN.value) {
+            if (gitPullRequestDto.state == PullRequestStateEnum.OPEN.value) {
                 openPullRequestQuantity++
             } else {
                 closedPullRequestQuantity++

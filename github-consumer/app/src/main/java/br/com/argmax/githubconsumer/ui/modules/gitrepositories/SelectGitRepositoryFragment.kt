@@ -1,34 +1,37 @@
 package br.com.argmax.githubconsumer.ui.modules.gitrepositories
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
-import br.com.argmax.githubconsumer.ui.injections.InjectionRemoteDataSource.provideGitRepositoryRemoteDataSource
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
-import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelFactory
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.converters.GitRepositoryConverter.convertDtoListToCardDtoList
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.listeners.OnGitRepositoryClickListener
-import br.com.argmax.githubconsumer.utils.CoroutineContextProvider
 import br.com.argmax.githubconsumer.utils.EndlessRecyclerOnScrollListener
+import javax.inject.Inject
 
 class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
-    private var mBinding: SelectGitRepositoryFragmentBinding? = null
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val mViewModel by viewModels<SelectGitRepositoryViewModel> { viewModelFactory }
 
-    private var mViewModel: SelectGitRepositoryViewModel? = null
+    private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter = SelectGitRepositoryAdapter(this)
 
     private var mApiRequestPage: Int = 1
@@ -46,6 +49,12 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
         )
 
         return mBinding?.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (requireActivity() as MainActivity).mainComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,15 +84,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     }
 
     private fun setupViewModel() {
-        mViewModel = ViewModelProvider(
-            this,
-            SelectGitRepositoryViewModelFactory(
-                provideGitRepositoryRemoteDataSource(),
-                CoroutineContextProvider()
-            )
-        ).get(SelectGitRepositoryViewModel::class.java)
-
-        mViewModel?.getStateLiveData()?.observe(
+        mViewModel.getStateLiveData().observe(
             viewLifecycleOwner,
             Observer { viewModelState ->
                 handleViewModelState(viewModelState)
@@ -112,7 +113,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     }
 
     private fun loadData() {
-        mViewModel?.getGitRepositoryApiResponse(mApiRequestPage)
+        mViewModel.getGitRepositoryApiResponse(mApiRequestPage)
     }
 
     override fun onClick(ownerLogin: String, repositoryName: String) {
