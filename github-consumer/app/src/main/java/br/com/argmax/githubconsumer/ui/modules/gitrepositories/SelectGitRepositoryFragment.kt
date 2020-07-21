@@ -27,13 +27,11 @@ import javax.inject.Inject
 
 class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
-    private var mBinding: SelectGitRepositoryFragmentBinding? = null
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private val mViewModel by viewModels<SelectGitRepositoryViewModel> { viewModelFactory }
 
+    private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter = SelectGitRepositoryAdapter(this)
 
     private var mApiRequestPage: Int = 1

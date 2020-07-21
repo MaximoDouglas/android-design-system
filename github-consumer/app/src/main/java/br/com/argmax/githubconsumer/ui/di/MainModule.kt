@@ -16,9 +16,9 @@ interface MainModule {
     @ViewModelKey(SelectGitRepositoryViewModel::class)
     fun bindSelectGitRepositoryViewModel(viewModel: SelectGitRepositoryViewModel): ViewModel
 
-    /*@Binds
+    @Binds
     @IntoMap
     @ViewModelKey(SelectGitPullRequestViewModel::class)
-    fun bindSelectGitPullRequestViewModel(viewModel: SelectGitPullRequestViewModel): ViewModel*/
+    fun bindSelectGitPullRequestViewModel(viewModel: SelectGitPullRequestViewModel): ViewModel
 
 }

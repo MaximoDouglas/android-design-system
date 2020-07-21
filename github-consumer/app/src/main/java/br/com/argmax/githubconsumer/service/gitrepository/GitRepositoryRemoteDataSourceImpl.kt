@@ -9,5 +9,4 @@ class GitRepositoryRemoteDataSourceImpl @Inject constructor(
     override suspend fun getGitRepositoryDtoList(page: Int) =
         mGitRepositoryApiDataSource.getGitRepositoryApiResponse(page = page).items
 
-
 }

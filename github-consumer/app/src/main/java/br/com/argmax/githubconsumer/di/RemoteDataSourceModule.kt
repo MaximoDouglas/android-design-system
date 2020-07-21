@@ -1,6 +1,9 @@
 package br.com.argmax.githubconsumer.di
 
 import br.com.argmax.githubconsumer.service.ApiDataSource
+import br.com.argmax.githubconsumer.service.gitpullrequest.GitPullRequestApiDataSource
+import br.com.argmax.githubconsumer.service.gitpullrequest.GitPullRequestRemoteDataSource
+import br.com.argmax.githubconsumer.service.gitpullrequest.GitPullRequestRemoteDataSourceImpl
 import br.com.argmax.githubconsumer.service.gitrepository.GitRepositoryApiDataSource
 import br.com.argmax.githubconsumer.service.gitrepository.GitRepositoryRemoteDataSource
 import br.com.argmax.githubconsumer.service.gitrepository.GitRepositoryRemoteDataSourceImpl
@@ -18,6 +21,12 @@ abstract class RemoteDataSourceModule {
         remoteDataSource: GitRepositoryRemoteDataSourceImpl
     ): GitRepositoryRemoteDataSource
 
+    @Singleton
+    @Binds
+    abstract fun provideGitPullRequestRemoteDataSource(
+        remoteDataSource: GitPullRequestRemoteDataSourceImpl
+    ): GitPullRequestRemoteDataSource
+
 }
 
 @Module
@@ -27,6 +36,12 @@ object ApiDataSourceModule {
     @Singleton
     fun provideGitRepositoryApiDataSource(): GitRepositoryApiDataSource {
         return ApiDataSource.createService(GitRepositoryApiDataSource::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGitPullRequestApiDataSource(): GitPullRequestApiDataSource {
+        return ApiDataSource.createService(GitPullRequestApiDataSource::class.java)
     }
 
 }

@@ -15,6 +15,6 @@ interface MainComponent {
 
     fun inject(activity: MainActivity)
     fun inject(fragment: SelectGitRepositoryFragment)
-    //fun inject(fragment: SelectGitPullRequestFragment)
+    fun inject(fragment: SelectGitPullRequestFragment)
 
 }

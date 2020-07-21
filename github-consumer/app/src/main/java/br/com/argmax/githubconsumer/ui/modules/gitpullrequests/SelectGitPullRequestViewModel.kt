@@ -7,9 +7,10 @@ import br.com.argmax.githubconsumer.utils.CoroutineContextProvider
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class SelectGitPullRequestViewModel(
+class SelectGitPullRequestViewModel @Inject constructor(
     private val gitPullRequestRemoteDataSource: GitPullRequestRemoteDataSource,
     private val contextProvider: CoroutineContextProvider
 ) : ViewModel() {
@@ -42,20 +43,6 @@ class SelectGitPullRequestViewModel(
         object Loading : SelectGitPullRequestViewModelState()
         data class Error(val throwable: Throwable) : SelectGitPullRequestViewModelState()
         data class Success(val data: List<GitPullRequestDto>) : SelectGitPullRequestViewModelState()
-
-    }
-
-    class SelectGitPullRequestViewModelFactory(
-        private val gitPullRequestRemoteDataSource: GitPullRequestRemoteDataSource,
-        private val contextProvider: CoroutineContextProvider
-    ) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return SelectGitPullRequestViewModel(
-                gitPullRequestRemoteDataSource,
-                contextProvider
-            ) as T
-        }
 
     }
 
