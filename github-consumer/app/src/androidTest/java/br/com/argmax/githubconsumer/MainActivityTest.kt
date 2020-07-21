@@ -36,7 +36,7 @@ class MainActivityTest {
 
     @Test
     fun assert_that_select_git_repository_fragment_recyclerview_is_displayed() {
-        Thread.sleep(5000)
+        Thread.sleep(2000)
         onView(withId(R.id.select_repository_fragment_recycler_view)).check(matches(isDisplayed()))
     }
 

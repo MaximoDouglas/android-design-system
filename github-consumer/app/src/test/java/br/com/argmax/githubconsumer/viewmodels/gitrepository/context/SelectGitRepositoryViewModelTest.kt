@@ -3,12 +3,12 @@ package br.com.argmax.githubconsumer.viewmodels.gitrepository.context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
-import br.com.argmax.githubconsumer.viewmodels.utils.faker.GitRepositoryDtoFaker
 import br.com.argmax.githubconsumer.service.gitrepository.GitRepositoryRemoteDataSource
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelState
 import br.com.argmax.githubconsumer.viewmodels.utils.TestContextProvider
 import br.com.argmax.githubconsumer.viewmodels.utils.TestCoroutineRule
+import br.com.argmax.githubconsumer.viewmodels.utils.faker.GitRepositoryDtoFaker
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
@@ -24,8 +24,7 @@ open class SelectGitRepositoryViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val testCoroutineRule =
-        TestCoroutineRule()
+    val testCoroutineRule = TestCoroutineRule()
 
     @Mock
     private lateinit var mGitRepositoryRemoteDataSource: GitRepositoryRemoteDataSource
