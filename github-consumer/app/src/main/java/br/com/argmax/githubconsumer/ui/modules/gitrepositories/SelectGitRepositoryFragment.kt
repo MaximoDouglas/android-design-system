@@ -54,7 +54,9 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (requireActivity() as MainActivity).mainComponent.inject(this)
+        if (requireActivity() is MainActivity) {
+            (requireActivity() as MainActivity).mainComponent.inject(this)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

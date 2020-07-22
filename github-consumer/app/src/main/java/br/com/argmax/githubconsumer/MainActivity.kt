@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.argmax.githubconsumer.ui.di.MainComponent
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     lateinit var mainComponent: MainComponent
 

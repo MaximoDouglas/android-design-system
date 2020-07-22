@@ -12,7 +12,7 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import br.com.argmax.githubconsumer.utils.FileUtils.getJson
+import br.com.argmax.githubconsumer.utils.FileUtils.getJsonFromFile
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
@@ -38,47 +38,6 @@ class NavigationTest {
     @After
     fun tearDown() {
         mockWebServer.close()
-    }
-
-    private fun setupMockWebServer() {
-        val endpointToRepositories = "/search/repositories?q=language%3AJava&sort=stars&page=1"
-        val endpointToPullRequests = "/repos/CyC2018/CS-Notes/pulls?page=1&state=all"
-
-        val dispatcher = object : Dispatcher() {
-            @Throws(InterruptedException::class)
-            override fun dispatch(request: RecordedRequest): MockResponse {
-                when (request.path) {
-                    endpointToRepositories -> return MockResponse()
-                        .setResponseCode(200)
-                        .setBody(getJson("jsonfiles/repositories/git_repository_api_response.json"))
-
-                    endpointToPullRequests -> return MockResponse()
-                        .setResponseCode(200)
-                        .setBody(getJson("jsonfiles/pullrequests/git_pull_request_api_response_cyc2018_cs_notes.json"))
-                }
-
-                return MockResponse().setResponseCode(404)
-            }
-        }
-
-        mockWebServer.dispatcher = dispatcher
-        mockWebServer.start(8500)
-    }
-
-    @Test
-    fun test_if_select_git_repository_fragment_toolbar_is_displayed() {
-        onView(withId(R.id.select_repository_fragment_toolbar)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun test_if_select_git_repository_fragment_toolbar_title_is_correct() {
-        onView(withId(R.id.select_repository_fragment_toolbar_title)).check(matches(withText(R.string.select_repository_fragment_toolbar_text)))
-    }
-
-    @Test
-    fun test_if_select_git_repository_fragment_recyclerview_is_displayed() {
-        Thread.sleep(1000)
-        onView(withId(R.id.select_repository_fragment_recycler_view)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -113,6 +72,31 @@ class NavigationTest {
         intended(hasAction(Intent.ACTION_VIEW))
         intended(hasData(Uri.parse("https://github.com/CyC2018/CS-Notes/pull/957")))
         Intents.release()
+    }
+
+    private fun setupMockWebServer() {
+        val endpointToRepositories = "/search/repositories?q=language%3AJava&sort=stars&page=1"
+        val endpointToPullRequests = "/repos/CyC2018/CS-Notes/pulls?page=1&state=all"
+
+        val dispatcher = object : Dispatcher() {
+            @Throws(InterruptedException::class)
+            override fun dispatch(request: RecordedRequest): MockResponse {
+                when (request.path) {
+                    endpointToRepositories -> return MockResponse()
+                        .setResponseCode(200)
+                        .setBody(getJsonFromFile("jsonfiles/repositories/git_repository_api_response.json"))
+
+                    endpointToPullRequests -> return MockResponse()
+                        .setResponseCode(200)
+                        .setBody(getJsonFromFile("jsonfiles/pullrequests/git_pull_request_api_response_cyc2018_cs_notes.json"))
+                }
+
+                return MockResponse().setResponseCode(404)
+            }
+        }
+
+        mockWebServer.dispatcher = dispatcher
+        mockWebServer.start(8500)
     }
 
 }

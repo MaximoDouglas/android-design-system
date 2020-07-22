@@ -2,7 +2,7 @@ package br.com.argmax.githubconsumer.utils
 
 object StringUtils {
 
-    fun compactStringWithDots(string: String?, maxLength: Int): String? {
+    fun compactStringWithDots(string: String?, maxLength: Int = 60): String? {
         if ((string ?: "").length > maxLength) {
             return string?.subSequence(0, maxLength) as String + "..."
         }
