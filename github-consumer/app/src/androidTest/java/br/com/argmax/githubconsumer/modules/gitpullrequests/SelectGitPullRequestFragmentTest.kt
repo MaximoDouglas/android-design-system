@@ -14,9 +14,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.utils.FileUtils
-import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
-import br.com.argmax.githubconsumer.utils.StringUtils
+import br.com.argmax.githubconsumer.utils.StringUtils.compactStringWithDots
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestClosedLabelStringFormat
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestOpenLabelStringFormat
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -31,17 +32,17 @@ class SelectGitPullRequestFragmentTest {
 
         private const val REPOSITORY_NAME = "CS-Notes"
 
-        private const val OPEN_LABEL_TEXT = 8.toString() + " open"
-
-        private const val CLOSED_LABEL_TEXT = " / " + 22.toString() + " closed"
-
         private const val PULL_REQUEST_TITLE = "fixed (修改剑指offer35，47，目录问题)"
 
         private const val PULL_REQUEST_HTML_URL = "https://github.com/CyC2018/CS-Notes/pull/957"
 
         private const val USER_NAME = "TC-zerol"
 
-        private val PULL_REQUEST_BODY = StringUtils.compactStringWithDots(
+        private val OPEN_LABEL_TEXT = gitPullRequestOpenLabelStringFormat(8)
+
+        private val CLOSED_LABEL_TEXT = gitPullRequestClosedLabelStringFormat(22)
+
+        private val PULL_REQUEST_BODY = compactStringWithDots(
             "剑指offer 35题\r\n返回链表除头节点为clone节点外，其余节点为原节点。" +
                     "\r\n\r\n剑指offer 47题\r\n逻辑错误\r\n\r\n剑指offer 43题\r\n目录错误，无法链接"
         )

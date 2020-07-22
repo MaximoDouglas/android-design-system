@@ -10,4 +10,12 @@ object StringUtils {
         return string
     }
 
+    fun gitPullRequestOpenLabelStringFormat(quantity: Int? = 0): String {
+        return "$quantity open"
+    }
+
+    fun gitPullRequestClosedLabelStringFormat(quantity: Int? = 0): String {
+        return " / $quantity closed"
+    }
+
 }

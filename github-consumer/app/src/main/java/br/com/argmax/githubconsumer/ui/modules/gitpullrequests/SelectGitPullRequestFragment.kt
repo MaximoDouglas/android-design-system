@@ -28,6 +28,8 @@ import br.com.argmax.githubconsumer.utils.EndlessRecyclerOnScrollListener
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestClosedLabelStringFormat
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestOpenLabelStringFormat
 import javax.inject.Inject
 
 class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
@@ -159,7 +161,6 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
     }
 
     private fun onSuccess(response: List<GitPullRequestDto>) {
-        println(response)
         val gitPullRequestCardDtoListConverterReturn = convertDtoListToCardDtoList(response)
 
         val pullRequestCardDtoList = gitPullRequestCardDtoListConverterReturn.first
@@ -173,8 +174,8 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
     }
 
     private fun updateStateCounter() {
-        val openLabelText = "$mOpenPullRequestCounter open"
-        val closedLabelText = " / $mClosedPullRequestCounter closed"
+        val openLabelText = gitPullRequestOpenLabelStringFormat(mOpenPullRequestCounter)
+        val closedLabelText = gitPullRequestClosedLabelStringFormat(mClosedPullRequestCounter)
 
         mBinding?.selectGitPullRequestFragmentOpenPullRequestTextView?.text = openLabelText
         mBinding?.selectGitPullRequestFragmentClosedPullRequestTextView?.text = closedLabelText
