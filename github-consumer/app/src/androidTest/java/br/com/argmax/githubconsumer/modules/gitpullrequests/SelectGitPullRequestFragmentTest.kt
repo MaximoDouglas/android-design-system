@@ -14,6 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.utils.FileUtils
+import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
 import br.com.argmax.githubconsumer.utils.StringUtils
 import okhttp3.mockwebserver.Dispatcher
@@ -26,12 +27,9 @@ import org.junit.Test
 
 class SelectGitPullRequestFragmentTest {
 
-    private var activityScenario: ActivityScenario<MainActivity>? = null
-    private val mockWebServer = MockWebServer()
-
     companion object {
 
-        private const val REPOSITORY_TITLE = "CS-Notes"
+        private const val REPOSITORY_NAME = "CS-Notes"
 
         private const val OPEN_LABEL_TEXT = 8.toString() + " open"
 
@@ -50,10 +48,13 @@ class SelectGitPullRequestFragmentTest {
 
     }
 
+    private var mActivityScenario: ActivityScenario<MainActivity>? = null
+    private val mockWebServer = MockWebServer()
+
     @Before
     fun setup() {
         setupMockWebServer()
-        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        mActivityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         Thread.sleep(1000)
         onView(
@@ -80,7 +81,7 @@ class SelectGitPullRequestFragmentTest {
     @Test
     fun test_if_toolbar_title_is_set_correctly() {
         onView(ViewMatchers.withId(R.id.select_git_pull_request_fragment_toolbar_title))
-            .check(matches(withText(REPOSITORY_TITLE)))
+            .check(matches(withText(REPOSITORY_NAME)))
     }
 
     @Test
@@ -115,6 +116,14 @@ class SelectGitPullRequestFragmentTest {
             withRecyclerView(R.id.select_git_pull_request_fragment_recycler_view)
                 .atPositionOnView(0, R.id.git_pull_request_card_body_text_view)
         ).check(matches(withText(PULL_REQUEST_BODY)))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_user_image_is_displayed() {
+        onView(
+            withRecyclerView(R.id.select_git_pull_request_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_pull_request_card_user_image_image_view)
+        ).check(matches(isDisplayed()))
     }
 
     @Test

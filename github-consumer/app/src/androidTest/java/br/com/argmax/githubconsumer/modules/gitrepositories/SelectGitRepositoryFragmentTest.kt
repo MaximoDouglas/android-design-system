@@ -1,38 +1,48 @@
 package br.com.argmax.githubconsumer.modules.gitrepositories
 
-import android.content.Intent
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.rule.ActivityTestRule
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
-import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.utils.FileUtils.getJsonFromFile
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher
-import kotlinx.android.synthetic.main.main_activity.*
+import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
+import br.com.argmax.githubconsumer.utils.StringUtils
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
 class SelectGitRepositoryFragmentTest {
 
-    @get:Rule
-    val activityTestRule = ActivityTestRule(MainActivity::class.java)
+    companion object {
+
+        private const val REPOSITORY_NAME = "CS-Notes"
+
+        private const val REPOSITORY_OWNER_NAME = "CyC2018"
+
+        private const val REPOSITORY_STAR_COUNT = 106626.toString()
+
+        private const val REPOSITORY_FORKS_COUNT = 34768.toString()
+
+        private val REPOSITORY_DESCRIPTION = StringUtils.compactStringWithDots(
+            ":books: 技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计、Java、Python、C++"
+        )
+
+    }
 
     private val mMockWebServer = MockWebServer()
+    private var mActivityScenario: ActivityScenario<MainActivity>? = null
 
     @Before
     fun setup() {
         setupMockWebServer()
-        val fragment = SelectGitPullRequestFragment()
-
-        activityTestRule.activity.navHostFragment.onAttachFragment(fragment)
-        activityTestRule.launchActivity(Intent())
+        mActivityScenario = ActivityScenario.launch(MainActivity::class.java)
+        Thread.sleep(2000)
     }
 
     @After
@@ -54,16 +64,62 @@ class SelectGitRepositoryFragmentTest {
 
     @Test
     fun test_if_recyclerview_is_displayed() {
-        Thread.sleep(3000)
         onView(withId(R.id.select_repository_fragment_recycler_view))
             .check(matches(isDisplayed()))
     }
 
     @Test
-    fun test_if_click_on_repository_item_navigate_to_pull_request_fragment() {
-        Thread.sleep(3000)
+    fun test_if_recyclerview_item_name_is_set_correctly() {
         onView(
-            RecyclerViewMatcher.withRecyclerView(R.id.select_repository_fragment_recycler_view)
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_repository_name_text_view)
+        ).check(matches(withText(REPOSITORY_NAME)))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_description_is_set_correctly() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_git_repository_description_text_view)
+        ).check(matches(withText(REPOSITORY_DESCRIPTION)))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_stars_count_is_set_correctly() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_git_repository_stars_text_view)
+        ).check(matches(withText(REPOSITORY_STAR_COUNT)))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_forks_count_is_set_correctly() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_git_repository_forks_text_view)
+        ).check(matches(withText(REPOSITORY_FORKS_COUNT)))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_user_image_is_displayed() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_user_image_image_view)
+        ).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun test_if_recyclerview_item_user_name_is_set_correctly() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
+                .atPositionOnView(0, R.id.git_repository_card_user_name_text_view)
+        ).check(matches(withText(REPOSITORY_OWNER_NAME)))
+    }
+
+    @Test
+    fun test_if_click_on_repository_item_navigate_to_pull_request_fragment() {
+        onView(
+            withRecyclerView(R.id.select_repository_fragment_recycler_view)
                 .atPositionOnView(
                     0,
                     R.id.gitRepositoryCard

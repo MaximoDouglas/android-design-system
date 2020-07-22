@@ -44,7 +44,7 @@ class NavigationTest {
 
     @Test
     fun test_if_click_on_repository_item_navigate_to_pull_request_fragment() {
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view).atPositionOnView(
                 0,
@@ -59,7 +59,7 @@ class NavigationTest {
     fun test_if_click_on_pull_request_item_makes_intent_to_web_browser() {
         Intents.init()
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view)
                 .atPositionOnView(0,
