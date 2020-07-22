@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
+import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
+import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
@@ -33,6 +35,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter = SelectGitRepositoryAdapter(this)
+    private var gitRepositoryCardDtoList: MutableList<GitRepositoryCardDto>? = null
 
     private var mApiRequestPage: Int = 1
 
@@ -54,7 +57,9 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (requireActivity() as MainActivity).mainComponent.inject(this)
+        if (requireActivity() is MainActivity) {
+            (requireActivity() as MainActivity).mainComponent.inject(this)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -90,26 +95,43 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
                 handleViewModelState(viewModelState)
             })
 
-        loadData()
+        if (gitRepositoryCardDtoList == null) {
+            loadData()
+        }
     }
 
     private fun handleViewModelState(viewModelState: SelectGitRepositoryViewModelState) {
         when (viewModelState) {
             is SelectGitRepositoryViewModelState.Loading -> {
-                println("is loading")
+                if (mAdapter.itemCount == 0) {
+                    mBinding?.contentLoadingProgressBar?.visibility = View.VISIBLE
+                }
             }
 
             is SelectGitRepositoryViewModelState.Error -> {
                 val throwable = viewModelState.throwable
                 println(throwable)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
 
             is SelectGitRepositoryViewModelState.Success -> {
                 val data = viewModelState.data
-                val gitRepositoryDtoList = convertDtoListToCardDtoList(data)
-                mAdapter.addData(gitRepositoryDtoList)
+                onSuccess(data)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
         }
+    }
+
+    private fun onSuccess(data: List<GitRepositoryDto>) {
+        val gitRepositoryDtoList = convertDtoListToCardDtoList(data)
+
+        if (gitRepositoryCardDtoList != null) {
+            gitRepositoryCardDtoList?.addAll(gitRepositoryDtoList)
+        } else {
+            gitRepositoryCardDtoList = gitRepositoryDtoList.toMutableList()
+        }
+
+        mAdapter.replaceData(gitRepositoryCardDtoList)
     }
 
     private fun loadData() {

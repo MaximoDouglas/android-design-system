@@ -20,6 +20,7 @@ import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
+import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestViewModel.SelectGitPullRequestViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.converters.GitPullRequestConverter.convertDtoListToCardDtoList
@@ -28,6 +29,8 @@ import br.com.argmax.githubconsumer.utils.EndlessRecyclerOnScrollListener
 import br.com.argmax.githubconsumer.utils.FragmentUtils.bundleContainsKeys
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_OWNER_LOGIN
 import br.com.argmax.githubconsumer.utils.NavigationArgumentKeys.KEY_REPOSITORY_NAME
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestClosedLabelStringFormat
+import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestOpenLabelStringFormat
 import javax.inject.Inject
 
 class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
@@ -41,6 +44,7 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
+    private var gitPullRequestCardDtoList: MutableList<GitPullRequestCardDto>? = null
     private var mApiRequestPage: Int = 1
 
     private var mOpenPullRequestCounter: Int = 0
@@ -137,29 +141,34 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
                 handleViewModelState(viewModelState)
             })
 
-        loadData()
+        if (gitPullRequestCardDtoList == null) {
+            loadData()
+        }
     }
 
     private fun handleViewModelState(viewModelState: SelectGitPullRequestViewModelState) {
         when (viewModelState) {
             is SelectGitPullRequestViewModelState.Loading -> {
-                println("is loading")
+                if (mAdapter.itemCount == 0) {
+                    mBinding?.contentLoadingProgressBar?.visibility = View.VISIBLE
+                }
             }
 
             is SelectGitPullRequestViewModelState.Error -> {
                 val throwable = viewModelState.throwable
                 println(throwable)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
 
             is SelectGitPullRequestViewModelState.Success -> {
                 val gitPullRequestList = viewModelState.data
                 onSuccess(gitPullRequestList)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
         }
     }
 
     private fun onSuccess(response: List<GitPullRequestDto>) {
-        println(response)
         val gitPullRequestCardDtoListConverterReturn = convertDtoListToCardDtoList(response)
 
         val pullRequestCardDtoList = gitPullRequestCardDtoListConverterReturn.first
@@ -168,13 +177,19 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         mOpenPullRequestCounter += pullRequestStatePair.first
         mClosedPullRequestCounter += pullRequestStatePair.second
 
-        mAdapter.addData(pullRequestCardDtoList)
+        if (gitPullRequestCardDtoList != null) {
+            gitPullRequestCardDtoList?.addAll(pullRequestCardDtoList)
+        } else {
+            gitPullRequestCardDtoList = pullRequestCardDtoList.toMutableList()
+        }
+
+        mAdapter.replaceData(gitPullRequestCardDtoList)
         updateStateCounter()
     }
 
     private fun updateStateCounter() {
-        val openLabelText = "$mOpenPullRequestCounter open"
-        val closedLabelText = " / $mClosedPullRequestCounter closed"
+        val openLabelText = gitPullRequestOpenLabelStringFormat(mOpenPullRequestCounter)
+        val closedLabelText = gitPullRequestClosedLabelStringFormat(mClosedPullRequestCounter)
 
         mBinding?.selectGitPullRequestFragmentOpenPullRequestTextView?.text = openLabelText
         mBinding?.selectGitPullRequestFragmentClosedPullRequestTextView?.text = closedLabelText

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.GitPullRequestCardViewHolderBinding
 import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
+import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.listeners.OnPullRequestClickListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.git_pull_request_card_view_holder.*
@@ -17,7 +18,7 @@ class SelectGitPullRequestAdapter(
     val onPullRequestClickListener: OnPullRequestClickListener
 ) : Adapter<SelectGitPullRequestAdapter.GitPullRequestCardViewHolder>() {
 
-    private var mData = mutableListOf<GitPullRequestCardDto>()
+    private var mData = listOf<GitPullRequestCardDto>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,8 +43,10 @@ class SelectGitPullRequestAdapter(
         return mData.size
     }
 
-    fun addData(list: List<GitPullRequestCardDto>) {
-        mData.addAll(list)
+    fun replaceData(list: List<GitPullRequestCardDto>?) {
+        list?.let {
+            mData = it
+        }
         notifyDataSetChanged()
     }
 
