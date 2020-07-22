@@ -99,17 +99,21 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
     private fun handleViewModelState(viewModelState: SelectGitRepositoryViewModelState) {
         when (viewModelState) {
             is SelectGitRepositoryViewModelState.Loading -> {
-                println("is loading")
+                if (mAdapter.itemCount == 0) {
+                    mBinding?.contentLoadingProgressBar?.visibility = View.VISIBLE
+                }
             }
 
             is SelectGitRepositoryViewModelState.Error -> {
                 val throwable = viewModelState.throwable
                 println(throwable)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
 
             is SelectGitRepositoryViewModelState.Success -> {
                 val data = viewModelState.data
                 onSuccess(data)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
         }
     }

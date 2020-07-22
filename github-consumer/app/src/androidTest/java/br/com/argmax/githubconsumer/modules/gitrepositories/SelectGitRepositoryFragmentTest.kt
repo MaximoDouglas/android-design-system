@@ -8,9 +8,9 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.utils.FileUtils.getJsonFromFile
-import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
 import br.com.argmax.githubconsumer.utils.StringUtils
+import br.com.argmax.githubconsumer.utils.ThreadUtil.waitViewToComplete
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -42,7 +42,7 @@ class SelectGitRepositoryFragmentTest {
     fun setup() {
         setupMockWebServer()
         mActivityScenario = ActivityScenario.launch(MainActivity::class.java)
-        Thread.sleep(2000)
+        waitViewToComplete()
     }
 
     @After

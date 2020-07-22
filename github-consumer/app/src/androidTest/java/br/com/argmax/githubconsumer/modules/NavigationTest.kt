@@ -10,12 +10,14 @@ import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.utils.FileUtils.getJsonFromFile
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
+import br.com.argmax.githubconsumer.utils.ThreadUtil.waitViewToComplete
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -35,6 +37,7 @@ class NavigationTest {
     fun setup() {
         setupMockWebServer()
         activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        waitViewToComplete()
     }
 
     @After
@@ -44,7 +47,6 @@ class NavigationTest {
 
     @Test
     fun test_if_click_on_repository_item_navigate_to_pull_request_fragment() {
-        Thread.sleep(2000)
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view).atPositionOnView(
                 0,
@@ -59,18 +61,20 @@ class NavigationTest {
     fun test_if_click_on_pull_request_item_makes_intent_to_web_browser() {
         Intents.init()
 
-        Thread.sleep(2000)
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view)
-                .atPositionOnView(0,
+                .atPositionOnView(
+                    0,
                     R.id.gitRepositoryCard
                 )
         ).perform(click())
 
-        Thread.sleep(2000)
+        waitViewToComplete()
+
         onView(
             withRecyclerView(R.id.select_git_pull_request_fragment_recycler_view)
-                .atPositionOnView(0,
+                .atPositionOnView(
+                    0,
                     R.id.gitPullRequestCard
                 )
         ).perform(click())

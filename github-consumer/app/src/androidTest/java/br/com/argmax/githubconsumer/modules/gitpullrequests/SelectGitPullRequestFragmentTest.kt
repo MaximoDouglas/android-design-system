@@ -18,6 +18,7 @@ import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecy
 import br.com.argmax.githubconsumer.utils.StringUtils.compactStringWithDots
 import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestClosedLabelStringFormat
 import br.com.argmax.githubconsumer.utils.StringUtils.gitPullRequestOpenLabelStringFormat
+import br.com.argmax.githubconsumer.utils.ThreadUtil.waitViewToComplete
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -57,7 +58,8 @@ class SelectGitPullRequestFragmentTest {
         setupMockWebServer()
         mActivityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        Thread.sleep(1000)
+        waitViewToComplete()
+
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view)
                 .atPositionOnView(
@@ -65,7 +67,7 @@ class SelectGitPullRequestFragmentTest {
                     R.id.gitRepositoryCard
                 )
         ).perform(ViewActions.click())
-        Thread.sleep(2000)
+        waitViewToComplete()
     }
 
     @After
