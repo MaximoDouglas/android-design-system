@@ -18,6 +18,7 @@ import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitRepositoryFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.repository.GitRepositoryDto
+import br.com.argmax.githubconsumer.ui.components.repositorycard.dto.GitRepositoryCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryFragmentDirections.actionSelectRepositoryFragmentToSelectGitPullRequestFragment
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.SelectGitRepositoryViewModel.SelectGitRepositoryViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitrepositories.adapters.SelectGitRepositoryAdapter
@@ -34,6 +35,7 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private var mBinding: SelectGitRepositoryFragmentBinding? = null
     private var mAdapter = SelectGitRepositoryAdapter(this)
+    private var gitRepositoryCardDtoList: MutableList<GitRepositoryCardDto>? = null
 
     private var mApiRequestPage: Int = 1
 
@@ -93,7 +95,9 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
                 handleViewModelState(viewModelState)
             })
 
-        loadData()
+        if (gitRepositoryCardDtoList == null) {
+            loadData()
+        }
     }
 
     private fun handleViewModelState(viewModelState: SelectGitRepositoryViewModelState) {
@@ -120,7 +124,14 @@ class SelectGitRepositoryFragment : Fragment(), OnGitRepositoryClickListener {
 
     private fun onSuccess(data: List<GitRepositoryDto>) {
         val gitRepositoryDtoList = convertDtoListToCardDtoList(data)
-        mAdapter.addData(gitRepositoryDtoList)
+
+        if (gitRepositoryCardDtoList != null) {
+            gitRepositoryCardDtoList?.addAll(gitRepositoryDtoList)
+        } else {
+            gitRepositoryCardDtoList = gitRepositoryDtoList.toMutableList()
+        }
+
+        mAdapter.replaceData(gitRepositoryCardDtoList)
     }
 
     private fun loadData() {

@@ -20,6 +20,7 @@ import br.com.argmax.githubconsumer.MainActivity
 import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.databinding.SelectGitPullRequestFragmentBinding
 import br.com.argmax.githubconsumer.domain.entities.pullrequest.GitPullRequestDto
+import br.com.argmax.githubconsumer.ui.components.pullrequestcard.dtos.GitPullRequestCardDto
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.SelectGitPullRequestViewModel.SelectGitPullRequestViewModelState
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.adapters.SelectGitPullRequestAdapter
 import br.com.argmax.githubconsumer.ui.modules.gitpullrequests.converters.GitPullRequestConverter.convertDtoListToCardDtoList
@@ -43,6 +44,7 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
 
     private var mOwnerLogin: String? = null
     private var mRepositoryName: String? = null
+    private var gitPullRequestCardDtoList: MutableList<GitPullRequestCardDto>? = null
     private var mApiRequestPage: Int = 1
 
     private var mOpenPullRequestCounter: Int = 0
@@ -139,23 +141,29 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
                 handleViewModelState(viewModelState)
             })
 
-        loadData()
+        if (gitPullRequestCardDtoList == null) {
+            loadData()
+        }
     }
 
     private fun handleViewModelState(viewModelState: SelectGitPullRequestViewModelState) {
         when (viewModelState) {
             is SelectGitPullRequestViewModelState.Loading -> {
-                println("is loading")
+                if (mAdapter.itemCount == 0) {
+                    mBinding?.contentLoadingProgressBar?.visibility = View.VISIBLE
+                }
             }
 
             is SelectGitPullRequestViewModelState.Error -> {
                 val throwable = viewModelState.throwable
                 println(throwable)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
 
             is SelectGitPullRequestViewModelState.Success -> {
                 val gitPullRequestList = viewModelState.data
                 onSuccess(gitPullRequestList)
+                mBinding?.contentLoadingProgressBar?.visibility = View.GONE
             }
         }
     }
@@ -169,7 +177,13 @@ class SelectGitPullRequestFragment : Fragment(), OnPullRequestClickListener {
         mOpenPullRequestCounter += pullRequestStatePair.first
         mClosedPullRequestCounter += pullRequestStatePair.second
 
-        mAdapter.addData(pullRequestCardDtoList)
+        if (gitPullRequestCardDtoList != null) {
+            gitPullRequestCardDtoList?.addAll(pullRequestCardDtoList)
+        } else {
+            gitPullRequestCardDtoList = pullRequestCardDtoList.toMutableList()
+        }
+
+        mAdapter.replaceData(gitPullRequestCardDtoList)
         updateStateCounter()
     }
 
