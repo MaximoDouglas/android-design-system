@@ -1,4 +1,4 @@
-package br.com.argmax.githubconsumer
+package br.com.argmax.githubconsumer.modules
 
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +12,8 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import br.com.argmax.githubconsumer.MainActivity
+import br.com.argmax.githubconsumer.R
 import br.com.argmax.githubconsumer.utils.FileUtils.getJsonFromFile
 import br.com.argmax.githubconsumer.utils.RecyclerViewMatcher.Companion.withRecyclerView
 import okhttp3.mockwebserver.Dispatcher
@@ -60,13 +62,17 @@ class NavigationTest {
         Thread.sleep(1000)
         onView(
             withRecyclerView(R.id.select_repository_fragment_recycler_view)
-                .atPositionOnView(0, R.id.gitRepositoryCard)
+                .atPositionOnView(0,
+                    R.id.gitRepositoryCard
+                )
         ).perform(click())
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         onView(
             withRecyclerView(R.id.select_git_pull_request_fragment_recycler_view)
-                .atPositionOnView(0, R.id.gitPullRequestCard)
+                .atPositionOnView(0,
+                    R.id.gitPullRequestCard
+                )
         ).perform(click())
 
         intended(hasAction(Intent.ACTION_VIEW))
