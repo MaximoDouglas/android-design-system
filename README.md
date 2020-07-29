@@ -1,4 +1,8 @@
-# Android Development Portfolio
+## Goal
+The goal with this project is to implement different components of open design systems 
+found [in this repository](https://designsystemsrepo.com/design-systems/), as well as the material design, 
+found [here](https://material.io/design).
 
-## __argmax-design-systems__
-Android project to implement open design system components. 
+## Implemented Design Systems
+- [Asphalt](https://asphalt.gojek.io/)
+
