@@ -3,7 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.ghostbutton.context
 import org.junit.Before
 import org.junit.Test
 
-class AsphaltGhostButtonDisabledTest: AsphaltGhostButtonTest() {
+class AsphaltGhostButtonDisabledTest : AsphaltGhostButtonTest() {
 
     @Before
     fun `setup scenario`() {

@@ -39,21 +39,25 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     }
 
     private fun hideImages() {
-        mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility      = View.GONE
+        mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility = View.GONE
         mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility = View.GONE
     }
 
     private fun setupImageViewResources(imageUrls: List<String>) {
         val mainImageUrl = imageUrls[0]
-        mUrlList         = mutableListOf(mainImageUrl)
+        mUrlList = mutableListOf(mainImageUrl)
 
-        mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrlWithBorder(mainImageUrl)
+        mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrlWithBorder(
+            mainImageUrl
+        )
 
         if (imageUrls.size > 1) {
             val secondaryImageUrl = imageUrls[1]
 
             mUrlList?.add(secondaryImageUrl)
-            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(secondaryImageUrl)
+            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(
+                secondaryImageUrl
+            )
         }
     }
 

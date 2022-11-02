@@ -38,13 +38,13 @@ class AsphaltNotificationBadge @JvmOverloads constructor(
 
     private fun updateView(quantity: Int) {
         val params = mBinding?.asphaltDesignSystemNotificationBadgeTextView?.layoutParams
-        val width  = 16
+        val width = 16
         val height = if (quantity in 0..9) 16 else 14
 
-        params?.width  = convertPxToDp(width)
+        params?.width = convertPxToDp(width)
         params?.height = convertPxToDp(height)
 
-        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text         = quantity.toString()
+        mBinding?.asphaltDesignSystemNotificationBadgeTextView?.text = quantity.toString()
         mBinding?.asphaltDesignSystemNotificationBadgeTextView?.layoutParams = params
         mBinding?.executePendingBindings()
     }

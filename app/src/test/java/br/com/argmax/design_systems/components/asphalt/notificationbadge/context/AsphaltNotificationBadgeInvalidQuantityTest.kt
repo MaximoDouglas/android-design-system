@@ -3,7 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.notificationbadge.contex
 import org.junit.Before
 import org.junit.Test
 
-class AsphaltNotificationBadgeInvalidQuantityTest: AsphaltNotificationBadgeTest() {
+class AsphaltNotificationBadgeInvalidQuantityTest : AsphaltNotificationBadgeTest() {
 
     @Before
     fun `setup scenario`() {
@@ -16,7 +16,7 @@ class AsphaltNotificationBadgeInvalidQuantityTest: AsphaltNotificationBadgeTest(
     }
 
     @Test
-    fun `test if quantity is null or empty`(){
+    fun `test if quantity is null or empty`() {
         `assert quantity is null or empty`()
     }
 

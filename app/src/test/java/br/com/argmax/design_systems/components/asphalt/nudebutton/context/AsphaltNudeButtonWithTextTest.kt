@@ -3,7 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.nudebutton.context
 import org.junit.Before
 import org.junit.Test
 
-class AsphaltNudeButtonWithTextTest: AsphaltNudeButtonTest() {
+class AsphaltNudeButtonWithTextTest : AsphaltNudeButtonTest() {
 
     @Before
     fun `setup scenario`() {

@@ -3,7 +3,7 @@ package br.com.argmax.design_systems.components.asphalt.notificationbadge.contex
 import org.junit.Before
 import org.junit.Test
 
-class AsphaltNotificationBadgeNoQuantityTest: AsphaltNotificationBadgeTest() {
+class AsphaltNotificationBadgeNoQuantityTest : AsphaltNotificationBadgeTest() {
 
     @Before
     fun `setup scenario`() {

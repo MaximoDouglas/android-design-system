@@ -1,7 +1,6 @@
 package br.com.argmax.design_systems.components.asphalt.socialavatarbadge.context
 
 import android.app.Activity
-import android.view.View
 import br.com.argmax.design_systems.components.BaseComponentUnitTest
 import br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
 import org.junit.Assert.*

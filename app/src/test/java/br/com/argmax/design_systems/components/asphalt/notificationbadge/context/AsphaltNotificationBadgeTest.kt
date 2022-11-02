@@ -6,7 +6,7 @@ import br.com.argmax.design_systems.components.asphalt.AsphaltNotificationBadge
 import org.junit.Assert.*
 import kotlin.random.Random.Default.nextInt
 
-abstract class AsphaltNotificationBadgeTest: BaseComponentUnitTest() {
+abstract class AsphaltNotificationBadgeTest : BaseComponentUnitTest() {
 
     companion object {
 
