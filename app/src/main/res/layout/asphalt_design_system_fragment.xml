@@ -35,7 +35,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/asphalt_design_system_fragment_alert_badge_label" />
 
-            <br.com.argmax.design_systems.components.asphalt.AsphaltAlertBadge
+            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltAlertBadge
                 android:id="@+id/asphalt_design_system_fragment_alert_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,18 +57,18 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
-                <br.com.argmax.design_systems.components.asphalt.AsphaltNotificationBadge
+                <br.com.maximodouglas.designsystem.components.asphalt.AsphaltNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_no_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <br.com.argmax.design_systems.components.asphalt.AsphaltNotificationBadge
+                <br.com.maximodouglas.designsystem.components.asphalt.AsphaltNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_one_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp" />
 
-                <br.com.argmax.design_systems.components.asphalt.AsphaltNotificationBadge
+                <br.com.maximodouglas.designsystem.components.asphalt.AsphaltNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_two_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,14 +91,14 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
-                <br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
+                <br.com.maximodouglas.designsystem.components.asphalt.AsphaltSocialAvatarBadge
                     android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_one_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/asphalt_round_corner_rectangle_shape_black80" />
 
-                <br.com.argmax.design_systems.components.asphalt.AsphaltSocialAvatarBadge
+                <br.com.maximodouglas.designsystem.components.asphalt.AsphaltSocialAvatarBadge
                     android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_two_images"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/asphalt_design_system_fragment_nude_buttons_label" />
 
-            <br.com.argmax.design_systems.components.asphalt.AsphaltNudeButton
+            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltNudeButton
                 android:id="@+id/asphalt_design_system_fragment_enabled_nude_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp" />
 
-            <br.com.argmax.design_systems.components.asphalt.AsphaltNudeButton
+            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltNudeButton
                 android:id="@+id/asphalt_design_system_fragment_disabled_nude_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/asphalt_design_system_fragment_ghost_buttons_label" />
 
-            <br.com.argmax.design_systems.components.asphalt.AsphaltGhostButton
+            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltGhostButton
                 android:id="@+id/asphalt_design_system_fragment_enabled_ghost_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp" />
 
-            <br.com.argmax.design_systems.components.asphalt.AsphaltGhostButton
+            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltGhostButton
                 android:id="@+id/asphalt_design_system_fragment_disabled_ghost_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

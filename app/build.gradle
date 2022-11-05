@@ -12,7 +12,7 @@ android {
     compileSdkVersion 32
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "br.com.argmax.design_systems"
+        applicationId "br.com.maximodouglas.designsystem"
         minSdkVersion 21
         targetSdkVersion 32
         versionCode 1
