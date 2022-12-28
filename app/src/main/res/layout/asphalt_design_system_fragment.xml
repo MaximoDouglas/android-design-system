@@ -35,7 +35,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/asphalt_design_system_fragment_alert_badge_label" />
 
-            <br.com.maximodouglas.designsystem.components.asphalt.AsphaltAlertBadge
+            <br.com.maximodouglas.designsystem.components.AlertBadge
                 android:id="@+id/asphalt_design_system_fragment_alert_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

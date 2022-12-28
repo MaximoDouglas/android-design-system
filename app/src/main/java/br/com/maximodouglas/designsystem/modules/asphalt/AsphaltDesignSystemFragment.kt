@@ -40,7 +40,7 @@ class AsphaltDesignSystemFragment : Fragment() {
     }
 
     private fun setupAlertBadge() {
-        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setText(
+        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setTitleText(
             getString(R.string.asphalt_alert_badge_text)
         )
 
@@ -131,6 +131,4 @@ class AsphaltDesignSystemFragment : Fragment() {
 
         mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.isEnabled = false
     }
-
-
 }

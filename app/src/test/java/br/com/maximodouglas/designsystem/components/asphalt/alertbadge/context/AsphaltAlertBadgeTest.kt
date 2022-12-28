@@ -3,7 +3,7 @@ package br.com.maximodouglas.designsystem.components.asphalt.alertbadge.context
 import android.app.Activity
 import android.view.View
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.asphalt.AsphaltAlertBadge
+import br.com.maximodouglas.designsystem.components.AlertBadge
 import org.junit.Assert.*
 
 abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
@@ -17,15 +17,15 @@ abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
 
     }
 
-    private var mAsphaltAlertBadgeComponentView: AsphaltAlertBadge? = null
+    private var mAsphaltAlertBadgeComponentView: AlertBadge? = null
 
     override fun setupComponent(activity: Activity) {
         mAsphaltAlertBadgeComponentView =
-            AsphaltAlertBadge(activity)
+            AlertBadge(activity)
     }
 
     internal fun `when alert badge has text`() {
-        mAsphaltAlertBadgeComponentView?.setText(TEXT)
+        mAsphaltAlertBadgeComponentView?.setTitleText(TEXT)
     }
 
     internal fun `when alert badge has click listener`() {
@@ -33,12 +33,12 @@ abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
     }
 
     internal fun `when alert badge has text and click listener`() {
-        mAsphaltAlertBadgeComponentView?.setText(TEXT)
+        mAsphaltAlertBadgeComponentView?.setTitleText(TEXT)
         mAsphaltAlertBadgeComponentView?.setOnClickListener(CLICK_LISTENER)
     }
 
     internal fun `assert alert badge text is set correctly`() {
-        val actual = mAsphaltAlertBadgeComponentView?.getText()
+        val actual = mAsphaltAlertBadgeComponentView?.getTitleText()
 
         assertEquals(TEXT, actual)
     }
@@ -50,7 +50,7 @@ abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {
     }
 
     internal fun `assert alert badge text is null or empty`() {
-        val actual = mAsphaltAlertBadgeComponentView?.getText().isNullOrEmpty()
+        val actual = mAsphaltAlertBadgeComponentView?.getTitleText().isNullOrEmpty()
 
         assertTrue(actual)
     }
