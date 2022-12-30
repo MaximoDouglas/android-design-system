@@ -2,7 +2,7 @@ package br.com.maximodouglas.designsystem.components.asphalt.ghostbutton.context
 
 import android.app.Activity
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.asphalt.AsphaltGhostButton
+import br.com.maximodouglas.designsystem.components.GhostButton
 import org.junit.Assert.*
 
 abstract class AsphaltGhostButtonTest : BaseComponentUnitTest() {
@@ -16,10 +16,10 @@ abstract class AsphaltGhostButtonTest : BaseComponentUnitTest() {
 
     }
 
-    private var mAsphaltGhostButton: AsphaltGhostButton? = null
+    private var mAsphaltGhostButton: GhostButton? = null
 
     override fun setupComponent(activity: Activity) {
-        mAsphaltGhostButton = AsphaltGhostButton(activity)
+        mAsphaltGhostButton = GhostButton(activity)
     }
 
     fun `when ghost button has text`() {

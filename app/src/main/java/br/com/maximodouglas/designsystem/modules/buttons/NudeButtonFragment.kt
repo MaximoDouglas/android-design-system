@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.modules.asphalt
+package br.com.maximodouglas.designsystem.modules.buttons
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.AsphaltDesignSystemFragmentBinding
+import com.maximodouglas.mdskit.utils.showToast
 
-class AsphaltDesignSystemFragment : Fragment() {
+class NudeButtonFragment : Fragment() {
 
     private var mBinding: AsphaltDesignSystemFragmentBinding? = null
 
@@ -40,12 +41,11 @@ class AsphaltDesignSystemFragment : Fragment() {
     }
 
     private fun setupAlertBadge() {
-        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setOnClickListener {
-            Toast.makeText(
-                context,
-                getString(R.string.asphalt_alert_badge_click_toast),
-                Toast.LENGTH_LONG
-            ).show()
+        mBinding?.asphaltDesignSystemFragmentAlertBadge?.apply {
+            setTitleText(getString(R.string.alert_badge_title))
+            setOnClickListener {
+                context?.showToast(getString(R.string.asphalt_alert_badge_click_toast))
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components.asphalt
+package br.com.maximodouglas.designsystem.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,40 +7,35 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.AsphaltNudeButtonBinding
+import br.com.maximodouglas.designsystem.databinding.NudeButtonBinding
 
-class AsphaltNudeButton @JvmOverloads constructor(
+class NudeButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
-    private var mAsphaltNudeButtonComponentViewBinding: AsphaltNudeButtonBinding? =
+    private var binding: NudeButtonBinding =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.asphalt_nude_button,
+            R.layout.nude_button,
             this,
             true
         )
 
-    override fun setEnabled(enabled: Boolean) {
-        super.setEnabled(enabled)
+    override fun setEnabled(isEnabled: Boolean) {
+        super.setEnabled(isEnabled)
 
-        mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.setTextColor(
-            if (enabled) {
-                ContextCompat.getColor(context, R.color.RED60)
-            } else {
-                ContextCompat.getColor(context, R.color.BLACK40)
-            }
+        binding.tvNudeButtonLabel.setTextColor(
+            ContextCompat.getColor(context, R.color.md_red60.takeIf { isEnabled } ?: R.color.md_black40)
         )
     }
 
     fun setText(text: String) {
-        mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.text = text
-        mAsphaltNudeButtonComponentViewBinding?.executePendingBindings()
+        binding.tvNudeButtonLabel.text = text
     }
 
     fun getText(): CharSequence? {
-        return mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.text
+        return binding.tvNudeButtonLabel.text
     }
 }

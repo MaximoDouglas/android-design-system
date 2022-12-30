@@ -7,18 +7,18 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/asphalt_design_system_notification_badge_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/tvNotificationBadge"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_gravity="center"
-            android:background="@drawable/asphalt_oval_shape_red60"
+            android:background="@drawable/shape_oval_red60"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:maxLength="2"
             android:minWidth="12dp"
             android:minHeight="12dp"
-            android:textColor="@color/WHITE"
-            android:textSize="8sp"
+            android:textColor="@color/md_white"
+            android:textSize="12sp"
             tools:text="99" />
 
     </LinearLayout>

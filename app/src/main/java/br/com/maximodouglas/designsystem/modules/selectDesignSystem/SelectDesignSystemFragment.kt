@@ -15,10 +15,15 @@ class SelectDesignSystemFragment : Fragment() {
     private var mBinding: SelectDesignSystemFragmentBinding? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         mBinding = DataBindingUtil.inflate(
-            inflater, R.layout.select_design_system_fragment, container, false
+            inflater,
+            R.layout.select_design_system_fragment,
+            container,
+            false
         )
 
         return mBinding?.root

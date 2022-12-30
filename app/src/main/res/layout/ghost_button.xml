@@ -3,24 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:id="@+id/asphalt_ghost_button_container"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:background="@drawable/asphalt_ghost_button_background_selector"
+        android:id="@+id/llGhostButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/ghost_button_background_selector"
         android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp">
+        android:paddingVertical="16dp">
 
         <TextView
-            android:id="@+id/asphalt_ghost_button_label_text_view"
+            android:id="@+id/tvGhostButtonLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/neo_sans_pro_medium"
             android:textAllCaps="true"
-            android:textColor="@drawable/asphalt_ghost_button_text_color_selector"
+            android:textColor="@drawable/ghost_button_text_color_selector"
             android:textSize="15sp"
             tools:text="Ghost Button" />
 

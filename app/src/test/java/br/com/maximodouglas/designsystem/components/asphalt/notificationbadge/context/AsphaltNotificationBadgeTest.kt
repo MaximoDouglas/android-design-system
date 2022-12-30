@@ -2,7 +2,7 @@ package br.com.maximodouglas.designsystem.components.asphalt.notificationbadge.c
 
 import android.app.Activity
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.asphalt.AsphaltNotificationBadge
+import br.com.maximodouglas.designsystem.components.NotificationBadge
 import org.junit.Assert.*
 import kotlin.random.Random.Default.nextInt
 
@@ -20,10 +20,10 @@ abstract class AsphaltNotificationBadgeTest : BaseComponentUnitTest() {
 
     }
 
-    private var mAsphaltNotificationBadge: AsphaltNotificationBadge? = null
+    private var mAsphaltNotificationBadge: NotificationBadge? = null
 
     override fun setupComponent(activity: Activity) {
-        mAsphaltNotificationBadge = AsphaltNotificationBadge(activity)
+        mAsphaltNotificationBadge = NotificationBadge(activity)
     }
 
     fun `when component has valid quantity`() {

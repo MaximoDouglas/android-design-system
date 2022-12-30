@@ -9,7 +9,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/BLACK40"
+            android:background="@color/md_black40"
             android:elevation="2dp">
 
             <TextView
@@ -18,12 +18,12 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="@string/app_name"
-                android:textColor="@color/BLACK100"
+                android:textColor="@color/md_black100"
                 android:textSize="16sp" />
 
         </androidx.appcompat.widget.Toolbar>
 
-        <br.com.maximodouglas.designsystem.components.asphalt.AsphaltGhostButton
+        <br.com.maximodouglas.designsystem.components.GhostButton
             android:id="@+id/select_design_system_fragment_ghost_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

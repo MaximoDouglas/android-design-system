@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/asphaltDesignSystemFragment"
-        android:name="br.com.maximodouglas.designsystem.modules.asphalt.AsphaltDesignSystemFragment"
+        android:name="br.com.maximodouglas.designsystem.modules.buttons.NudeButtonFragment"
         android:label="AsphaltDesignSystemFragment" />
 
 </navigation>

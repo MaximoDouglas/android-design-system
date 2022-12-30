@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components.asphalt
+package br.com.maximodouglas.designsystem.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.NotificationBadgeBinding
 
-class AsphaltNotificationBadge @JvmOverloads constructor(
+class NotificationBadge @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
@@ -23,9 +23,8 @@ class AsphaltNotificationBadge @JvmOverloads constructor(
         )
 
     fun setQuantity(quantity: Int) {
-        isValidQuantity(quantity).also {
-            binding.tvNotificationBadge.text = quantity.toString()
-        }
+        binding.tvNotificationBadge.text =
+            (quantity.takeIf { isValidQuantity(it) } ?: ZERO).toString()
     }
 
     private fun isValidQuantity(quantity: Int): Boolean {

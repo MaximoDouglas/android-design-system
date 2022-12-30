@@ -12,7 +12,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/BLACK40" />
+            android:background="@color/md_black40" />
 
     </LinearLayout>
 

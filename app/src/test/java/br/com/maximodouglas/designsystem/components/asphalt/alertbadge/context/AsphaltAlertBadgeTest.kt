@@ -3,7 +3,6 @@ package br.com.maximodouglas.designsystem.components.asphalt.alertbadge.context
 import android.app.Activity
 import android.view.View
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.AlertBadge
 import org.junit.Assert.*
 
 abstract class AsphaltAlertBadgeTest : BaseComponentUnitTest() {

@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components.asphalt
+package br.com.maximodouglas.designsystem.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,79 +7,86 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.AsphaltSocialAvatarBadgeBinding
+import br.com.maximodouglas.designsystem.databinding.SocialAvatarBadgeBinding
 import br.com.maximodouglas.designsystem.extentions.setCircularImageByUrlWithBorder
 
-class AsphaltSocialAvatarBadge @JvmOverloads constructor(
+class SocialAvatarBadge @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
-    private var mUrlList: MutableList<String>? = null
+    private var imageUrlsList: MutableList<String> = mutableListOf()
 
-    private var mBinding: AsphaltSocialAvatarBadgeBinding? =
+    private var binding: SocialAvatarBadgeBinding =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.asphalt_social_avatar_badge,
+            R.layout.social_avatar_badge,
             this,
             true
         )
 
-    fun setLabelAndImageUrlList(badgeLabel: String, imageUrls: List<String>): Boolean {
+    fun setLabelAndImageUrlList(badgeLabel: String, imageUrls: List<String>) {
         setupLabelText(badgeLabel)
 
-        return if (imageUrls.isEmpty()) {
-            hideImages()
-            false
+        if (imageUrls.isEmpty()) {
+            showImages(false, false)
         } else {
             setupImageViewResources(imageUrls)
-
-            mBinding?.executePendingBindings()
-            return true
         }
     }
 
-    private fun hideImages() {
-        mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility = View.GONE
-        mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility = View.GONE
-    }
-
     private fun setupImageViewResources(imageUrls: List<String>) {
-        val mainImageUrl = imageUrls[0]
-        mUrlList = mutableListOf(mainImageUrl)
+        imageUrlsList = imageUrls.toMutableList()
 
-        mBinding?.asphaltSocialAvatarBadgeMainImageView?.setCircularImageByUrlWithBorder(
-            mainImageUrl
-        )
+        binding.apply {
+            with(imageUrlsList) {
+                ivSocialAvatarBadgeMain.setCircularImageByUrlWithBorder(
+                    get(MAIN_IMAGE_URL_LIST_INDEX)
+                )
 
-        if (imageUrls.size > 1) {
-            val secondaryImageUrl = imageUrls[1]
-
-            mUrlList?.add(secondaryImageUrl)
-            mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.setCircularImageByUrlWithBorder(
-                secondaryImageUrl
-            )
+                if (this.size > SECONDARY_IMAGE_URL_LIST_INDEX) {
+                    ivSocialAvatarBadgeSecondary.setCircularImageByUrlWithBorder(
+                        get(SECONDARY_IMAGE_URL_LIST_INDEX)
+                    )
+                }
+            }
         }
     }
 
     private fun setupLabelText(badgeLabel: String) {
-        mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text = badgeLabel
+        binding.tvSocialAvatarBadgeLabel.text = badgeLabel
     }
 
     fun getLabelText(): CharSequence? {
-        return mBinding?.asphaltSocialAvatarBadgeLabelTextView?.text
+        return binding.tvSocialAvatarBadgeLabel.text
     }
 
-    fun getImageUrlList(): List<String>? {
-        return mUrlList
+    fun getImageUrlList(): List<String> {
+        return imageUrlsList
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun showImages(showMainImage: Boolean, showSecondaryImage: Boolean) {
+        with(binding) {
+            ivSocialAvatarBadgeMain.visibility =
+                View.GONE.takeUnless { showMainImage } ?: View.VISIBLE
+
+            ivSocialAvatarBadgeSecondary.visibility =
+                View.GONE.takeUnless { showSecondaryImage } ?: View.VISIBLE
+        }
     }
 
     fun isMainImageVisible(): Boolean {
-        return mBinding?.asphaltSocialAvatarBadgeMainImageView?.visibility == View.VISIBLE
+        return binding.ivSocialAvatarBadgeMain.visibility == View.VISIBLE
     }
 
     fun isSecondaryImageVisible(): Boolean {
-        return mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility == View.VISIBLE
+        return binding.ivSocialAvatarBadgeSecondary.visibility == View.VISIBLE
+    }
+
+    companion object {
+        private const val MAIN_IMAGE_URL_LIST_INDEX = 0
+        private const val SECONDARY_IMAGE_URL_LIST_INDEX = 1
     }
 }

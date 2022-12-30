@@ -8,27 +8,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/asphalt_round_corner_rectangle_shape_red60"
+        android:background="@drawable/shape_rectangle_red60_corner_8"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
         <TextView
-            android:id="@+id/tvAsphaltAlertBadgeTitle"
+            android:id="@+id/tvAlertBadgeTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-medium"
-            android:textColor="@color/WHITE"
+            android:textColor="@color/md_white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvAsphaltAlertBadgeNudeButton"
+            app:layout_constraintEnd_toStartOf="@+id/tvAlertBadgeNudeButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/alert_badge_title" />
+            tools:text="Alert Badge Title" />
 
         <TextView
-            android:id="@+id/tvAsphaltAlertBadgeNudeButton"
+            android:id="@+id/tvAlertBadgeNudeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -37,9 +37,9 @@
             android:paddingTop="2dp"
             android:paddingEnd="4dp"
             android:paddingBottom="3dp"
-            android:text="@string/alert_badge_nude_button"
+            android:text="@string/button_label"
             android:textAllCaps="true"
-            android:textColor="@color/WHITE"
+            android:textColor="@color/md_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
