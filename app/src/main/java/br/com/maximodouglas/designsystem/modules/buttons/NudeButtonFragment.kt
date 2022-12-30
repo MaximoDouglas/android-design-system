@@ -40,10 +40,6 @@ class AsphaltDesignSystemFragment : Fragment() {
     }
 
     private fun setupAlertBadge() {
-        mBinding?.asphaltDesignSystemFragmentAlertBadge?.setTitleText(
-            getString(R.string.asphalt_alert_badge_text)
-        )
-
         mBinding?.asphaltDesignSystemFragmentAlertBadge?.setOnClickListener {
             Toast.makeText(
                 context,

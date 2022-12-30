@@ -10,12 +10,17 @@ import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.AsphaltNudeButtonBinding
 
 class AsphaltNudeButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mAsphaltNudeButtonComponentViewBinding: AsphaltNudeButtonBinding? =
         DataBindingUtil.inflate(
-            LayoutInflater.from(context), R.layout.asphalt_nude_button, this, true
+            LayoutInflater.from(context),
+            R.layout.asphalt_nude_button,
+            this,
+            true
         )
 
     override fun setEnabled(enabled: Boolean) {
@@ -38,6 +43,4 @@ class AsphaltNudeButton @JvmOverloads constructor(
     fun getText(): CharSequence? {
         return mAsphaltNudeButtonComponentViewBinding?.asphaltNudeButtonLabelTextView?.text
     }
-
-
 }

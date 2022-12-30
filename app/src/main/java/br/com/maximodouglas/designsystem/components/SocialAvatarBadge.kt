@@ -11,7 +11,9 @@ import br.com.maximodouglas.designsystem.databinding.AsphaltSocialAvatarBadgeBin
 import br.com.maximodouglas.designsystem.extentions.setCircularImageByUrlWithBorder
 
 class AsphaltSocialAvatarBadge @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mUrlList: MutableList<String>? = null
@@ -70,7 +72,7 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     }
 
     fun getImageUrlList(): List<String>? {
-        return mUrlList;
+        return mUrlList
     }
 
     fun isMainImageVisible(): Boolean {
@@ -80,5 +82,4 @@ class AsphaltSocialAvatarBadge @JvmOverloads constructor(
     fun isSecondaryImageVisible(): Boolean {
         return mBinding?.asphaltSocialAvatarBadgeSecondaryImageView?.visibility == View.VISIBLE
     }
-
 }

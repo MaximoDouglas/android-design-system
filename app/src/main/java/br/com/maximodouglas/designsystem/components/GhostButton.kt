@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components.asphalt
+package br.com.maximodouglas.designsystem.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,12 +10,17 @@ import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.AsphaltGhostButtonBinding
 
 class AsphaltGhostButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
 
     private var mAsphaltGhostButtonComponentViewBinding: AsphaltGhostButtonBinding? =
         DataBindingUtil.inflate(
-            LayoutInflater.from(context), R.layout.asphalt_ghost_button, this, true
+            LayoutInflater.from(context),
+            R.layout.asphalt_ghost_button,
+            this,
+            true
         )
 
     override fun setEnabled(enabled: Boolean) {
@@ -46,6 +51,4 @@ class AsphaltGhostButton @JvmOverloads constructor(
     fun getText(): CharSequence? {
         return mAsphaltGhostButtonComponentViewBinding?.asphaltGhostButtonLabelTextView?.text
     }
-
-
 }
