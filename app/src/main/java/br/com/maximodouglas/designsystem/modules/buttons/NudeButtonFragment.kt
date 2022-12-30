@@ -44,7 +44,7 @@ class NudeButtonFragment : Fragment() {
         mBinding?.asphaltDesignSystemFragmentAlertBadge?.apply {
             setTitleText(getString(R.string.alert_badge_title))
             setOnClickListener {
-                context?.showToast(getString(R.string.asphalt_alert_badge_click_toast))
+                context?.showToast(getString(R.string.alert_badge_click_toast))
             }
         }
     }
@@ -63,13 +63,13 @@ class NudeButtonFragment : Fragment() {
 
         val oneImageUrlList = listOf(picsumImageUrl200x200)
         mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
-            getString(R.string.asphalt_design_system_fragment_social_avatar_one_image_badge),
+            getString(R.string.design_system_fragment_social_avatar_one_image_badge),
             oneImageUrlList
         )
 
         val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl300x300)
         mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
-            getString(R.string.asphalt_design_system_fragment_social_avatar_two_image_badge),
+            getString(R.string.design_system_fragment_social_avatar_two_image_badge),
             twoImageUrlList
         )
     }
@@ -81,13 +81,13 @@ class NudeButtonFragment : Fragment() {
 
     private fun setupEnabledNudeButton() {
         mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setText(
-            getString(R.string.asphalt_design_system_fragment_enabled_nude_button_label)
+            getString(R.string.design_system_fragment_enabled_nude_button_label)
         )
 
         mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setOnClickListener {
             Toast.makeText(
                 context,
-                getString(R.string.asphalt_design_system_fragment_nude_button_click_toast_text),
+                getString(R.string.design_system_fragment_nude_button_click_toast_text),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -95,7 +95,7 @@ class NudeButtonFragment : Fragment() {
 
     private fun setupDisabledNudeButton() {
         mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.setText(
-            getString(R.string.asphalt_design_system_fragment_disabled_nude_button_label)
+            getString(R.string.design_system_fragment_disabled_nude_button_label)
         )
 
         mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
@@ -108,13 +108,13 @@ class NudeButtonFragment : Fragment() {
 
     private fun setupEnabledGhostButton() {
         mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setText(
-            getString(R.string.asphalt_design_system_fragment_enabled_ghost_button_label)
+            getString(R.string.design_system_fragment_enabled_ghost_button_label)
         )
 
         mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setOnClickListener {
             Toast.makeText(
                 context,
-                getString(R.string.asphalt_design_system_fragment_ghost_button_click_toast_text),
+                getString(R.string.design_system_fragment_ghost_button_click_toast_text),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -122,7 +122,7 @@ class NudeButtonFragment : Fragment() {
 
     private fun setupDisabledGhostButton() {
         mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.setText(
-            getString(R.string.asphalt_design_system_fragment_disabled_ghost_button_label)
+            getString(R.string.design_system_fragment_disabled_ghost_button_label)
         )
 
         mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.isEnabled = false
