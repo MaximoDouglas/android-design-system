@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components
+package com.maximodouglas.mdskit.component.socialinteraction
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.SocialAvatarBadgeBinding
-import br.com.maximodouglas.designsystem.extentions.setCircularImageByUrlWithBorder
+import com.maximodouglas.mdskit.R
+import com.maximodouglas.mdskit.databinding.SocialInteractionBinding
+import com.maximodouglas.mdskit.utils.setCircularImageByUrlWithBorder
 
-class SocialAvatarBadge @JvmOverloads constructor(
+class MDSocialInteraction @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
@@ -18,10 +18,10 @@ class SocialAvatarBadge @JvmOverloads constructor(
 
     private var imageUrlsList: MutableList<String> = mutableListOf()
 
-    private var binding: SocialAvatarBadgeBinding =
+    private var binding: SocialInteractionBinding =
         DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.social_avatar_badge,
+            R.layout.social_interaction,
             this,
             true
         )
@@ -30,9 +30,24 @@ class SocialAvatarBadge @JvmOverloads constructor(
         setupLabelText(badgeLabel)
 
         if (imageUrls.isEmpty()) {
-            showImages(false, false)
+            showImages(showMainImage = false, showSecondaryImage = false)
         } else {
             setupImageViewResources(imageUrls)
+        }
+    }
+
+    private fun setupLabelText(badgeLabel: String) {
+        binding.tvSocialInteractionLabel.text = badgeLabel
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun showImages(showMainImage: Boolean, showSecondaryImage: Boolean) {
+        with(binding) {
+            ivSocialInteractionMain.visibility =
+                View.GONE.takeUnless { showMainImage } ?: View.VISIBLE
+
+            ivSocialInteractionSecondary.visibility =
+                View.GONE.takeUnless { showSecondaryImage } ?: View.VISIBLE
         }
     }
 
@@ -41,12 +56,12 @@ class SocialAvatarBadge @JvmOverloads constructor(
 
         binding.apply {
             with(imageUrlsList) {
-                ivSocialAvatarBadgeMain.setCircularImageByUrlWithBorder(
+                ivSocialInteractionMain.setCircularImageByUrlWithBorder(
                     get(MAIN_IMAGE_URL_LIST_INDEX)
                 )
 
                 if (this.size > SECONDARY_IMAGE_URL_LIST_INDEX) {
-                    ivSocialAvatarBadgeSecondary.setCircularImageByUrlWithBorder(
+                    ivSocialInteractionSecondary.setCircularImageByUrlWithBorder(
                         get(SECONDARY_IMAGE_URL_LIST_INDEX)
                     )
                 }
@@ -54,35 +69,20 @@ class SocialAvatarBadge @JvmOverloads constructor(
         }
     }
 
-    private fun setupLabelText(badgeLabel: String) {
-        binding.tvSocialAvatarBadgeLabel.text = badgeLabel
-    }
-
     fun getLabelText(): CharSequence? {
-        return binding.tvSocialAvatarBadgeLabel.text
+        return binding.tvSocialInteractionLabel.text
     }
 
     fun getImageUrlList(): List<String> {
         return imageUrlsList
     }
 
-    @Suppress("MemberVisibilityCanBePrivate")
-    fun showImages(showMainImage: Boolean, showSecondaryImage: Boolean) {
-        with(binding) {
-            ivSocialAvatarBadgeMain.visibility =
-                View.GONE.takeUnless { showMainImage } ?: View.VISIBLE
-
-            ivSocialAvatarBadgeSecondary.visibility =
-                View.GONE.takeUnless { showSecondaryImage } ?: View.VISIBLE
-        }
-    }
-
     fun isMainImageVisible(): Boolean {
-        return binding.ivSocialAvatarBadgeMain.visibility == View.VISIBLE
+        return binding.ivSocialInteractionMain.visibility == View.VISIBLE
     }
 
     fun isSecondaryImageVisible(): Boolean {
-        return binding.ivSocialAvatarBadgeSecondary.visibility == View.VISIBLE
+        return binding.ivSocialInteractionSecondary.visibility == View.VISIBLE
     }
 
     companion object {

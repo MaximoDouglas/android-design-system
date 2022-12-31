@@ -40,18 +40,18 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
-                <br.com.maximodouglas.designsystem.components.NotificationBadge
+                <com.maximodouglas.mdskit.component.notificationbadge.MDNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_no_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <br.com.maximodouglas.designsystem.components.NotificationBadge
+                <com.maximodouglas.mdskit.component.notificationbadge.MDNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_one_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp" />
 
-                <br.com.maximodouglas.designsystem.components.NotificationBadge
+                <com.maximodouglas.mdskit.component.notificationbadge.MDNotificationBadge
                     android:id="@+id/asphalt_design_system_fragment_notification_badge_two_digit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,14 +74,14 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
-                <br.com.maximodouglas.designsystem.components.SocialAvatarBadge
+                <com.maximodouglas.mdskit.component.socialinteraction.MDSocialInteraction
                     android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_one_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/shape_rectangle_black80_corner_8" />
 
-                <br.com.maximodouglas.designsystem.components.SocialAvatarBadge
+                <com.maximodouglas.mdskit.component.socialinteraction.MDSocialInteraction
                     android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_two_images"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/design_system_fragment_nude_buttons_label" />
 
-            <br.com.maximodouglas.designsystem.components.NudeButton
+            <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
                 android:id="@+id/asphalt_design_system_fragment_enabled_nude_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp" />
 
-            <br.com.maximodouglas.designsystem.components.NudeButton
+            <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
                 android:id="@+id/asphalt_design_system_fragment_disabled_nude_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,24 +129,19 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/design_system_fragment_ghost_buttons_label" />
 
-            <br.com.maximodouglas.designsystem.components.GhostButton
+            <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
                 android:id="@+id/asphalt_design_system_fragment_enabled_ghost_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginTop="8dp" />
 
-            <br.com.maximodouglas.designsystem.components.GhostButton
+            <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
                 android:id="@+id/asphalt_design_system_fragment_disabled_ghost_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp" />
 
             <include layout="@layout/divisor_line" />

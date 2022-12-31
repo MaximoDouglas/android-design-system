@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ivSocialAvatarBadgeSecondary"
+                android:id="@+id/ivSocialInteractionSecondary"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="18dp"
@@ -27,7 +27,7 @@
                 tools:visibility="visible" />
 
             <ImageView
-                android:id="@+id/ivSocialAvatarBadgeMain"
+                android:id="@+id/ivSocialInteractionMain"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/shape_oval_white"
@@ -36,7 +36,7 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/tvSocialAvatarBadgeLabel"
+            android:id="@+id/tvSocialInteractionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

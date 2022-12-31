@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.SelectDesignSystemFragmentBinding
+import br.com.maximodouglas.designsystem.modules.commons.getFragmentList
 
 class SelectDesignSystemFragment : Fragment() {
 
@@ -36,14 +37,24 @@ class SelectDesignSystemFragment : Fragment() {
     }
 
     private fun setupAsphaltButton() {
-        mBinding?.selectDesignSystemFragmentGhostButton?.setText(
-            getString(R.string.select_design_system_fragment_asphalt_button_text)
-        )
+        mBinding?.gbSelectFirstComponent?.also {
+            with(getFragmentList()[0]) {
+                it.setText(getFragmentName())
 
-        mBinding?.selectDesignSystemFragmentGhostButton?.setOnClickListener {
-            findNavController().navigate(
-                SelectDesignSystemFragmentDirections.actionSelectDesignSystemFragmentToAsphaltDesignSystemFragment()
-            )
+                it.setOnClickListener {
+                    findNavController().navigate(getFragmentDestination())
+                }
+            }
+        }
+
+        mBinding?.gbSelectSecondComponent?.also {
+            with(getFragmentList()[1]) {
+                it.setText(getFragmentName())
+
+                it.setOnClickListener {
+                    findNavController().navigate(getFragmentDestination())
+                }
+            }
         }
     }
 }

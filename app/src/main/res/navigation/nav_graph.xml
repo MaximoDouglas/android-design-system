@@ -10,14 +10,23 @@
         android:label="SelectDesignSystemFragment">
 
         <action
-            android:id="@+id/action_selectDesignSystemFragment_to_asphaltDesignSystemFragment"
-            app:destination="@id/asphaltDesignSystemFragment" />
+            android:id="@+id/action_selectDesignSystemFragment_to_fragmentNudeButton"
+            app:destination="@id/fragmentNudeButton" />
+
+        <action
+            android:id="@+id/action_selectDesignSystemFragment_to_fragmentAlertBadge"
+            app:destination="@id/fragmentAlertBadge" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/asphaltDesignSystemFragment"
+        android:id="@+id/fragmentNudeButton"
         android:name="br.com.maximodouglas.designsystem.modules.buttons.NudeButtonFragment"
-        android:label="AsphaltDesignSystemFragment" />
+        android:label="FragmentNudeButton" />
+
+    <fragment
+        android:id="@+id/fragmentAlertBadge"
+        android:name="br.com.maximodouglas.designsystem.modules.alertbadge.AlertBadgeFragment"
+        android:label="FragmentAlertBadge" />
 
 </navigation>

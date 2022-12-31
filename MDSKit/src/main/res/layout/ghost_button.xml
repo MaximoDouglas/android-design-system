@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/neo_sans_pro_medium"
+            android:paddingHorizontal="16dp"
             android:textAllCaps="true"
             android:textColor="@drawable/ghost_button_text_color_selector"
             android:textSize="15sp"

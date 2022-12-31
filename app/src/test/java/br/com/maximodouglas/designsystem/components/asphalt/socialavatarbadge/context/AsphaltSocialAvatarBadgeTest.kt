@@ -2,7 +2,7 @@ package br.com.maximodouglas.designsystem.components.asphalt.socialavatarbadge.c
 
 import android.app.Activity
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.SocialAvatarBadge
+import com.maximodouglas.mdskit.component.socialinteraction.MDSocialInteraction
 import org.junit.Assert.*
 
 abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
@@ -19,10 +19,10 @@ abstract class AsphaltSocialAvatarBadgeTest : BaseComponentUnitTest() {
         private const val TEXT_LABEL = "Lorem Ipsum é simplesmente uma simulação"
     }
 
-    private var mAsphaltSocialAvatarBadge: SocialAvatarBadge? = null
+    private var mAsphaltSocialAvatarBadge: MDSocialInteraction? = null
 
     override fun setupComponent(activity: Activity) {
-        mAsphaltSocialAvatarBadge = SocialAvatarBadge(activity)
+        mAsphaltSocialAvatarBadge = MDSocialInteraction(activity)
     }
 
     fun `when social avatar badge has one url and label`() {

@@ -1,14 +1,14 @@
-package br.com.maximodouglas.designsystem.components
+package com.maximodouglas.mdskit.component.notificationbadge
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.NotificationBadgeBinding
+import com.maximodouglas.mdskit.R
+import com.maximodouglas.mdskit.databinding.NotificationBadgeBinding
 
-class NotificationBadge @JvmOverloads constructor(
+class MDNotificationBadge @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0

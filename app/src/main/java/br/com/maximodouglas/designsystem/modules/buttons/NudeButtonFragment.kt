@@ -8,12 +8,13 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.AsphaltDesignSystemFragmentBinding
+import br.com.maximodouglas.designsystem.databinding.FragmentNudeButtonBinding
+import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
 import com.maximodouglas.mdskit.utils.showToast
 
-class NudeButtonFragment : Fragment() {
+class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
 
-    private var mBinding: AsphaltDesignSystemFragmentBinding? = null
+    private var mBinding: FragmentNudeButtonBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +23,7 @@ class NudeButtonFragment : Fragment() {
     ): View? {
         mBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.asphalt_design_system_fragment,
+            R.layout.fragment_nude_button,
             container,
             false
         )
@@ -126,5 +127,25 @@ class NudeButtonFragment : Fragment() {
         )
 
         mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.isEnabled = false
+    }
+
+    override fun getFragmentDestination(): Int {
+        return R.id.fragmentNudeButton
+    }
+
+    override fun getFragmentName(): String {
+        return FRAGMENT_NAME
+    }
+
+    companion object {
+        const val FRAGMENT_NAME = "Nude Button"
+
+        fun newInstance(): NudeButtonFragment {
+            val args = Bundle()
+
+            return NudeButtonFragment().apply {
+                arguments = args
+            }
+        }
     }
 }

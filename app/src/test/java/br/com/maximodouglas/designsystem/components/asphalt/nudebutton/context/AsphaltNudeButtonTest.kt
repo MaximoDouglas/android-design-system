@@ -2,7 +2,7 @@ package br.com.maximodouglas.designsystem.components.asphalt.nudebutton.context
 
 import android.app.Activity
 import br.com.maximodouglas.designsystem.components.BaseComponentUnitTest
-import br.com.maximodouglas.designsystem.components.NudeButton
+import com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
 import org.junit.Assert.*
 
 abstract class AsphaltNudeButtonTest : BaseComponentUnitTest() {
@@ -15,10 +15,10 @@ abstract class AsphaltNudeButtonTest : BaseComponentUnitTest() {
 
     }
 
-    private var mAsphaltNudeButton: NudeButton? = null
+    private var mAsphaltNudeButton: MDNudeButton? = null
 
     override fun setupComponent(activity: Activity) {
-        mAsphaltNudeButton = NudeButton(activity)
+        mAsphaltNudeButton = MDNudeButton(activity)
     }
 
     fun `when nude button has text`() {

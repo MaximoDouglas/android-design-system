@@ -23,13 +23,22 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <br.com.maximodouglas.designsystem.components.GhostButton
-            android:id="@+id/select_design_system_fragment_ghost_button"
+        <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
+            android:id="@+id/gbSelectFirstComponent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
+            android:id="@+id/gbSelectSecondComponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp" />
 

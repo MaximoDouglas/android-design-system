@@ -1,4 +1,4 @@
-package br.com.maximodouglas.designsystem.components
+package com.maximodouglas.mdskit.component.buttons.ghostbutton
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
-import br.com.maximodouglas.designsystem.R
-import br.com.maximodouglas.designsystem.databinding.GhostButtonBinding
+import com.maximodouglas.mdskit.R
+import com.maximodouglas.mdskit.databinding.GhostButtonBinding
 
-class GhostButton @JvmOverloads constructor(
+class MDGhostButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
