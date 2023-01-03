@@ -21,4 +21,10 @@
     <string name="alert_badge_title">Alert Badge Title</string>
     <string name="alert_badge_click_toast">Alert Badge Clicked</string>
     <string name="fragment_alert_badge_toolbar">Alert Badge</string>
+
+    <!-- Nude Button -->
+    <string name="fragment_nude_button_label">Nude Button</string>
+
+    <!-- Ghost Button -->
+    <string name="fragment_ghost_button_label">Ghost Button</string>
 </resources>

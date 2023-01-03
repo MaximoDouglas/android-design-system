@@ -27,13 +27,6 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <com.maximodouglas.mdskit.component.alertbadge.MDAlertBadge
-                android:id="@+id/asphalt_design_system_fragment_alert_badge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include layout="@layout/divisor_line" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -118,30 +111,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" />
-
-            <include layout="@layout/divisor_line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:text="@string/design_system_fragment_ghost_buttons_label" />
-
-            <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
-                android:id="@+id/asphalt_design_system_fragment_enabled_ghost_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp" />
-
-            <com.maximodouglas.mdskit.component.buttons.ghostbutton.MDGhostButton
-                android:id="@+id/asphalt_design_system_fragment_disabled_ghost_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp" />
 
             <include layout="@layout/divisor_line" />

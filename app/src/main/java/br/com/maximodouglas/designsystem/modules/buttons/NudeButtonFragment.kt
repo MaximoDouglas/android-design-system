@@ -10,52 +10,40 @@ import androidx.fragment.app.Fragment
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.FragmentNudeButtonBinding
 import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
-import com.maximodouglas.mdskit.utils.showToast
 
 class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
 
-    private var mBinding: FragmentNudeButtonBinding? = null
+    private var binding: FragmentNudeButtonBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_nude_button,
             container,
             false
         )
 
-        return mBinding?.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAlertBadge()
         setupNotificationBadges()
         setupSocialAvatarBadges()
         setupNudeButtons()
-        setupGhostButtons()
-    }
-
-    private fun setupAlertBadge() {
-        mBinding?.asphaltDesignSystemFragmentAlertBadge?.apply {
-            setTitleText(getString(R.string.alert_badge_title))
-            setOnClickListener {
-                context?.showToast(getString(R.string.alert_badge_click_toast))
-            }
-        }
     }
 
     private fun setupNotificationBadges() {
         val oneDigitQuantity = 1
         val twoDigitQuantity = 99
 
-        mBinding?.asphaltDesignSystemFragmentNotificationBadgeOneDigit?.setQuantity(oneDigitQuantity)
-        mBinding?.asphaltDesignSystemFragmentNotificationBadgeTwoDigit?.setQuantity(twoDigitQuantity)
+        binding?.asphaltDesignSystemFragmentNotificationBadgeOneDigit?.setQuantity(oneDigitQuantity)
+        binding?.asphaltDesignSystemFragmentNotificationBadgeTwoDigit?.setQuantity(twoDigitQuantity)
     }
 
     private fun setupSocialAvatarBadges() {
@@ -63,13 +51,13 @@ class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
         val picsumImageUrl300x300 = "https://picsum.photos/300"
 
         val oneImageUrlList = listOf(picsumImageUrl200x200)
-        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
+        binding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
             getString(R.string.design_system_fragment_social_avatar_one_image_badge),
             oneImageUrlList
         )
 
         val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl300x300)
-        mBinding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
+        binding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
             getString(R.string.design_system_fragment_social_avatar_two_image_badge),
             twoImageUrlList
         )
@@ -81,11 +69,11 @@ class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
     }
 
     private fun setupEnabledNudeButton() {
-        mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setText(
+        binding?.asphaltDesignSystemFragmentEnabledNudeButton?.setText(
             getString(R.string.design_system_fragment_enabled_nude_button_label)
         )
 
-        mBinding?.asphaltDesignSystemFragmentEnabledNudeButton?.setOnClickListener {
+        binding?.asphaltDesignSystemFragmentEnabledNudeButton?.setOnClickListener {
             Toast.makeText(
                 context,
                 getString(R.string.design_system_fragment_nude_button_click_toast_text),
@@ -95,38 +83,11 @@ class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
     }
 
     private fun setupDisabledNudeButton() {
-        mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.setText(
+        binding?.asphaltDesignSystemFragmentDisabledNudeButton?.setText(
             getString(R.string.design_system_fragment_disabled_nude_button_label)
         )
 
-        mBinding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
-    }
-
-    private fun setupGhostButtons() {
-        setupEnabledGhostButton()
-        setupDisabledGhostButton()
-    }
-
-    private fun setupEnabledGhostButton() {
-        mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setText(
-            getString(R.string.design_system_fragment_enabled_ghost_button_label)
-        )
-
-        mBinding?.asphaltDesignSystemFragmentEnabledGhostButton?.setOnClickListener {
-            Toast.makeText(
-                context,
-                getString(R.string.design_system_fragment_ghost_button_click_toast_text),
-                Toast.LENGTH_LONG
-            ).show()
-        }
-    }
-
-    private fun setupDisabledGhostButton() {
-        mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.setText(
-            getString(R.string.design_system_fragment_disabled_ghost_button_label)
-        )
-
-        mBinding?.asphaltDesignSystemFragmentDisabledGhostButton?.isEnabled = false
+        binding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
     }
 
     override fun getFragmentDestination(): Int {

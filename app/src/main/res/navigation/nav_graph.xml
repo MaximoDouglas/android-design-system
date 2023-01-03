@@ -2,27 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/selectDesignSystemFragment">
+    app:startDestination="@+id/selectComponentFragment">
 
     <fragment
-        android:id="@+id/selectDesignSystemFragment"
-        android:name="br.com.maximodouglas.designsystem.modules.selectDesignSystem.SelectDesignSystemFragment"
-        android:label="SelectDesignSystemFragment">
-
-        <action
-            android:id="@+id/action_selectDesignSystemFragment_to_fragmentNudeButton"
-            app:destination="@id/fragmentNudeButton" />
-
-        <action
-            android:id="@+id/action_selectDesignSystemFragment_to_fragmentAlertBadge"
-            app:destination="@id/fragmentAlertBadge" />
-
-    </fragment>
+        android:id="@+id/selectComponentFragment"
+        android:name="br.com.maximodouglas.designsystem.modules.selectcomponent.SelectComponentFragment"
+        android:label="SelectComponentFragment" />
 
     <fragment
         android:id="@+id/fragmentNudeButton"
         android:name="br.com.maximodouglas.designsystem.modules.buttons.NudeButtonFragment"
         android:label="FragmentNudeButton" />
+
+    <fragment
+        android:id="@+id/fragmentGhostButton"
+        android:name="br.com.maximodouglas.designsystem.modules.buttons.GhostButtonFragment"
+        android:label="FragmentGhostButton" />
+
 
     <fragment
         android:id="@+id/fragmentAlertBadge"
