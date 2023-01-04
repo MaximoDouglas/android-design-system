@@ -9,5 +9,5 @@ fun getFragmentList(): List<FragmentNavigationDirection> {
         NudeButtonFragment.newInstance(),
         GhostButtonFragment.newInstance(),
         AlertBadgeFragment.newInstance()
-    )
+    ).sortedBy { it.getFragmentName() }
 }
