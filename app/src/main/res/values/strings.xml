@@ -27,4 +27,7 @@
 
     <!-- Ghost Button -->
     <string name="fragment_ghost_button_label">Ghost Button</string>
+
+    <!-- Notification Badge -->
+    <string name="fragment_notification_badge_toolbar">Notification Badge</string>
 </resources>

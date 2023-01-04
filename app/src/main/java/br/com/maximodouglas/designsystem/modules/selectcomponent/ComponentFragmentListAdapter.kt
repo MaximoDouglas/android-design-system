@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.ViewHolderGhostButtonBinding
-import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
+import br.com.maximodouglas.designsystem.modules.commons.ComponentFragmentNavigation
 
 class ComponentsAdapter(
-    private val componentFragmentList: List<FragmentNavigationDirection>,
+    private val componentFragmentList: List<ComponentFragmentNavigation>,
     private val componentSelectionListener: ComponentSelectionListener
 ) : RecyclerView.Adapter<ComponentsAdapter.ComponentViewHolder>() {
 
@@ -36,7 +36,7 @@ class ComponentsAdapter(
         private val binding: ViewHolderGhostButtonBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(fragment: FragmentNavigationDirection) {
+        fun bind(fragment: ComponentFragmentNavigation) {
             binding.gbDesignSystemFragmentEnabledGhostButton.apply {
                 setText(fragment.getFragmentName())
 
@@ -49,5 +49,5 @@ class ComponentsAdapter(
 }
 
 interface ComponentSelectionListener {
-    fun onComponentSelection(selectedFragment: FragmentNavigationDirection)
+    fun onComponentSelection(selectedFragment: ComponentFragmentNavigation)
 }

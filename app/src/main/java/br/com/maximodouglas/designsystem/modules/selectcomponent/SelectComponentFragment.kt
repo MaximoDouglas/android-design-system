@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.FragmentSelectComponentBinding
-import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
+import br.com.maximodouglas.designsystem.modules.commons.ComponentFragmentNavigation
 import br.com.maximodouglas.designsystem.modules.commons.getFragmentList
 
 class SelectComponentFragment : Fragment(), ComponentSelectionListener {
@@ -47,7 +47,7 @@ class SelectComponentFragment : Fragment(), ComponentSelectionListener {
         }
     }
 
-    override fun onComponentSelection(selectedFragment: FragmentNavigationDirection) {
+    override fun onComponentSelection(selectedFragment: ComponentFragmentNavigation) {
         findNavController().navigate(selectedFragment.getFragmentDestination())
     }
 }

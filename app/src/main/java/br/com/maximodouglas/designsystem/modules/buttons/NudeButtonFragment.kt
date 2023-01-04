@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.FragmentNudeButtonBinding
-import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
+import br.com.maximodouglas.designsystem.modules.commons.ComponentFragmentNavigation
 
-class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
+class NudeButtonFragment : Fragment(), ComponentFragmentNavigation {
 
     private var binding: FragmentNudeButtonBinding? = null
 
@@ -33,17 +33,8 @@ class NudeButtonFragment : Fragment(), FragmentNavigationDirection {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupNotificationBadges()
         setupSocialAvatarBadges()
         setupNudeButtons()
-    }
-
-    private fun setupNotificationBadges() {
-        val oneDigitQuantity = 1
-        val twoDigitQuantity = 99
-
-        binding?.asphaltDesignSystemFragmentNotificationBadgeOneDigit?.setQuantity(oneDigitQuantity)
-        binding?.asphaltDesignSystemFragmentNotificationBadgeTwoDigit?.setQuantity(twoDigitQuantity)
     }
 
     private fun setupSocialAvatarBadges() {

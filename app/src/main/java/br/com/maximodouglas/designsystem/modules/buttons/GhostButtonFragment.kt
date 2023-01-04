@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import br.com.maximodouglas.designsystem.R
 import br.com.maximodouglas.designsystem.databinding.FragmentGhostButtonBinding
-import br.com.maximodouglas.designsystem.modules.commons.FragmentNavigationDirection
+import br.com.maximodouglas.designsystem.modules.commons.ComponentFragmentNavigation
 
-class GhostButtonFragment : Fragment(), FragmentNavigationDirection {
+class GhostButtonFragment : Fragment(), ComponentFragmentNavigation {
 
     private var mBinding: FragmentGhostButtonBinding? = null
 

@@ -25,4 +25,9 @@
         android:name="br.com.maximodouglas.designsystem.modules.alertbadge.AlertBadgeFragment"
         android:label="FragmentAlertBadge" />
 
+    <fragment
+        android:id="@+id/fragmentNotificationBadgeFragment"
+        android:name="br.com.maximodouglas.designsystem.modules.notificationbadge.NotificationBadgeFragment"
+        android:label="NotificationBadgeFragment" />
+
 </navigation>
