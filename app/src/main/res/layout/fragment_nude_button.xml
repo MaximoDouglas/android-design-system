@@ -32,38 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
-                android:text="@string/design_system_fragment_social_avatar_badges_label" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <com.maximodouglas.mdskit.component.socialinteraction.MDSocialInteraction
-                    android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_one_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/shape_rectangle_black80_corner_8" />
-
-                <com.maximodouglas.mdskit.component.socialinteraction.MDSocialInteraction
-                    android:id="@+id/asphalt_design_system_fragment_social_avatar_badge_two_images"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/shape_rectangle_black80_corner_8" />
-
-            </LinearLayout>
-
-            <include layout="@layout/divisor_line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
                 android:text="@string/design_system_fragment_nude_buttons_label" />
 
             <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton

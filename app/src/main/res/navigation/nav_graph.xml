@@ -30,4 +30,9 @@
         android:name="br.com.maximodouglas.designsystem.modules.notificationbadge.NotificationBadgeFragment"
         android:label="NotificationBadgeFragment" />
 
+    <fragment
+        android:id="@+id/fragmentSocialInteractionFragment"
+        android:name="br.com.maximodouglas.designsystem.modules.socialinteraction.SocialInteractionFragment"
+        android:label="SocialInteractionFragment" />
+
 </navigation>

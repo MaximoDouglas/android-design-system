@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
+        android:background="@drawable/shape_rectangle_black10_corner_8"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="8dp"

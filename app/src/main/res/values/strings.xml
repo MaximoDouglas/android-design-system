@@ -30,4 +30,7 @@
 
     <!-- Notification Badge -->
     <string name="fragment_notification_badge_toolbar">Notification Badge</string>
+
+    <!-- Social Interaction -->
+    <string name="fragment_social_interaction_toolbar">Social Interaction</string>
 </resources>

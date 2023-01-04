@@ -33,25 +33,7 @@ class NudeButtonFragment : Fragment(), ComponentFragmentNavigation {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupSocialAvatarBadges()
         setupNudeButtons()
-    }
-
-    private fun setupSocialAvatarBadges() {
-        val picsumImageUrl200x200 = "https://picsum.photos/200"
-        val picsumImageUrl300x300 = "https://picsum.photos/300"
-
-        val oneImageUrlList = listOf(picsumImageUrl200x200)
-        binding?.asphaltDesignSystemFragmentSocialAvatarBadgeOneImage?.setLabelAndImageUrlList(
-            getString(R.string.design_system_fragment_social_avatar_one_image_badge),
-            oneImageUrlList
-        )
-
-        val twoImageUrlList = listOf(picsumImageUrl200x200, picsumImageUrl300x300)
-        binding?.asphaltDesignSystemFragmentSocialAvatarBadgeTwoImages?.setLabelAndImageUrlList(
-            getString(R.string.design_system_fragment_social_avatar_two_image_badge),
-            twoImageUrlList
-        )
     }
 
     private fun setupNudeButtons() {
