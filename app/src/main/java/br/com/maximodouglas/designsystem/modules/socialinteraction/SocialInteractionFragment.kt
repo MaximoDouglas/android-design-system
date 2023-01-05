@@ -37,12 +37,12 @@ class SocialInteractionFragment : Fragment(), ComponentFragmentNavigation {
     private fun setupSocialAvatarBadges() {
         binding?.apply {
             socialAvatarBadgeOneImage.setLabelAndImageUrlList(
-                getString(R.string.design_system_fragment_social_avatar_one_image_badge),
+                getString(R.string.fragment_social_interaction_one_image_label),
                 listOf(PICSUM_URL_200)
             )
 
             socialAvatarBadgeTwoImages.setLabelAndImageUrlList(
-                getString(R.string.design_system_fragment_social_avatar_two_image_badge),
+                getString(R.string.fragment_social_interaction_two_image_label),
                 listOf(PICSUM_URL_200, PICSUM_URL_300)
             )
         }

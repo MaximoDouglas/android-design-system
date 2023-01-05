@@ -1,63 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/md_black40"
-                android:elevation="2dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/fragment_alert_badge_toolbar"
-                    android:textColor="@color/md_black100"
-                    android:textSize="16sp" />
-
-            </androidx.appcompat.widget.Toolbar>
+            android:background="@color/md_black40"
+            android:elevation="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:text="@string/design_system_fragment_nude_buttons_label" />
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_nude_button_label"
+                android:textColor="@color/md_black100"
+                android:textSize="16sp" />
 
-            <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
-                android:id="@+id/asphalt_design_system_fragment_enabled_nude_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" />
+        </androidx.appcompat.widget.Toolbar>
 
-            <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
-                android:id="@+id/asphalt_design_system_fragment_disabled_nude_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" />
+        <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
+            android:id="@+id/enabledNudeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp" />
 
-            <include layout="@layout/divisor_line" />
+        <com.maximodouglas.mdskit.component.buttons.nudebutton.MDNudeButton
+            android:id="@+id/disabledNudeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" />
 
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </layout>
