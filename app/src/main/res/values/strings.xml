@@ -1,21 +1,7 @@
 <resources>
     <!-- General -->
     <string name="app_name">MD - Design System Kit</string>
-    <string name="select_design_system_fragment_asphalt_button_text">Asphalt Design System</string>
     <string name="button_label">Button</string>
-
-    <string name="design_system_fragment_notification_badges_label">Notification badges</string>
-    <string name="design_system_fragment_social_avatar_badges_label">Social avatar badges</string>
-    <string name="design_system_fragment_social_avatar_one_image_badge">One image social avatar badge</string>
-    <string name="design_system_fragment_social_avatar_two_image_badge">More than one image social avatar badge</string>
-    <string name="design_system_fragment_nude_buttons_label">Nude Buttons</string>
-    <string name="design_system_fragment_enabled_nude_button_label">Enabled Nude Button</string>
-    <string name="design_system_fragment_disabled_nude_button_label">Disabled Nude Button</string>
-    <string name="design_system_fragment_nude_button_click_toast_text">Nude Button Clicked</string>
-    <string name="design_system_fragment_ghost_buttons_label">Ghost Buttons</string>
-    <string name="design_system_fragment_enabled_ghost_button_label">Enabled Ghost Button</string>
-    <string name="design_system_fragment_disabled_ghost_button_label">Disabled Ghost Button</string>
-    <string name="design_system_fragment_ghost_button_click_toast_text">Ghost Button Clicked</string>
 
     <!-- Alert Badge -->
     <string name="alert_badge_title">Alert Badge Title</string>
@@ -24,13 +10,21 @@
 
     <!-- Nude Button -->
     <string name="fragment_nude_button_label">Nude Button</string>
+    <string name="fragment_nude_button_enabled_label">Enabled Nude Button</string>
+    <string name="fragment_nude_button_disabled_label">Disabled Nude Button</string>
+    <string name="fragment_nude_button_click_text">Nude Button Clicked</string>
 
     <!-- Ghost Button -->
     <string name="fragment_ghost_button_label">Ghost Button</string>
+    <string name="fragment_ghost_button_enabled_label">Enabled Ghost Button</string>
+    <string name="fragment_ghost_button_disabled_label">Disabled Ghost Button</string>
+    <string name="fragment_ghost_button_disabled_click_text">Ghost Button Clicked</string>
 
     <!-- Notification Badge -->
     <string name="fragment_notification_badge_toolbar">Notification Badge</string>
 
     <!-- Social Interaction -->
     <string name="fragment_social_interaction_toolbar">Social Interaction</string>
+    <string name="fragment_social_interaction_one_image_label">One image social avatar badge</string>
+    <string name="fragment_social_interaction_two_image_label">More than one image social avatar badge</string>
 </resources>

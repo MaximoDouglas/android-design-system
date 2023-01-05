@@ -43,13 +43,13 @@ class GhostButtonFragment : Fragment(), ComponentFragmentNavigation {
 
     private fun setupEnabledGhostButton() {
         mBinding?.gbDesignSystemFragmentEnabledGhostButton?.setText(
-            getString(R.string.design_system_fragment_enabled_ghost_button_label)
+            getString(R.string.fragment_ghost_button_enabled_label)
         )
 
         mBinding?.gbDesignSystemFragmentEnabledGhostButton?.setOnClickListener {
             Toast.makeText(
                 context,
-                getString(R.string.design_system_fragment_ghost_button_click_toast_text),
+                getString(R.string.fragment_ghost_button_disabled_click_text),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -57,7 +57,7 @@ class GhostButtonFragment : Fragment(), ComponentFragmentNavigation {
 
     private fun setupDisabledGhostButton() {
         mBinding?.gbDesignSystemFragmentDisabledGhostButton?.setText(
-            getString(R.string.design_system_fragment_disabled_ghost_button_label)
+            getString(R.string.fragment_ghost_button_disabled_label)
         )
 
         mBinding?.gbDesignSystemFragmentDisabledGhostButton?.isEnabled = false

@@ -42,25 +42,29 @@ class NudeButtonFragment : Fragment(), ComponentFragmentNavigation {
     }
 
     private fun setupEnabledNudeButton() {
-        binding?.asphaltDesignSystemFragmentEnabledNudeButton?.setText(
-            getString(R.string.design_system_fragment_enabled_nude_button_label)
-        )
+        binding?.enabledNudeButton?.apply {
+            setText(
+                getString(R.string.fragment_nude_button_enabled_label)
+            )
 
-        binding?.asphaltDesignSystemFragmentEnabledNudeButton?.setOnClickListener {
-            Toast.makeText(
-                context,
-                getString(R.string.design_system_fragment_nude_button_click_toast_text),
-                Toast.LENGTH_LONG
-            ).show()
+            setOnClickListener {
+                Toast.makeText(
+                    context,
+                    getString(R.string.fragment_nude_button_click_text),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
     private fun setupDisabledNudeButton() {
-        binding?.asphaltDesignSystemFragmentDisabledNudeButton?.setText(
-            getString(R.string.design_system_fragment_disabled_nude_button_label)
-        )
+        binding?.disabledNudeButton?.also {
+            it.setText(
+                getString(R.string.fragment_nude_button_disabled_label)
+            )
 
-        binding?.asphaltDesignSystemFragmentDisabledNudeButton?.isEnabled = false
+            it.isEnabled = false
+        }
     }
 
     override fun getFragmentDestination(): Int {
